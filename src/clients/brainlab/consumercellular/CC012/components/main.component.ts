@@ -34,10 +34,12 @@ export class MainComponent {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
 
+        // console.log("target-html-length=", target.innerHTML.length);
+
         if (
           target &&
-          target.classList &&
-          target.classList.contains("filter-menu") &&
+          target.innerHTML &&
+          target.innerHTML.length > 200000 &&
           !this.isFilterMenuFound &&
           this.location === pathnames.device &&
           !this.isControlMetricsAdded &&
@@ -49,47 +51,14 @@ export class MainComponent {
 
         if (
           target &&
-          target.classList &&
-          target.classList.contains("cciShoppingLayout") &&
-          !this.isFilterMenuFound &&
+          target.innerHTML &&
+          target.innerHTML.length > 200000 &&
+          !this.isGridContainerFound &&
           this.location === pathnames.device &&
-          !this.isControlMetricsAdded &&
-          this.variation === "control"
+          this.variation === "1"
         ) {
-          this.serviceComponent.addMainFilterMetrics();
-          this.isControlMetricsAdded = true;
-        }
-
-        if (
-          target &&
-          target.classList &&
-          !this.isGridContainerFound &&
-          target.classList.contains("grid-item-container") &&
-          this.location === pathnames.device
-        ) {
-          this.variation === "1" && this.quickFilterComponent.render();
-          this.isGridContainerFound = true;
-        }
-
-        if (
-          target &&
-          target.classList &&
-          !this.isGridContainerFound &&
-          target.classList.contains("grid-container") &&
-          this.location === pathnames.device
-        ) {
-          this.variation === "1" && this.quickFilterComponent.render();
-          this.isGridContainerFound = true;
-        }
-
-        if (
-          target &&
-          target.classList &&
-          !this.isGridContainerFound &&
-          target.classList.contains("cciShoppingLayout") &&
-          this.location === pathnames.device
-        ) {
-          this.variation === "1" && this.quickFilterComponent.render();
+          this.quickFilterComponent.render();
+          this.serviceComponent.syncActiveFilterWithQuickFilter();
           this.isGridContainerFound = true;
         }
       }

@@ -2,6 +2,7 @@ import {
   getSpecificFilterMenuHierarchy,
   mboxNames,
   quickFilters,
+  selectors,
   triggerMetrics,
 } from "../common/asset";
 import { QuickFilterModel } from "../models/quick-filter-model";
@@ -24,6 +25,20 @@ export class ServiceComponent {
   addListener = (filterCta: HTMLDivElement) => {
     filterCta.addEventListener("click", () => {
       triggerMetrics(mboxNames.filterCtaClick);
+    });
+  };
+
+  syncActiveFilterWithQuickFilter = () => {
+    const activeFilters: null | NodeListOf<HTMLSpanElement> =
+      document.querySelectorAll(selectors.activeFilters);
+
+    activeFilters.forEach((span: HTMLSpanElement) => {
+      span.textContent &&
+        span.textContent.trim().toLowerCase().split(" ").join("-") ===
+          "clear-filters" &&
+        span.click();
+
+      //span.addEventListener("click", () => {});
     });
   };
 }

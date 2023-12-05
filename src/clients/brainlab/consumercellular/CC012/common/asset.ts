@@ -3,6 +3,9 @@ import { QuickFilterModel } from "../models/quick-filter-model";
 export const selectors = {
   shoppingPageContainer: "div#shopping-page-container",
   gridContainer: "div.grid-container",
+  shoppingHeader: "div.choose-device-wrapper>div:first-child>header",
+  activeFilters: "div.active-filters>span",
+  filterMenu: "div.filter-buttons>div:first-child>div.filter-menu",
 };
 
 export const pathnames = {
@@ -25,15 +28,15 @@ export const quickFilters: QuickFilterModel[] = [
   },
   {
     id: 2,
-    label: "Motorola",
+    label: "Samsung",
     parentPosition: 1,
-    childPosition: 3,
+    childPosition: 5,
   },
   {
     id: 3,
-    label: "Nokia",
-    parentPosition: 1,
-    childPosition: 4,
+    label: "Flip Phone",
+    parentPosition: 2,
+    childPosition: 6,
   },
 ];
 

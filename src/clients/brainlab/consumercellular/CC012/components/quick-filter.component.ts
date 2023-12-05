@@ -31,13 +31,13 @@ export class QuickFilterComponent {
 
   render = () => {
     const gridContainer: HTMLDivElement | null = document.querySelector(
-      selectors.gridContainer
+      selectors.shoppingHeader
     );
     if (!gridContainer) {
       return;
     }
 
-    gridContainer.insertAdjacentHTML("beforebegin", this.getHtml());
+    gridContainer.insertAdjacentHTML("afterend", this.getHtml());
 
     this.makeReactive();
   };
@@ -51,9 +51,10 @@ export class QuickFilterComponent {
     }
 
     buttons.forEach((button: HTMLButtonElement) => {
-      button.addEventListener("click", () => {
-        const id: string | null = button.getAttribute("id");
+      const id: string | null = button.getAttribute("id");
+      this.addListenerToExistFilter(id, button);
 
+      button.addEventListener("click", () => {
         this.filter(id);
         button.classList.toggle("active");
         triggerMetrics(mboxNames.filterCtaClick);
@@ -61,9 +62,23 @@ export class QuickFilterComponent {
     });
   };
 
-  filter = (id: string | null) => {
+  addListenerToExistFilter = (id: string | null, button: HTMLButtonElement) => {
+    const filterMenu: null | HTMLDivElement = document.querySelector(
+      selectors.filterMenu
+    );
+
+    const existFilter = this.findExistFilter(id);
+    existFilter &&
+      existFilter.addEventListener("click", () => {
+        filterMenu &&
+          !filterMenu.getAttribute("style") &&
+          button.classList.toggle("active");
+      });
+  };
+
+  findExistFilter = (id: string | null): HTMLDivElement | null => {
     if (!id) {
-      return;
+      return null;
     }
 
     const quickFilterModelId = Number(id);
@@ -73,7 +88,7 @@ export class QuickFilterComponent {
     );
 
     if (!quickFilterModel) {
-      return;
+      return null;
     }
 
     const existFilterSelector: string = getSpecificFilterMenuHierarchy(
@@ -81,9 +96,11 @@ export class QuickFilterComponent {
       quickFilterModel.childPosition
     );
 
-    const existFilter: HTMLDivElement | null =
-      document.querySelector(existFilterSelector);
+    return document.querySelector(existFilterSelector);
+  };
 
+  filter = (id: string | null) => {
+    const existFilter = this.findExistFilter(id);
     existFilter && existFilter.click();
   };
 }
