@@ -1,0 +1,86 @@
+@import "./common";
+
+.#{$id} {
+  &-1 {
+    div.placeholder-device-tile {
+      div.tile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > div.remove-device {
+          > button {
+            border: none;
+            background-color: transparent;
+            color: #001e45;
+            font-weight: 400;
+            line-height: 19px;
+            font-size: 17px;
+            font-style: italic;
+          }
+        }
+
+        @media only screen and (max-width: 992px) {
+          flex-direction: column;
+        }
+      }
+
+      > div.tile-body {
+        display: none;
+      }
+    }
+  }
+
+  div.tile-component {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.phone {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+
+      div.phone-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > p {
+          background-color: #d9f0f6;
+          padding: 2px 35px;
+          text-align-last: center;
+          border-radius: 3px;
+          color: #001e45;
+          font-size: 16px;
+          font-weight: 700;
+          margin-top: -10px;
+        }
+      }
+
+      div.phone-text {
+        > p {
+          color: #f26631;
+          font-size: 18px;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+
+    div.shop-phone {
+      div.phone-text {
+        margin-top: 10px;
+      }
+    }
+
+    @media only screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+}

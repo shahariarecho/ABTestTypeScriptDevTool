@@ -1,0 +1,60 @@
+@import './common';
+
+.#{$id}{
+
+    div.cci-modal-body>div.row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (max-width: 718px) {
+            flex-direction: column;
+        }
+    }
+
+    a.bring-button{
+        margin: 0.5rem;
+        display: inline-block;
+        min-width: 26%;
+        font-size: 1.6rem;
+        font-weight: 800;
+        height: 3.6rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,.5)!important;
+        padding: 0.7rem 2rem;
+        font-size: 1.6rem;
+        background: #fff;
+        color: #f26631;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 0.5rem;
+        border: 2px solid #f26631;
+
+        &:hover{
+            text-decoration: none;
+            background-color: #f26631;
+            color: #fff;
+        }
+    }
+
+    @media screen and (max-width: 719px) {
+        div.cci-modal-body>div.row>a:first-child{
+            display: none !important;
+        }
+
+        div#mobile-bill-breakdown button.old-btn-shop{
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+
+        div#shopping-app>div.shop-loader{
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: 720px) {
+        div#mobile-bill-breakdown button.new-cart-button{
+            display: none !important;
+        }
+    }
+}

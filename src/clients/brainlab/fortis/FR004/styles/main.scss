@@ -1,0 +1,52 @@
+@import "./common";
+
+.#{$id} {
+  div.rfi-modal {
+    > div.rfi {
+      top: 0 !important;
+      max-height: 97% !important;
+      bottom: 0 !important;
+    }
+  }
+
+  div.form-el {
+    margin-bottom: 0.6rem !important;
+  }
+
+  button.btn-tertiary {
+    margin: 0 !important;
+  }
+
+  .#{$id}__contact-container {
+    .headline {
+      > h5 {
+        margin: 0;
+        padding-bottom: 10px;
+      }
+    }
+
+    .text-content {
+      margin-bottom: 10px;
+
+      > ul {
+        > li {
+          font-size: 13px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    div.modal-header > p {
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+    }
+  }
+
+  &-2 {
+    .#{$id}__contact-container {
+      margin-top: 20px;
+    }
+  }
+}

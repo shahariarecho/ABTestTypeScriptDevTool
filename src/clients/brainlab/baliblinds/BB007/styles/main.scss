@@ -1,0 +1,32 @@
+@import "./common";
+
+.#{$id} {
+
+  div.modal-backdrop{
+    z-index: 1049 !important;
+  }
+
+  div.modal-content{
+    background-color: transparent;
+
+    >div.row{
+      background-color: #fff;
+    }
+  }
+
+  div.lightbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    > a {
+      padding: 0 20px;
+      background-color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+}
