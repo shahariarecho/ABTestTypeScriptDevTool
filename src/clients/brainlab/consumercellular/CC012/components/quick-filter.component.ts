@@ -1,13 +1,27 @@
-import { triggerMetrics } from "../../CC009/common/utils";
 import {
   getSpecificFilterMenuHierarchy,
   mboxNames,
-  quickFilters,
+  mobileBreakPoint,
   selectors,
+  triggerMetrics,
+  v1QuickFilters,
+  v2QuickFilters,
 } from "../common/asset";
+import { TestInfo } from "../common/test.info";
 import { QuickFilterModel } from "../models/quick-filter-model";
+import { ServiceComponent } from "./service.component";
 
 export class QuickFilterComponent {
+  variation: string = TestInfo.VARIATION.toString();
+  quickFilters: QuickFilterModel[] = [];
+  serviceComponent!: ServiceComponent;
+
+  constructor(serviceComponent: ServiceComponent) {
+    this.serviceComponent = serviceComponent;
+    this.quickFilters =
+      this.variation === "1" ? v1QuickFilters : v2QuickFilters;
+  }
+
   getQuickFilterItemHtml = (quickFilterModel: QuickFilterModel): string => {
     const htmlString: string = `
       <div class="filer-menu" >
@@ -20,7 +34,7 @@ export class QuickFilterComponent {
   getHtml = (): string => {
     const htmlString: string = `
       <div class="quick-filer-component" >
-        ${quickFilters.map((quickFilterModel: QuickFilterModel) =>
+        ${this.quickFilters.map((quickFilterModel: QuickFilterModel) =>
           this.getQuickFilterItemHtml(quickFilterModel)
         )}.join("\n")}
       <div>
@@ -37,14 +51,17 @@ export class QuickFilterComponent {
       return;
     }
 
-    gridContainer.insertAdjacentHTML("afterend", this.getHtml());
+    const insertPosition: InsertPosition =
+      mobileBreakPoint < window.innerWidth ? "beforebegin" : "afterend";
+
+    gridContainer.insertAdjacentHTML(insertPosition, this.getHtml());
 
     this.makeReactive();
   };
 
   makeReactive = () => {
     const buttons: null | NodeListOf<HTMLButtonElement> =
-      document.querySelectorAll("div.quick-filer-component>div.filer-menu>div");
+      document.querySelectorAll(selectors.quickFilterMenus);
 
     if (!buttons || buttons.length === 0) {
       return;
@@ -70,9 +87,12 @@ export class QuickFilterComponent {
     const existFilter = this.findExistFilter(id);
     existFilter &&
       existFilter.addEventListener("click", () => {
-        filterMenu &&
-          !filterMenu.getAttribute("style") &&
-          button.classList.toggle("active");
+        setTimeout(() => {
+          filterMenu &&
+            !filterMenu.getAttribute("style") &&
+            button.classList.toggle("active");
+          this.serviceComponent.clearActiveFilter(false);
+        }, 25);
       });
   };
 
@@ -83,9 +103,10 @@ export class QuickFilterComponent {
 
     const quickFilterModelId = Number(id);
 
-    const quickFilterModel: QuickFilterModel | undefined = quickFilters.find(
-      (model: QuickFilterModel) => model.id === quickFilterModelId
-    );
+    const quickFilterModel: QuickFilterModel | undefined =
+      this.quickFilters.find(
+        (model: QuickFilterModel) => model.id === quickFilterModelId
+      );
 
     if (!quickFilterModel) {
       return null;

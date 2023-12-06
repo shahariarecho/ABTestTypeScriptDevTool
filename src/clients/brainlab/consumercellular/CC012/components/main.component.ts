@@ -1,5 +1,10 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { mboxNames, pathnames, triggerMetrics } from "../common/asset";
+import {
+  maxHtmlLengthToRender,
+  mboxNames,
+  pathnames,
+  triggerMetrics,
+} from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { LocationObserver } from "../observer/location.observer";
 import { TestObserver } from "../observer/test.observer";
@@ -10,9 +15,11 @@ export class MainComponent {
   location: string = "";
   isGridContainerFound: boolean = false;
   isFilterMenuFound: boolean = false;
-  quickFilterComponent: QuickFilterComponent = new QuickFilterComponent();
-  variation: string = TestInfo.VARIATION.toString();
   serviceComponent: ServiceComponent = new ServiceComponent();
+  quickFilterComponent: QuickFilterComponent = new QuickFilterComponent(
+    this.serviceComponent
+  );
+  variation: string = TestInfo.VARIATION.toString();
   isControlMetricsAdded: boolean = false;
 
   constructor() {
@@ -39,26 +46,45 @@ export class MainComponent {
         if (
           target &&
           target.innerHTML &&
-          target.innerHTML.length > 200000 &&
+          target.innerHTML.length > maxHtmlLengthToRender &&
           !this.isFilterMenuFound &&
           this.location === pathnames.device &&
           !this.isControlMetricsAdded &&
           this.variation === "control"
         ) {
           this.serviceComponent.addMainFilterMetrics();
+          this.serviceComponent.clearQuickFilter();
+          this.serviceComponent.addListenerToClearFilter();
           this.isControlMetricsAdded = true;
         }
 
         if (
           target &&
           target.innerHTML &&
-          target.innerHTML.length > 200000 &&
+          target.innerHTML.length > maxHtmlLengthToRender &&
           !this.isGridContainerFound &&
           this.location === pathnames.device &&
           this.variation === "1"
         ) {
           this.quickFilterComponent.render();
-          this.serviceComponent.syncActiveFilterWithQuickFilter();
+          this.serviceComponent.clearActiveFilter(true);
+          this.serviceComponent.clearQuickFilter();
+          this.serviceComponent.addListenerToClearFilter();
+          this.isGridContainerFound = true;
+        }
+
+        if (
+          target &&
+          target.innerHTML &&
+          target.innerHTML.length > maxHtmlLengthToRender &&
+          !this.isGridContainerFound &&
+          this.location === pathnames.device &&
+          this.variation === "2"
+        ) {
+          this.quickFilterComponent.render();
+          this.serviceComponent.clearActiveFilter(true);
+          this.serviceComponent.clearQuickFilter();
+          this.serviceComponent.addListenerToClearFilter();
           this.isGridContainerFound = true;
         }
       }
