@@ -17,6 +17,7 @@ export class ServiceComponent {
   clearFilterButtonText: string = "clear-filters";
   addedListenerNames: string[] = [];
   removedListenerName: string[] = [];
+  clearFilterSpan!: HTMLSpanElement;
 
   constructor() {
     this.quickFilters = this.quickFilters =
@@ -46,16 +47,26 @@ export class ServiceComponent {
     });
   };
 
-  clearActiveFilter = (needToClearFilter: boolean) => {
+  initAndClearFilter = () => {
     const activeFilters: null | NodeListOf<HTMLSpanElement> =
       document.querySelectorAll(selectors.activeFilters);
 
     activeFilters.forEach((span: HTMLSpanElement) => {
-      needToClearFilter &&
-        span.textContent &&
+      span.textContent &&
         trimText(span.textContent) === this.clearFilterButtonText &&
+        this.initialClearAllFilterButton(span) &&
         span.click();
     });
+  };
+
+  initialClearAllFilterButton = (span: HTMLSpanElement) => {
+    this.clearFilterSpan = span;
+    return true;
+  };
+
+  clearAllFilter = () => {
+    this.clearFilterSpan.click();
+    return true;
   };
 
   addListenerToClearFilter = () => {

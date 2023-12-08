@@ -1,6 +1,11 @@
 @import "./common";
 
 .#{$id} {
+  li.disable-listener {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   &-1,
   &-2 {
     div.choose-device-wrapper > div:first-child {

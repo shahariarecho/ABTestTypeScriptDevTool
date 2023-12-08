@@ -67,9 +67,10 @@ export class MainComponent {
           this.variation === "1"
         ) {
           this.quickFilterComponent.render();
-          this.serviceComponent.clearActiveFilter(true);
+          this.serviceComponent.initAndClearFilter();
           this.serviceComponent.clearQuickFilter();
           this.serviceComponent.addListenerToClearFilter();
+          this.quickFilterComponent.disableDropDownFilter();
           this.isGridContainerFound = true;
         }
 
@@ -82,9 +83,10 @@ export class MainComponent {
           this.variation === "2"
         ) {
           this.quickFilterComponent.render();
-          this.serviceComponent.clearActiveFilter(true);
+          this.serviceComponent.initAndClearFilter();
           this.serviceComponent.clearQuickFilter();
           this.serviceComponent.addListenerToClearFilter();
+          this.quickFilterComponent.disableDropDownFilter();
           this.isGridContainerFound = true;
         }
       }

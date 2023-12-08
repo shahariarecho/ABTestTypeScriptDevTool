@@ -72,6 +72,7 @@ export class QuickFilterComponent {
       this.addListenerToExistFilter(id, button);
 
       button.addEventListener("click", () => {
+        this.serviceComponent.clearAllFilter();
         this.filter(id);
         button.classList.toggle("active");
         triggerMetrics(mboxNames.filterCtaClick);
@@ -91,7 +92,6 @@ export class QuickFilterComponent {
           filterMenu &&
             !filterMenu.getAttribute("style") &&
             button.classList.toggle("active");
-          this.serviceComponent.clearActiveFilter(false);
         }, 25);
       });
   };
@@ -123,5 +123,19 @@ export class QuickFilterComponent {
   filter = (id: string | null) => {
     const existFilter = this.findExistFilter(id);
     existFilter && existFilter.click();
+  };
+
+  disableDropDownFilter = () => {
+    const ids: string[] = this.quickFilters.map(
+      (quickFilter: QuickFilterModel) => quickFilter.id.toString()
+    );
+
+    const t = this;
+    ids.forEach((id) => {
+      const li = t.findExistFilter(id);
+      li &&
+        li.parentElement &&
+        li.parentElement.classList.add("disable-listener");
+    });
   };
 }
