@@ -20,13 +20,17 @@
     width: 100%;
 
     > a {
-      background-color: #fff;
       text-transform: uppercase;
       font-weight: 700;
       width: 100%;
       text-align: center;
       background-color: #387aa8;
       color: #fff;
+
+      @media screen and (max-width: 575px) {
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
     }
   }
 }
