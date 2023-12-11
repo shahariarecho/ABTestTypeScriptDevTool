@@ -1,4 +1,4 @@
-import { selectors, shapes } from "../common/asset";
+import { onScrollToTreatmentEvent, selectors, shapes } from "../common/asset";
 
 export class ShapeComponent {
   getShapeItemHtml = (shape: any) => {
@@ -59,5 +59,27 @@ export class ShapeComponent {
     }
 
     treatment.insertAdjacentHTML("afterend", this.getHtml());
+  };
+
+  addOnVisibleGoal = (selector: string) => {
+    const treatment: null | HTMLDivElement = document.querySelector(selector);
+
+    if (!treatment) {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+          onScrollToTreatmentEvent();
+        }
+
+        if (entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          onScrollToTreatmentEvent();
+        }
+      });
+    });
+
+    observer.observe(treatment);
   };
 }

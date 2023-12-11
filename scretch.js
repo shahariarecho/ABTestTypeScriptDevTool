@@ -1,26 +1,23 @@
-function executeModification() {
-  const mboxName = "thank-you-mbox";
-  const VARIATION = "thank-you";
-  const testInfo =
-    "ID: FR004, VARIATION: " + VARIATION + ", VERSION: 0.0.1, is running....!";
-  console.log(testInfo);
+function trigger(activate, options) {
+  const utils = window.optimizely.get("utils");
+  const treatmentSection =
+    "section.multi-column-main>div:first-child>div:nth-child(1) div.generic-html-block";
 
-  const thankYouKey = sessionStorage.getItem("thank-you-key");
+  if (window.location.href.indexOf("https://www.graberblinds.com") !== -1) {
+    utils.waitForElement(treatmentSection).then((section) => {
+      console.log("section=", section);
+      const observer = new IntersectionObserver((entries) => {
+        console.log("entries=", entries);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            options.isActive && activate({ isActive: false });
+            activate();
+            console.log("options=", options);
+          }
+        });
+      });
 
-  if (!thankYouKey && thankYouKey === "thank-you-value") {
-    console.log("mbox=", mboxName);
-    adobe.target.trackEvent({ mbox: mboxName });
+      observer.observe(section);
+    });
   }
 }
-
-(function pollOnload() {
-  if (document.querySelector("body")) {
-    try {
-      executeModification();
-    } catch (error) {
-      console.log("Initialization error:", error);
-    }
-  } else {
-    setTimeout(pollOnload, 2000);
-  }
-})();

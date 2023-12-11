@@ -1,5 +1,6 @@
 export const selectors = {
   treatment: "section.multi-column-main>div:first-child>div:nth-child(2)",
+  shape: "div.shape-component",
 };
 
 export const shapes = [
@@ -29,3 +30,14 @@ export const shapes = [
     label: "SpecialtyShape",
   },
 ];
+
+export const onScrollToTreatmentEvent = () => {
+  //@ts-ignore
+  window["optimizely"] = window["optimizely"] || [];
+  //@ts-ignore
+  window["optimizely"].push({
+    type: "event",
+    eventName: "on-scroll-to-modification",
+  });
+  console.log("on-scroll-to-modification-goal-triggered");
+};
