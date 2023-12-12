@@ -57,9 +57,9 @@ export const v2QuickFilters: QuickFilterModel[] = [
   },
   {
     id: 3,
-    label: "Nokia",
+    label: "Samsung",
     parentPosition: 1,
-    childPosition: 4,
+    childPosition: 5,
   },
 ];
 
@@ -75,12 +75,6 @@ export const controlQuickFilters: QuickFilterModel[] = [
     label: "Motorola",
     parentPosition: 1,
     childPosition: 3,
-  },
-  {
-    id: 3,
-    label: "Nokia",
-    parentPosition: 1,
-    childPosition: 4,
   },
   {
     id: 1,
