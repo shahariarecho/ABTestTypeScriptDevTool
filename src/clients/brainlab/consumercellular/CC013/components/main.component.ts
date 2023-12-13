@@ -1,6 +1,7 @@
 import { Initializer } from "../../../../../utilities/initializer";
 import {
   mBoxNames,
+  maxLengthToShowModification,
   pathnames,
   selectors,
   triggerMetrics,
@@ -40,13 +41,15 @@ export class MainComponent {
     });
 
     const testObserver = new TestObserver("body");
+
     const callback = (mutationList: MutationRecord[]) => {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
-        console.log("target-length=", target.innerHTML.length);
+        // console.log("target-length=", target.innerHTML.length);
 
         if (
-          target.innerHTML.length > 206000 &&
+          target.innerHTML &&
+          target.innerHTML.length > maxLengthToShowModification &&
           !this.isLineSectionFound &&
           !this.isComboPlanFound &&
           !this.isPlanSectionFound &&
@@ -56,50 +59,37 @@ export class MainComponent {
             this.state.activeListener();
 
           this.lineService.addListener((line: number) => {
-            this.state.selectedLine = line;
             triggerMetrics(mBoxNames.lineClick);
+            this.state.selectedLine = line;
             setTimeout(() => {
               this.variation === "1" && this.planService.changePlanPrice(false);
             }, 50);
           });
+
           this.isLineSectionFound = true;
-
-          // ======
-
-          window.innerWidth > this.mobileBreakPoint &&
-            this.state.activeListener();
 
           window.innerWidth > this.mobileBreakPoint &&
             this.aarpService.addListener((isChecked: boolean) => {
-              this.state.isAarpChecked = isChecked;
-              triggerMetrics(mBoxNames.aarpClick);
-              setTimeout(() => {
-                this.variation === "1" &&
-                  this.planService.changePlanPrice(true);
-              }, 50);
+              this.changePriceOnAarpClick(isChecked);
             }, selectors.desktopAarpCheckbox);
 
           window.innerWidth < this.mobileBreakPoint &&
             this.aarpService.addListener((isChecked: boolean) => {
-              this.state.isAarpChecked = isChecked;
-              triggerMetrics(mBoxNames.aarpClick);
-              setTimeout(() => {
-                this.variation === "1" &&
-                  this.planService.changePlanPrice(true);
-              }, 50);
+              this.changePriceOnAarpClick(isChecked);
             }, selectors.mobileAarpCheckbox);
 
           this.isComboPlanFound = true;
 
-          // ======
-
           if (window.innerWidth < this.mobileBreakPoint) {
             this.planService.getMobilePlanElements();
           } else {
-            this.planService.getPlanElements(selectors.desktopPlans);
-            this.planService.changeUnitText(
-              selectors.desktopMonthlyChargeUnits
-            );
+            if (this.variation === "1") {
+              this.planService.getPlanElements(selectors.desktopPlans);
+              this.planService.changeUnitText(
+                selectors.desktopMonthlyChargeUnits
+              );
+            }
+
             this.planService.addPlanButtonsListener(
               selectors.desktopPlanButtons
             );
@@ -110,5 +100,12 @@ export class MainComponent {
       }
     };
     testObserver.observe(callback);
+  };
+
+  changePriceOnAarpClick = (isChecked: boolean) => {
+    this.state.isAarpChecked = isChecked;
+    setTimeout(() => {
+      this.variation === "1" && this.planService.changePlanPrice(true);
+    }, 50);
   };
 }

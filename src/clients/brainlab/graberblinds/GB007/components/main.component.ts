@@ -45,5 +45,7 @@ export class MainComponent {
 
     body.textContent = bottomContent.body;
     heading.textContent = bottomContent.heading;
+    heading.classList.remove("pt-4");
+    heading.classList.add("pt-5");
   };
 }

@@ -32,5 +32,7 @@ export const mBoxNames = {
 export const triggerMetrics = (mboxName: string) => {
   console.log("mbox=", mboxName);
   // @ts-ignore
-  adobe.target.trackEvent({ mbox: mboxName });
+  adobe && adobe.target && adobe.target.trackEvent({ mbox: mboxName });
 };
+
+export const maxLengthToShowModification: number = 206000;
