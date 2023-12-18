@@ -90,7 +90,9 @@ export class PlanService {
       this.plans &&
       this.plans.length > 0 &&
       this.plans.forEach((plan: HTMLSpanElement) => {
-        plan.lastElementChild && plan.lastElementChild.classList.add("hide");
+        plan.childNodes.length > 1 &&
+          plan.lastElementChild &&
+          plan.lastElementChild.classList.add("hide");
       });
   };
 

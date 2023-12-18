@@ -1,27 +1,8 @@
 @import "./common";
 
 .#{$id} {
-  &__hide {
+  .hide {
     display: none !important;
-  }
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-  }
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-  }
-
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-  }
-
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-  }
-
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
   }
 
   &-1 {
@@ -34,6 +15,37 @@
             margin-left: 0;
           }
         }
+      }
+    }
+
+    div#newForm h3 {
+      padding: 0 !important;
+    }
+
+    div.sub-headline {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      > h5 {
+        text-align: center;
+      }
+    }
+
+    div.progress-container {
+      width: 100%;
+      background-color: #dadada;
+      height: 2px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      > div.progress {
+        width: 50%;
+        height: 2px;
+        background-color: #0e6eb9;
+      }
+
+      > div.progress.full {
+        width: 100%;
       }
     }
   }
