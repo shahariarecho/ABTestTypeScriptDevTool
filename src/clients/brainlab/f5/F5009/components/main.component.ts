@@ -1,12 +1,20 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { privacyNoticeLink, selectors } from "../common/asset";
+import {
+  mboxNames,
+  privacyNoticeLink,
+  selectors,
+  triggerMetrics,
+} from "../common/asset";
 import { TestInfo } from "../common/test.info";
+import { TestObserver } from "../common/test.observer";
 import { ButtonComponent } from "./button.component";
 import { ProgressComponent } from "./progress.component";
 
 export class MainComponent {
   buttonComponent: ButtonComponent = new ButtonComponent();
   progressComponent: ProgressComponent = new ProgressComponent();
+  isFormSubmitted: boolean = false;
+  variation: string = TestInfo.VARIATION.toString();
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -23,17 +31,20 @@ export class MainComponent {
       return;
     }
 
-    this.playHideAndShow(formBottomDivisions, "hide");
+    this.variation === "1" && this.playHideAndShow(formBottomDivisions, "hide");
 
-    this.progressComponent.render();
+    this.variation === "1" && this.progressComponent.render();
 
-    this.buttonComponent.render(formTopDivisions, () => {
-      this.playHideAndShow(formTopDivisions, "hide");
-      this.playHideAndShow(formBottomDivisions, "show");
-      this.progressComponent.makeProgressFull();
-    });
+    this.variation === "1" &&
+      this.buttonComponent.render(formTopDivisions, () => {
+        this.playHideAndShow(formTopDivisions, "hide");
+        this.playHideAndShow(formBottomDivisions, "show");
+        this.progressComponent.makeProgressFull();
+      });
 
-    this.changeFormText();
+    this.variation === "1" && this.changeFormText();
+
+    this.addGoals();
   };
 
   playHideAndShow = (
@@ -66,5 +77,27 @@ export class MainComponent {
       "beforeend",
       `The information you provide will be treated in accordance with the <a href="${privacyNoticeLink}" >F5 Privacy Notice</a>. Opt-out at anytime.`
     );
+  };
+
+  addGoals = () => {
+    const testObserver = new TestObserver(selectors.success);
+
+    const callback = (mutationList: MutationRecord[]) => {
+      for (let index = 0; index < mutationList.length; index++) {
+        const target: Element = mutationList[index].target as Element;
+        if (target.classList.contains("show") && !this.isFormSubmitted) {
+          triggerMetrics(mboxNames.formSubmitted);
+          this.isFormSubmitted = true;
+        }
+      }
+    };
+    testObserver.observe(callback);
+
+    const form: null | HTMLFormElement = document.querySelector(selectors.form);
+
+    form &&
+      form.addEventListener("click", () => {
+        triggerMetrics(mboxNames.anywhereClickInForm);
+      });
   };
 }

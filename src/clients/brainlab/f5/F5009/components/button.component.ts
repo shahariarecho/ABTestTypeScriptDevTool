@@ -1,6 +1,9 @@
-import { selectors } from "../common/asset";
+import { mboxNames, selectors, triggerMetrics } from "../common/asset";
+import { TestInfo } from "../common/test.info";
 
 export class ButtonComponent {
+  variation: string = TestInfo.VARIATION.toString();
+
   getHtml = (): string => {
     const htmlString: string = `
       <button type="button" class="mktoButton" >Next</button>
@@ -24,9 +27,21 @@ export class ButtonComponent {
 
     submitButton.nextElementSibling &&
       submitButton.nextElementSibling.addEventListener("click", () => {
+        triggerMetrics(mboxNames.nextClick);
+
         submitButton.click();
-        this.isFormTopValidated(formTopDivisions) && goNext();
+        this.isFormTopValidated(formTopDivisions) &&
+          this.showSubmitButton(submitButton) &&
+          goNext();
       });
+  };
+
+  showSubmitButton = (submitButton: HTMLButtonElement): boolean => {
+    submitButton.classList.remove("hide");
+    submitButton.nextElementSibling &&
+      submitButton.nextElementSibling.classList.add("hide");
+
+    return true;
   };
 
   isFormTopValidated = (
