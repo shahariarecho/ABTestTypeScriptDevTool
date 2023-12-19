@@ -12,6 +12,7 @@ export const selectors = {
 
 export const pathnames = {
   device: "/shopping/choose/device",
+  checkout: "/shopping/checkout",
 };
 
 export const getSpecificFilterMenuHierarchy = (
