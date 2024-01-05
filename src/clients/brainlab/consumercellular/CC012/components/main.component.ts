@@ -52,9 +52,8 @@ export class MainComponent {
           !this.isControlMetricsAdded &&
           this.variation === "control"
         ) {
-          this.serviceComponent.addMainFilterMetrics();
+          // this.serviceComponent.addDropdownFilterMetrics();
           this.serviceComponent.clearQuickFilter();
-          this.serviceComponent.addListenerToClearFilter();
           this.isControlMetricsAdded = true;
         }
 

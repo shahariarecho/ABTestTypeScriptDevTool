@@ -28,18 +28,21 @@ export const v1QuickFilters: QuickFilterModel[] = [
     label: "Apple",
     parentPosition: 1,
     childPosition: 1,
+    variation: 1,
   },
   {
     id: 2,
     label: "Samsung",
     parentPosition: 1,
     childPosition: 5,
+    variation: 1,
   },
   {
     id: 3,
     label: "Flip Phone",
     parentPosition: 2,
     childPosition: 6,
+    variation: 1,
   },
 ];
 
@@ -49,58 +52,33 @@ export const v2QuickFilters: QuickFilterModel[] = [
     label: "Apple",
     parentPosition: 1,
     childPosition: 1,
+    variation: 2,
   },
   {
     id: 2,
     label: "Motorola",
     parentPosition: 1,
     childPosition: 3,
+    variation: 2,
   },
   {
     id: 3,
     label: "Samsung",
     parentPosition: 1,
     childPosition: 5,
+    variation: 2,
   },
 ];
 
 export const controlQuickFilters: QuickFilterModel[] = [
-  {
-    id: 1,
-    label: "Apple",
-    parentPosition: 1,
-    childPosition: 1,
-  },
-  {
-    id: 2,
-    label: "Motorola",
-    parentPosition: 1,
-    childPosition: 3,
-  },
-  {
-    id: 1,
-    label: "Apple",
-    parentPosition: 1,
-    childPosition: 1,
-  },
-  {
-    id: 2,
-    label: "Samsung",
-    parentPosition: 1,
-    childPosition: 5,
-  },
-  {
-    id: 3,
-    label: "Flip Phone",
-    parentPosition: 2,
-    childPosition: 6,
-  },
+  ...v1QuickFilters,
+  ...v2QuickFilters,
 ];
 
 export const mboxNames = {
   devicePageVisit: "device-page-visit",
-  filterCtaClick: "filter-cta-click",
-  activeFiltersClick: "active-filters-click",
+  quickFilterClick: "quick-filter-click",
+  clearFiltersClick: "clear-filters-click",
 };
 
 export const triggerMetrics = (mboxName: string) => {

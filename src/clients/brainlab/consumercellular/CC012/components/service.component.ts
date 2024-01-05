@@ -18,6 +18,7 @@ export class ServiceComponent {
   addedListenerNames: string[] = [];
   removedListenerName: string[] = [];
   clearFilterSpan!: HTMLSpanElement;
+  isQuickFilterClicked: boolean = false;
 
   constructor() {
     this.quickFilters = this.quickFilters =
@@ -28,7 +29,7 @@ export class ServiceComponent {
         : v2QuickFilters;
   }
 
-  addMainFilterMetrics = () => {
+  addDropdownFilterMetrics = () => {
     this.quickFilters.forEach((model: QuickFilterModel) => {
       const existFilterSelector: string = getSpecificFilterMenuHierarchy(
         model.parentPosition,
@@ -37,13 +38,13 @@ export class ServiceComponent {
 
       const existFilterCta: null | HTMLDivElement =
         document.querySelector(existFilterSelector);
-      existFilterCta && this.addListener(existFilterCta);
+      existFilterCta && this.addListener(existFilterCta, model.variation);
     });
   };
 
-  addListener = (filterCta: HTMLDivElement) => {
+  addListener = (filterCta: HTMLDivElement, variation: number) => {
     filterCta.addEventListener("click", () => {
-      triggerMetrics(mboxNames.filterCtaClick);
+      triggerMetrics(mboxNames.quickFilterClick);
     });
   };
 
@@ -65,6 +66,7 @@ export class ServiceComponent {
   };
 
   clearAllFilter = () => {
+    this.isQuickFilterClicked = true;
     this.clearFilterSpan.click();
     return true;
   };
@@ -80,7 +82,6 @@ export class ServiceComponent {
 
     clearFiler.addEventListener("click", () => {
       this.inActiveQuickFilter("", true);
-      triggerMetrics(mboxNames.activeFiltersClick);
     });
   };
 
@@ -91,7 +92,7 @@ export class ServiceComponent {
     const callback = (mutationList: MutationRecord[]) => {
       mutationList.length > 0 &&
         mutationList[0].removedNodes.length > 0 &&
-        triggerMetrics(mboxNames.activeFiltersClick);
+        triggerMetrics(mboxNames.clearFiltersClick);
 
       this.variation !== "control" &&
         mutationList.length > 0 &&

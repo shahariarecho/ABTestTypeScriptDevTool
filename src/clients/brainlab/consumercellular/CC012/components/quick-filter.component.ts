@@ -75,7 +75,7 @@ export class QuickFilterComponent {
         this.serviceComponent.clearAllFilter();
         this.filter(id);
         button.classList.toggle("active");
-        triggerMetrics(mboxNames.filterCtaClick);
+        triggerMetrics(mboxNames.quickFilterClick);
       });
     });
   };
