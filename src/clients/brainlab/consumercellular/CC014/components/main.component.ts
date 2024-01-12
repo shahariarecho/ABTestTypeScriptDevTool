@@ -20,7 +20,7 @@ export class MainComponent {
   addListenerToViewDetails = () => {
     const viewDetailButtons: null | NodeListOf<HTMLAnchorElement> =
       document.querySelectorAll(selectors.viewDetails);
-    console.log("viewDetailButtons=", viewDetailButtons);
+
     if (!viewDetailButtons || viewDetailButtons.length === 0) {
       return;
     }
