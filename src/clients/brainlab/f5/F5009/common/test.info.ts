@@ -4,5 +4,5 @@ export enum TestInfo {
   TITLE = "BLTEST040 - 2-step Form",
   CLIENT = "brainlab",
   TARGET = "https://www.f5.com/go/ebook/attacker-economics",
-  VARIATION = "control",
+  VARIATION = "1",
 }

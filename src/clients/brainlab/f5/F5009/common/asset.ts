@@ -4,7 +4,7 @@ export const selectors = {
   submitButton: "div#newForm button",
   formText: "div.mktoHtmlText>p",
   formTopDivisions: `div#newForm>form>div:nth-child(3), div#newForm>form>div:nth-child(4)`,
-  formBottomDivisions: `div#newForm>form>div:nth-child(5), div#newForm>form>div:nth-child(6)`,
+  formBottomDivisions: `div#newForm>form>div:nth-child(5), div#newForm>form>div:nth-child(6), div#newForm>form>div:nth-child(7)`,
   success: "div.success-message",
 };
 
