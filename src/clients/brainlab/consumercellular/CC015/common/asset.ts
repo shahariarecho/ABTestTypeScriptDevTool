@@ -21,6 +21,14 @@ export const mBoxNames = {
   checkoutPageVisit: "checkout-page-visit",
   thankYouPageVisit: "thankyou-page-visit",
   addToCartClick: "add-to-cart-click",
+  unlimited65DollarClick: "unlimited-65-dollar-click",
+  tenGb50DollarClick: "ten-gb-50-dollar-click",
+  fiveGb40DollarClick: "five-gb-40-dollar-click",
+  oneGb35DollarClick: "one-gb-35-dollar-click",
+  unlimited50DollarClick: "unlimited-50-dollar-click",
+  tenGb35DollarClick: "ten-gb-35-dollar-click",
+  fiveGb25DollarClick: "five-gb-25-dollar-click",
+  oneGb20DollarClick: "one-gb-20-dollar-click",
 };
 
 export const triggerMetrics = (mboxName: string) => {

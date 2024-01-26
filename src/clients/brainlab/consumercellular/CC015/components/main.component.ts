@@ -60,45 +60,20 @@ export class MainComponent {
           !this.isPlanSectionFound &&
           this.location === pathnames.plan
         ) {
-          this.variation === "c" &&
-            window.innerWidth < this.mobileBreakPoint &&
+          window.innerWidth < this.mobileBreakPoint &&
             this.planService.showMobilePlan(() => {
               this.planService.addPlanButtonsListener(
                 selectors.mobilePlanButtons
               );
-            });
 
-          this.variation === "1" &&
-            this.lineService.clickNthLine(1, () => {
-              window.innerWidth < this.mobileBreakPoint &&
+              this.variation === "1" &&
                 this.planService.clickNthMobilePlanButton(5);
 
-              window.innerWidth < this.mobileBreakPoint &&
-                this.planService.addPlanButtonsListener(
-                  selectors.mobilePlanButtons
-                );
-            });
-
-          this.variation === "2" &&
-            this.lineService.clickNthLine(1, () => {
-              window.innerWidth < this.mobileBreakPoint &&
+              this.variation === "2" &&
                 this.planService.clickNthMobilePlanButton(4);
 
-              window.innerWidth < this.mobileBreakPoint &&
-                this.planService.addPlanButtonsListener(
-                  selectors.mobilePlanButtons
-                );
-            });
-
-          this.variation === "3" &&
-            this.lineService.clickNthLine(1, () => {
-              window.innerWidth < this.mobileBreakPoint &&
+              this.variation === "3" &&
                 this.planService.clickNthMobilePlanButton(3);
-
-              window.innerWidth < this.mobileBreakPoint &&
-                this.planService.addPlanButtonsListener(
-                  selectors.mobilePlanButtons
-                );
             });
 
           this.variation === "1" &&
