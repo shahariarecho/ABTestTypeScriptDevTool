@@ -79,30 +79,6 @@ export const planOfStudyData = {
 
 export const tableRowHideBreakPoint: number = 4;
 
-export const successStories: SuccessStory[] = [
-  {
-    name: "Teshieka C",
-    title: "Associate Degree in Nursing",
-    description:
-      "I chose Fortis for a number of reasons to get my Associates Degree.  The first reason was that it was local.  In addition to that, there were staff members here that really cared when I came to orientation. There were people here who made me feel like I want to be invested in your education and I want to see you grow and that for me pushed me to say that’s the place I need to be.",
-    img: "https://www.fortis.edu/campuses/florida/cutler-bay/ignite/nursing/_jcr_content/par/success_stories/image.transform/w200/q80/img.jpg",
-  },
-  {
-    name: "Ken H",
-    title: "Practical Nursing",
-    description:
-      "I strongly encourage anyone seeking self-improvement and career enhancement to enroll in Fortis College. The programs they offer integrate the talent, knowledge, and skills of top-quality instructors, as well as, a diverse group of highly motivated students who are preparing for rewarding careers. Thanks to Fortis College, I now have the “real world” experience necessary to lead a successful career! I am a practical nursing graduate holding down two LPN jobs now and back in school with Fortis to complete my Associates of Registered Nursing.",
-    img: "https://www.fortis.edu/campuses/florida/cutler-bay/ignite/nursing/_jcr_content/par/success_stories_183318302/image.transform/w200/q80/img.jpg",
-  },
-  {
-    name: "Denise S",
-    title: "Associate Degree in Nursing ",
-    description:
-      "Right now I work as a nurse and a case manager for Superior Home Care and Hospice.  Going to school at Fortis worked out very well for me.  I did the morning classes.  I also worked full-time.  I was struggling as a CNA making $13 an hour for 40 hours a week which wasn’t enough to get by.  Graduating as a nurse and working for a home health agency has really made a huge difference.  Financially, it’s made a huge difference in my life.",
-    img: "https://www.fortis.edu/campuses/florida/cutler-bay/ignite/nursing/_jcr_content/par/success_stories_342827713/image.transform/w200/q80/img.jpg",
-  },
-];
-
 export const leftArrowSvg = `
 <svg width="40" height="55" viewBox="0 0 40 55" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g filter="url(#filter0_d_139_32)">

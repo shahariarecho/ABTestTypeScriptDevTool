@@ -1,12 +1,14 @@
 import { courseScheduleData, mboxNames, selectors } from "../common/asset";
+import { TestInfo } from "../common/test.info";
 import { triggerMetrics } from "../common/utils";
 import { PlanOfStudyComponent } from "./plan-of-Study.component";
 import { TItleComponent } from "./title.component";
 
 export class CourseScheduleComponent {
+  variation: string = TestInfo.VARIATION.toString();
   planOfStudyComponent: PlanOfStudyComponent = new PlanOfStudyComponent();
 
-  private getHtml = (): string => {
+  private getCourseScheduleHtml = (): string => {
     const htmlString: string = `
       <div class="course-schedule-component" >
         <div class="component-container" >
@@ -38,6 +40,14 @@ export class CourseScheduleComponent {
           </div>
         </div>
       </div>
+    `;
+
+    return this.variation === "hvac" ? "" : htmlString.trim();
+  };
+
+  private getHtml = (): string => {
+    const htmlString: string = `
+      ${this.getCourseScheduleHtml()};
       ${this.planOfStudyComponent.getHtml()};
     `;
 

@@ -7,7 +7,7 @@ import { SuccessStoryComponent } from "./success-story.component";
 
 export class MainComponent {
   constructor() {
-    Initializer.init(TestInfo, "0.0.4");
+    Initializer.init(TestInfo, "0.0.5");
   }
 
   init = (): void => {
