@@ -3,10 +3,18 @@ import { Indicator } from "../models/indicator.model";
 import { SuccessStory } from "../models/success-story.model";
 import { floridaAdnCourses, floridaAdnIndicators } from "./florida-adn.data";
 import { floridaLpnCourses, floridaLpnIndicators } from "./florida-lpn.data";
+import {
+  hvacAdnCourses,
+  hvacAdnIndicators,
+  hvacSchedule,
+} from "./hvac-adn.data";
+import { hvacLpnCourses, hvacLpnIndicators } from "./hvac-lpn.data";
 import { indianaAdnCourses, indianaAdnIndicators } from "./indiana-adn.data";
 import { indianaLpnCourses, indianaLpnIndicators } from "./indiana-lpn.data";
 import { ohioAdnCourses, ohioAdnIndicators } from "./ohio-adn.data";
 import { ohioLpnCourses, ohioLpnIndicators } from "./ohio-lpn.data";
+import { surgicalAdnCourses, surgicalAdnIndicators } from "./surgical-adn.data";
+import { surgicalLpnCourses, surgicalLpnIndicators } from "./surgical-lpn.data";
 import { TestInfo } from "./test.info";
 
 export const selectors = {
@@ -14,6 +22,7 @@ export const selectors = {
   successStories: "div.success-stories",
   rfiButton: "main.content>div>div:nth-child(2) div.rfi-btn>a",
   courseSchedule: "div.course-schedule-component",
+  planOfStudy: "div.plan-of-study-component",
   submitButton: "div.modal-content>div.submit>button",
   applyCta: "div.rfi-btn>a",
 };
@@ -35,6 +44,10 @@ const adnIndicators: Indicator[] =
     ? floridaAdnIndicators
     : variation === "indiana"
     ? indianaAdnIndicators
+    : variation === "hvac"
+    ? hvacAdnIndicators
+    : variation === "surgical"
+    ? surgicalAdnIndicators
     : ohioAdnIndicators;
 
 const lpnIndicators: Indicator[] =
@@ -42,6 +55,10 @@ const lpnIndicators: Indicator[] =
     ? floridaLpnIndicators
     : variation === "indiana"
     ? indianaLpnIndicators
+    : variation === "hvac"
+    ? hvacLpnIndicators
+    : variation === "surgical"
+    ? surgicalLpnIndicators
     : ohioLpnIndicators;
 
 const adnCourses: Course[] =
@@ -49,6 +66,10 @@ const adnCourses: Course[] =
     ? floridaAdnCourses
     : variation === "indiana"
     ? indianaAdnCourses
+    : variation === "hvac"
+    ? hvacAdnCourses
+    : variation === "surgical"
+    ? surgicalAdnCourses
     : ohioAdnCourses;
 
 const lpnCourses: Course[] =
@@ -56,6 +77,10 @@ const lpnCourses: Course[] =
     ? floridaLpnCourses
     : variation === "indiana"
     ? indianaLpnCourses
+    : variation === "hvac"
+    ? hvacLpnCourses
+    : variation === "surgical"
+    ? surgicalLpnCourses
     : ohioLpnCourses;
 
 export const planOfStudyData = {
@@ -65,7 +90,10 @@ export const planOfStudyData = {
     shortTitle: "ADN",
     courses: adnCourses,
     indicators: adnIndicators,
-    Schedule: `Morning: 8:00 a.m. - 5:00 p.m. Monday through Friday Evening: 5:30 p.m. - 11:30 p.m. Monday through Friday *Clinical times may start as early 6:00am. Some rotations maybe over night rotations and end's late as 7:00am. This may also requve an occasional Saturday or Sunday. Hours are subject to change.`,
+    Schedule:
+      variation === "hvac"
+        ? hvacSchedule
+        : `Morning: 8:00 a.m. - 5:00 p.m. Monday through Friday Evening: 5:30 p.m. - 11:30 p.m. Monday through Friday *Clinical times may start as early 6:00am. Some rotations maybe over night rotations and end's late as 7:00am. This may also requve an occasional Saturday or Sunday. Hours are subject to change.`,
   },
   lpn: {
     title: "LICENSED PRACTICAL NURSING (LPN)",
