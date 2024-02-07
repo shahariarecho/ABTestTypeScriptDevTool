@@ -109,7 +109,7 @@ export class SuccessStoryComponent {
       dot.addEventListener("click", () => {
         this.slideIndex = index + 1;
         this.changeSlide(slides, dots, this.slideIndex);
-        console.log("mbox=", mboxNames.slideArrow);
+        console.log("mbox=", mboxNames.slideDot);
         // @ts-ignore
         adobe.target.trackEvent({ mbox: mboxNames.slideArrow });
       });
