@@ -1,9 +1,13 @@
 import { leftArrowSvg, rightArrowSvg, selectors } from "../common/asset";
 import { BlindCard } from "../models/blind-card";
 import { BlindButtonComponent } from "./blind-button.component";
+import { FooterComponent } from "./footer.component";
+import { InfoComponent } from "./info.component";
 
 export class CarouselComponent {
   blindButtonComponent: BlindButtonComponent = new BlindButtonComponent();
+  infoComponent: InfoComponent = new InfoComponent();
+  footerComponent: FooterComponent = new FooterComponent();
 
   getSwiperSlideHtml = (blindCard: BlindCard, index: number): string => {
     const htmlString: string = `
@@ -51,6 +55,8 @@ export class CarouselComponent {
             </div>
           </div>
         </div>
+        ${this.infoComponent.getHtml()}
+        ${this.footerComponent.getHtml()}
       </div>
     `;
 
@@ -70,7 +76,7 @@ export class CarouselComponent {
 
     const swiper: any = this.reactive(blindCards.length);
 
-    swiper.slideTo(2, 0);
+    //swiper.slideTo(2, 0);
 
     this.blindButtonComponent.onClick((id: string) => {
       swiper.slideTo(Number(id), 0);
@@ -81,8 +87,7 @@ export class CarouselComponent {
   reactive = (totalSlide: number): any => {
     // @ts-ignore
     return new Swiper(".carousel", {
-      slidesPerView: 5,
-      spaceBetween: 30,
+      centeredSlides: true,
       navigation: {
         nextEl: ".carousel-next",
         prevEl: ".carousel-prev",

@@ -33,7 +33,7 @@ export class MainComponent {
           jsLoader
             .load(swiperLibrary.js, "swiper-js", "script")
             .then((jsElm) => {
-              jsElm && console.log("swiper-loaded...!");
+              jsElm && console.log("Swiper-loaded...!");
               jsElm && this.carouselComponent.render(blindCards);
             });
       });

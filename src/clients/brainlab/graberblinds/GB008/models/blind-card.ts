@@ -4,4 +4,5 @@ export class BlindCard {
   imgSrc: string = "";
   heading: string = "";
   description: string = "";
+  hrefText?: string;
 }
