@@ -32,7 +32,7 @@ export const infos: BlindCard[] = [
     id: 1,
     description: `Simply upload a photo of your window and start designing—or choose from our portfolio of sample room scenes. Then preview your picture-perfect treatments.<div class="break" ></div> Using a mobile device? Try the new Graber Visualizer App—available for download on the <a href='${appStore}' >App Store</a> and <a href="${playStore}" >Google Play</a>.`,
     heading: "View Window Treatments on Your Own Window—Virtually",
-    href: "",
+    href: "https://www.graberblinds.com/visualization/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/visual.png",
     hrefText: "GRABER VISUALIZER",
   },
@@ -40,7 +40,7 @@ export const infos: BlindCard[] = [
     id: 2,
     description: `Find a Graber expert to answer all your questions.<div class="break" ></div> Let one of our experts show you custom window treatment solutions designed for your space. Let them take care of measuring and installation, too, so you're guaranteed a perfect finish you'll love for years.`,
     heading: "Window Treatment Questions?",
-    href: "",
+    href: "https://www.graberblinds.com/find-an-expert/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/exparts.png",
     hrefText: "CONSULT A GRABER EXPERT",
   },
@@ -48,7 +48,7 @@ export const infos: BlindCard[] = [
     id: 3,
     description: `Experiencing Graber quality materials firsthand is the perfect way to choose the style, fabric, material, pattern, and texture that’s right for you. Select a product category and sort by function, color, or collection to easily find and order swatches that match your style.`,
     heading: "Order a Free Swatch",
-    href: "",
+    href: "https://www.graberblinds.com/free-swatches/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/swatches.png",
     hrefText: "FIND SWATCHES",
   },
@@ -61,7 +61,7 @@ export const footerItems: BlindCard[] = [
     description:
       "Eight decades of know-how go into every Graber window treatment, backed by a limited lifetime warranty.",
     hrefText: "REVIEW WARRANTY DETAILS",
-    href: "",
+    href: "https://www.graberblinds.com/why-graber/warranty-coverage/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/waranty.png",
   },
   {
@@ -70,7 +70,7 @@ export const footerItems: BlindCard[] = [
     description:
       "How will Graber fabrics, woods, and materials look and feel in your home? Get 15 free swatches delivered right to your door.",
     hrefText: "ORDER FREE SAMPLES",
-    href: "",
+    href: "https://www.graberblinds.com/free-swatches/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/car.png",
   },
   {
@@ -79,7 +79,7 @@ export const footerItems: BlindCard[] = [
     description:
       "Save photos and swatches to My Favorites, then download to share with friends and your Graber Expert.",
     hrefText: "FIND YOUR FAVORITES",
-    href: "",
+    href: "https://www.graberblinds.com/visualization/",
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/eye.png",
   },
 ];
