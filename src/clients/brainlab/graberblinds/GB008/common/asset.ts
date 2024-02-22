@@ -83,3 +83,15 @@ export const footerItems: BlindCard[] = [
     imgSrc: "https://medianet.com/cro/graberblinds/gb008/eye.png",
   },
 ];
+
+export const triggerEvent = (apiName: string) => {
+  //@ts-ignore
+  window["optimizely"] = window["optimizely"] || [];
+  //@ts-ignore
+  window["optimizely"].push({
+    type: "event",
+    eventName: apiName,
+  });
+
+  console.log("event-triggered=", apiName);
+};

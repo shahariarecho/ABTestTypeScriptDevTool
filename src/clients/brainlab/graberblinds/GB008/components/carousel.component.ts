@@ -1,4 +1,9 @@
-import { leftArrowSvg, rightArrowSvg, selectors } from "../common/asset";
+import {
+  leftArrowSvg,
+  rightArrowSvg,
+  selectors,
+  triggerEvent,
+} from "../common/asset";
 import { BlindCard } from "../models/blind-card";
 import { BlindButtonComponent } from "./blind-button.component";
 import { FooterComponent } from "./footer.component";
@@ -95,7 +100,7 @@ export class CarouselComponent {
       },
       on: {
         sliderMove: function () {
-          console.log("ture");
+          triggerEvent("window-treatments-blinds-carousel-move");
         },
       },
     });
