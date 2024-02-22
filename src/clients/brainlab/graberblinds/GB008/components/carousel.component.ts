@@ -93,6 +93,11 @@ export class CarouselComponent {
         nextEl: ".carousel-next",
         prevEl: ".carousel-prev",
       },
+      on: {
+        sliderMove: function () {
+          console.log("ture");
+        },
+      },
     });
   };
 
