@@ -76,8 +76,6 @@ export class CarouselComponent {
 
     const swiper: any = this.reactive(blindCards.length);
 
-    //swiper.slideTo(2, 0);
-
     this.blindButtonComponent.onClick((id: string) => {
       swiper.slideTo(Number(id), 0);
       this.makeSlideActive(id);
@@ -87,24 +85,13 @@ export class CarouselComponent {
   reactive = (totalSlide: number): any => {
     // @ts-ignore
     return new Swiper(".carousel", {
+      slidesPerView: "auto",
       centeredSlides: true,
+      spaceBetween: 30,
+      centeredSlidesBounds: true,
       navigation: {
         nextEl: ".carousel-next",
         prevEl: ".carousel-prev",
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 30,
-        },
       },
     });
   };
