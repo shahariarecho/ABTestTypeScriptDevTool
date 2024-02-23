@@ -1,5 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { getImageUrl, selectors } from "../common/asset";
+import { getImageUrl, selectors, triggerMetrics } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 
 export class MainComponent {
@@ -20,6 +20,35 @@ export class MainComponent {
     images.forEach((img: HTMLImageElement, index: number) => {
       img.setAttribute("src", "");
       img.setAttribute("src", getImageUrl(this.variation, index + 1));
+    });
+
+    this.addGoals();
+  };
+
+  addGoals = () => {
+    const applyButtons: null | NodeListOf<HTMLAnchorElement> =
+      document.querySelectorAll(selectors.applyButtons);
+
+    const formSubmitButton: null | HTMLButtonElement = document.querySelector(
+      selectors.formSubmitButton
+    );
+
+    if (
+      applyButtons === null ||
+      applyButtons.length === 0 ||
+      formSubmitButton === null
+    ) {
+      return;
+    }
+
+    applyButtons.forEach((a: HTMLAnchorElement) => {
+      a.addEventListener("click", () => {
+        triggerMetrics("how-to-apply-click");
+      });
+    });
+
+    formSubmitButton.addEventListener("click", () => {
+      triggerMetrics("form-submit-click");
     });
   };
 }
