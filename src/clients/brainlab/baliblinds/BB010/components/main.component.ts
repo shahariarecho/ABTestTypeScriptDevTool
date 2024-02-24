@@ -17,10 +17,11 @@ export class MainComponent {
 
     dottedLinks.forEach((link: HTMLAnchorElement) => {
       const span: null | HTMLSpanElement = link.querySelector("span");
-      span && console.log("span=", span.textContent);
-      link.textContent = "";
-      if (span) {
+      if (span && span.textContent) {
+        link.textContent = "";
         link.textContent = span.textContent;
+        let words: string[] = span.textContent.split(" ");
+        link.classList.add(words[1].toLowerCase());
       }
     });
   };
