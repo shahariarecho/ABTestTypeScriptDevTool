@@ -1,1 +1,1 @@
-export const dummyContent: string = "Hello world!";
+export const selectors = {};
