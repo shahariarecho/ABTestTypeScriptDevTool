@@ -11,7 +11,7 @@ export class MainComponent {
   cartSummaryComponent: CartSummaryComponent = new CartSummaryComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.10");
+    Initializer.init(TestInfo, "0.1.10");
   }
 
   init = (): void => {
@@ -26,7 +26,7 @@ export class MainComponent {
         const target: Element = mutationList[index].target as Element;
 
         const planSummary = target.querySelector(selectors.planSummary);
-        console.log("plan-summary-", planSummary);
+        //console.log("plan-summary-", planSummary);
 
         if (!this.isPageLoaded && planSummary) {
           console.log("Plan Summary Found...!");
