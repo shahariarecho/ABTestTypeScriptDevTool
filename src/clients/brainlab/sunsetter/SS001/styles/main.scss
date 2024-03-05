@@ -1,7 +1,7 @@
 @import "./common";
 
 .#{$id} {
-  div.content-overlay {
+  div.slideshow-container > div:nth-child(1) > div.content-overlay {
     width: max-content !important;
     padding: 10px !important;
 

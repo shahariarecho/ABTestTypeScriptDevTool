@@ -31,8 +31,8 @@ export class HeroOverlayComponent {
       return;
     }
 
-    contentOverlays.forEach((overlay: HTMLDivElement) => {
-      overlay.insertAdjacentHTML("beforeend", this.getHtml());
+    contentOverlays.forEach((overlay: HTMLDivElement, index: number) => {
+      index === 0 && overlay.insertAdjacentHTML("beforeend", this.getHtml());
     });
   };
 }
