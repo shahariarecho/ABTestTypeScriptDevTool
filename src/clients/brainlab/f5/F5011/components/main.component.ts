@@ -14,22 +14,27 @@ export class MainComponent {
     Initializer.init(TestInfo, "0.0.1");
   }
 
-  getTrustRadiusHtml = (): string => {
-    const htmlString: string = `
+  getTrustRadiusHtml = (variation: string): string => {
+    const v1HtmlString: string = `
       <div class="trustradius-component">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65eb2c450ef0590906e780b0"></div>
         </div>
+      </div>
+    `;
+
+    const v2HtmlString: string = `
+      <div class="trustradius-component">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65c0f13fe4798abb8b45d41a"></div>
         </div>
       </div>
     `;
-    return htmlString.trim();
+    return variation === "2" ? v1HtmlString.trim() : v2HtmlString.trim();
   };
 
   init = (): void => {
-    this.variation === "2" && this.loadTrustRadius();
+    this.variation !== "control" && this.loadTrustRadius();
     this.addGoals();
   };
 
@@ -42,7 +47,10 @@ export class MainComponent {
       return;
     }
 
-    footer.insertAdjacentHTML("beforebegin", this.getTrustRadiusHtml());
+    footer.insertAdjacentHTML(
+      "beforebegin",
+      this.getTrustRadiusHtml(this.variation)
+    );
 
     const loader = new Loader<HTMLScriptElement>();
 
