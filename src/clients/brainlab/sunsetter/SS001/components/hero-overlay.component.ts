@@ -14,7 +14,7 @@ export class HeroOverlayComponent {
           </div>
           <div class="cta order" >
             <h3>Build your awning today</h3>
-            <a href="/#prd-header" >Order Today</a>
+            <a href="#prd-header" >Order Today</a>
           </div>
         </div>
       </div>
