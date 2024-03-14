@@ -1,3 +1,3 @@
 export const selectors = {
-  dottedLink: "a.dotted-link",
+  dottedLink: "div.slide-caption-inner>a.dotted-link",
 };

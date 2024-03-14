@@ -8,6 +8,10 @@ export class MainComponent {
   }
 
   init = (): void => {
+    window.location.pathname === "/" && this.applyModification();
+  };
+
+  applyModification = () => {
     const dottedLinks: null | NodeListOf<HTMLAnchorElement> =
       document.querySelectorAll(selectors.dottedLink);
 
