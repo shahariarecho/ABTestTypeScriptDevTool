@@ -24,6 +24,9 @@ export class StepComponent {
 
   private getHtml = () => {
     const htmlString: string = `
+      <div class="step-component-header" >
+        <h2>Next Steps</h2>
+      </div>
       <div class="step-component" >
       ${steps.map((step: any) => this.getStepHtml(step)).join("\n")}
       </div>

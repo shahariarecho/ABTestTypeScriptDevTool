@@ -1,6 +1,13 @@
 @import "./common";
 
 .#{$id} {
+  div.step-component-header {
+    padding: 0 20px 30px 20px;
+    > h2 {
+      text-align: center;
+    }
+  }
+
   div.step-component {
     display: flex;
     justify-content: space-around;
@@ -78,6 +85,10 @@
     }
   }
 
+  div#container-929861969 {
+    padding-bottom: 0 !important;
+  }
+
   div.c29-columns__col.c29-columns__col--8
     div.responsivegrid
     > div.aem-Grid
@@ -87,10 +98,28 @@
     }
   }
 
+  div.c29-columns__col.c29-columns__col--8
+    div.responsivegrid
+    > div.aem-Grid
+    > div.step-component-header {
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
   div.c29-columns__col.c29-columns__col--3
     div.responsivegrid
     > div.aem-Grid
     > div.step-component {
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  div.c29-columns__col.c29-columns__col--3
+    div.responsivegrid
+    > div.aem-Grid
+    > div.step-component-header {
     @media only screen and (min-width: 768px) {
       display: none;
     }

@@ -20,4 +20,27 @@
   div.trustradius-reviews {
     height: 450px;
   }
+
+  div.root.responsivegrid
+    > div
+    > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12
+    > div
+    > div:nth-child(4)
+    > div {
+    padding-bottom: 0 !important;
+  }
+
+  div.root.responsivegrid
+    > div
+    > div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12
+    > div
+    > div:nth-child(3)
+    > div {
+    padding-top: 10px !important;
+  }
+
+  div#platter-217702254 > div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
