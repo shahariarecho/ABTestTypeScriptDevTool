@@ -129,12 +129,12 @@
 
         div.form-main-left {
           flex: 1;
-          margin-left: 20px;
+          margin: 25px;
 
           > div.form-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
             padding: 0 10px 10px 10px;
 
