@@ -1,5 +1,5 @@
 export const selectors = {
-  solarShade: "div.solar-shades",
+  categoryContent: "div.product-category-content",
   descriptions: "div.product-link-content-container>p",
 };
 

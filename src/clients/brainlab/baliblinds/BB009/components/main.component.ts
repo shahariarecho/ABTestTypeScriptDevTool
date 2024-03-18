@@ -12,8 +12,8 @@ export class MainComponent {
   }
 
   init = (): void => {
-    this.renderSolarShadeCta();
     this.changeDescriptions();
+    this.renderSolarShadeCta();
   };
 
   getSolarShadeHtml = (): string => {
@@ -27,20 +27,22 @@ export class MainComponent {
   };
 
   renderSolarShadeCta = () => {
-    const solarShade: HTMLDivElement | null = document.querySelector(
-      selectors.solarShade
+    const categoryContent: HTMLDivElement | null = document.querySelector(
+      selectors.categoryContent
     );
 
-    if (solarShade === null) {
+    if (categoryContent === null) {
       return;
     }
 
-    solarShade.insertAdjacentHTML("beforeend", this.getSolarShadeHtml());
+    categoryContent.insertAdjacentHTML("beforeend", this.getSolarShadeHtml());
   };
 
   changeDescriptions = () => {
     const descriptions: null | NodeListOf<HTMLParagraphElement> =
       document.querySelectorAll(selectors.descriptions);
+
+    console.log("descriptions=", descriptions);
 
     if (descriptions === null || descriptions.length === 0) {
       return;
