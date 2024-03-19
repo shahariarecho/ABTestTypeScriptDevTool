@@ -1,4 +1,6 @@
-export const selectors = {};
+export const selectors = {
+  offerSection: "main#content>div>div:nth-child(4)",
+};
 
 export const quotationIcon: string = `
 <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,6 +15,18 @@ export const fiveStarIcon: string = `
 <path d="M71.2502 0L75.0743 6.5199L82.5002 8.11678L77.4377 13.7432L78.2031 21.25L71.2502 18.2074L64.2974 21.25L65.0627 13.7432L60.0002 8.11678L67.4262 6.5199L71.2502 0Z" fill="#FFCB45"/>
 <path d="M101.25 0L105.074 6.5199L112.5 8.11678L107.438 13.7432L108.203 21.25L101.25 18.2074L94.2974 21.25L95.0627 13.7432L90.0002 8.11678L97.4262 6.5199L101.25 0Z" fill="#FFCB45"/>
 <path d="M131.25 0L135.074 6.5199L142.5 8.11678L137.438 13.7432L138.203 21.25L131.25 18.2074L124.297 21.25L125.063 13.7432L120 8.11678L127.426 6.5199L131.25 0Z" fill="#FFCB45"/>
+</svg>
+`;
+
+export const leftArrowSvg: string = `
+<svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3L3 12L12 21" stroke="#0A80BB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+export const rightArrowSvg: string = `
+<svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.5 21L10.5 12L1.5 3" stroke="#0A80BB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 `;
 
@@ -60,3 +74,20 @@ export const quotes = [
     startIcon: fiveStarIcon,
   },
 ];
+
+export const swiperLibrary = {
+  js: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+  css: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css",
+};
+
+export const triggerEvent = (apiName: string) => {
+  //@ts-ignore
+  window["optimizely"] = window["optimizely"] || [];
+  //@ts-ignore
+  window["optimizely"].push({
+    type: "event",
+    eventName: apiName,
+  });
+
+  console.log("event-triggered=", apiName);
+};
