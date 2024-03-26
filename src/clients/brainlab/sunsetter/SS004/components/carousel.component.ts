@@ -9,9 +9,11 @@ import { Quote } from "../model/quote";
 
 export class CarouselComponent {
   getSwiperSlideHtml = (quote: Quote, index: number): string => {
+    const className: string = index % 2 === 0 ? "" : "card-blue";
+
     const htmlString: string = `
       <div class="swiper-slide carousel-item-${index}">
-        <div class="quote-card" >
+        <div class="quote-card ${className}" >
           <div class="quote-svg">
             ${quotationIcon}
           </div>
