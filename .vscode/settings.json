@@ -29,7 +29,8 @@
     "trustradius",
     "tsyringe",
     "unbounce",
-    "userjs"
+    "userjs",
+    "wetransfer"
   ],
   "editor.formatOnSave": true
 }
