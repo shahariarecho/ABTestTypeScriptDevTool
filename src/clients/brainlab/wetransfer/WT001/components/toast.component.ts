@@ -1,4 +1,9 @@
-import { getStartedLink, selectors, triggerEvent } from "../common/asset";
+import {
+  closeIcon,
+  getStartedLink,
+  selectors,
+  triggerEvent,
+} from "../common/asset";
 
 export class ToastComponent {
   private cookieSectionCheckingCount: number = 0;
@@ -11,6 +16,9 @@ export class ToastComponent {
           <p>Ready to send big files, hassle free?</p>
           <a class="start-btn" href="${getStartedLink}" >Get Started</a>
           <a class="close-btn" >Close</a>
+          <div class="close-icon" >
+            ${closeIcon}
+          </div>
         </div>
       </div>
     `;
@@ -45,11 +53,18 @@ export class ToastComponent {
     const closeBtn: null | HTMLAnchorElement =
       document.querySelector("a.close-btn");
 
-    if (!startBtn || !closeBtn) {
+    const closeSvgBtn: null | HTMLAnchorElement =
+      document.querySelector("div.close-icon");
+
+    if (!startBtn || !closeBtn || !closeSvgBtn) {
       return;
     }
 
     closeBtn.addEventListener("click", () => {
+      this.toast && this.toast.classList.remove("toast-show");
+    });
+
+    closeSvgBtn.addEventListener("click", () => {
       this.toast && this.toast.classList.remove("toast-show");
     });
 

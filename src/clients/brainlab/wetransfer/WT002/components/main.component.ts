@@ -1,9 +1,11 @@
 import { Initializer } from "../../../../../utilities/initializer";
 import { selectors, triggerEvent } from "../common/asset";
 import { TestInfo } from "../common/test.info";
+import { TestObserver } from "../common/test.observer";
 
 export class MainComponent {
   variation: string = TestInfo.VARIATION.toString();
+  isPageLoaded: boolean = false;
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -20,7 +22,7 @@ export class MainComponent {
     return htmlString.trim();
   };
 
-  init = (): void => {
+  applyModification = () => {
     if (window.innerWidth > 1023) {
       return;
     }
@@ -33,14 +35,14 @@ export class MainComponent {
       selectors.headerWrapper
     );
 
-    if (!toggleButton || !headerWrapper) {
+    if (!headerWrapper || !toggleButton) {
       return;
     }
 
     toggleButton.classList.add("toggle-btn");
     headerWrapper.classList.add("header-wrapper");
 
-    // headerWrapper.insertAdjacentHTML("afterbegin", this.getLoginLinkHtml());
+    headerWrapper.insertAdjacentHTML("afterbegin", this.getLoginLinkHtml());
 
     toggleButton.addEventListener("click", () => {
       toggleButton.classList.toggle("toggle-btn");
@@ -53,5 +55,22 @@ export class MainComponent {
       loginLink.addEventListener("click", () => {
         triggerEvent("login-link-click");
       });
+  };
+
+  init = (): void => {
+    const testObserver = new TestObserver("body");
+    const callback = (mutationList: MutationRecord[]) => {
+      for (let index = 0; index < mutationList.length; index++) {
+        const target: Element = mutationList[index].target as Element;
+        console.log("length=", target.innerHTML.length);
+
+        if (target.innerHTML.length > 128500 && !this.isPageLoaded) {
+          this.applyModification();
+          console.log("Page loaded....!");
+          this.isPageLoaded = true;
+        }
+      }
+    };
+    testObserver.observe(callback);
   };
 }
