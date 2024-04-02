@@ -1,5 +1,10 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors, triggerEvent } from "../common/asset";
+import {
+  loginLink,
+  selectors,
+  signUpLink,
+  triggerEvent,
+} from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { TestObserver } from "../common/test.observer";
 
@@ -18,7 +23,7 @@ export class MainComponent {
         : this.variation === "2"
         ? "Sign In"
         : "";
-    const htmlString: string = `<a href="" class="login-link" >${linkText}</a>`;
+    const htmlString: string = `<a href="${loginLink}" class="login-link" >${linkText}</a>`;
     return htmlString.trim();
   };
 
@@ -48,6 +53,10 @@ export class MainComponent {
       toggleButton.classList.toggle("toggle-btn");
     });
 
+    this.addListener();
+  };
+
+  addListener = () => {
     const loginLink: null | HTMLButtonElement =
       document.querySelector("a.login-link");
 
@@ -55,6 +64,12 @@ export class MainComponent {
       loginLink.addEventListener("click", () => {
         triggerEvent("login-link-click");
       });
+
+    const singUpLink: null | HTMLButtonElement = document.querySelector(
+      selectors.signUpLink
+    );
+
+    singUpLink && singUpLink.setAttribute("href", signUpLink);
   };
 
   init = (): void => {
