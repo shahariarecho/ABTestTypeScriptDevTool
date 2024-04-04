@@ -2,9 +2,11 @@ import { imgLink, selectors, triggerEvent } from "../common/asset";
 import { StudioModel } from "../common/studio.mode";
 
 export class StudioComponent {
+  iteration: string = "2";
+
   private getHtml = (studio: StudioModel): string => {
     const htmlString: string = `
-      <div class="studio-component round-${studio.round}" >
+      <div class="studio-component round-${studio.round} iteration-${this.iteration}" >
         <div class="component-wrap" >
           <div class="text-content" >
             <div class="header" >
@@ -32,15 +34,19 @@ export class StudioComponent {
   };
 
   render = (studio: StudioModel) => {
-    const carousal: null | HTMLDivElement = document.querySelector(
-      selectors.carousal
-    );
+    const position: InsertPosition =
+      this.iteration === "1" ? "afterend" : "beforeend";
+
+    const selector: string =
+      this.iteration === "1" ? selectors.carousal : selectors.quality;
+
+    const carousal: null | HTMLDivElement = document.querySelector(selector);
 
     if (!carousal) {
       return;
     }
 
-    carousal.insertAdjacentHTML("afterend", this.getHtml(studio));
+    carousal.insertAdjacentHTML(position, this.getHtml(studio));
 
     this.addListener();
   };
