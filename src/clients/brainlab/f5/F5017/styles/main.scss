@@ -1,0 +1,68 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  div.jump-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+    background-color: #f5f5f5;
+
+    > div.component-wrap {
+      > div.heading {
+        > h3 {
+          text-align: center;
+        }
+      }
+
+      > div.action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+
+        > a {
+          margin: 10px;
+          text-decoration: none;
+          padding: 10px 30px;
+          border-radius: 5px;
+        }
+
+        > a.form {
+          background-color: #0e6eb9;
+          color: #fff;
+          border: 1px solid #0e6eb9;
+        }
+
+        > a.report {
+          color: #000000;
+          border: 1px solid #000000;
+        }
+      }
+    }
+  }
+}

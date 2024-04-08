@@ -18,6 +18,10 @@ export class MainComponent {
   }
 
   init = (): void => {
+    if (window.innerWidth > 719) {
+      return;
+    }
+
     LocationObserver.listen((location: string) => {
       this.location = location;
       this.isPageLoaded = false;
