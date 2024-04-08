@@ -1,0 +1,16 @@
+@import "./common";
+
+.#{$id} {
+  div.tab-border {
+    position: absolute;
+    bottom: 0px;
+  }
+
+  li.tab-extra {
+    display: inline-block;
+    zoom: 1;
+    user-select: none;
+    height: 50px;
+    transform: translateY(-2px);
+  }
+}
