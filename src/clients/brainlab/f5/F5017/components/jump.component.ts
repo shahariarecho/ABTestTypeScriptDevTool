@@ -1,4 +1,4 @@
-import { findMoreReportLink, selectors } from "../common/asset";
+import { findMoreReportLink, selectors, triggerMetrics } from "../common/asset";
 
 export class JumpComponent {
   private getHtml = (): string => {
@@ -9,8 +9,8 @@ export class JumpComponent {
             <h3>Find top industry insights with F5</h3>
           </div>
           <div class="action" >
-            <a class="form" href="#newForm" >Get the report</a>
-            <a class="report" href="${findMoreReportLink}" >Find more reports</a>
+            <a event-name="form-scrolled" class="form" href="#newForm" >Get the report</a>
+            <a event-name="report-link-click" class="report" href="${findMoreReportLink}" >Find more reports</a>
           <div>
         </div>
       </div>
@@ -27,5 +27,23 @@ export class JumpComponent {
     }
 
     footer.insertAdjacentHTML("beforebegin", this.getHtml());
+    this.addLinkListener();
+  };
+
+  addLinkListener = () => {
+    const cardLinks: null | NodeListOf<HTMLAnchorElement> =
+      document.querySelectorAll("div.action>a");
+
+    if (!cardLinks || cardLinks.length === 0) {
+      return;
+    }
+
+    cardLinks.forEach((link: HTMLAnchorElement) => {
+      const eventName: string | null = link.getAttribute("event-name");
+
+      link.addEventListener("click", () => {
+        eventName && triggerMetrics(eventName);
+      });
+    });
   };
 }

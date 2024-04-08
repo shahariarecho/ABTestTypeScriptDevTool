@@ -4,3 +4,9 @@ export const selectors = {
 
 export const findMoreReportLink: string =
   "https://www.f5.com/resources/reports";
+
+export const triggerMetrics = (mboxName: string) => {
+  console.log("mbox=", mboxName);
+  // @ts-ignore
+  adobe && adobe.target && adobe.target.trackEvent({ mbox: mboxName });
+};
