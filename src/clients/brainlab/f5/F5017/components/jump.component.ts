@@ -9,7 +9,7 @@ export class JumpComponent {
             <h3>Find top industry insights with F5</h3>
           </div>
           <div class="action" >
-            <a event-name="form-scrolled" class="form" href="#newForm" >Get the report</a>
+            <a event-name="form-scrolled" class="form" >Get the report</a>
             <a event-name="report-link-click" class="report" href="${findMoreReportLink}" >Find more reports</a>
           <div>
         </div>
@@ -43,7 +43,19 @@ export class JumpComponent {
 
       link.addEventListener("click", () => {
         eventName && triggerMetrics(eventName);
+        eventName && this.setScrollSetting(eventName);
       });
     });
+  };
+
+  setScrollSetting = (eventName: string) => {
+    if (eventName !== "form-scrolled") {
+      return;
+    }
+
+    window.innerWidth < 992 &&
+      window.scrollTo({ top: 300, behavior: "smooth" });
+
+    window.innerWidth > 992 && window.scrollTo({ top: 0, behavior: "smooth" });
   };
 }
