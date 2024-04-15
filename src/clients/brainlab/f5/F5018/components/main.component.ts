@@ -1,5 +1,4 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { TabPanelComponent } from "./tab-panel.component";
 import { TabComponent } from "./tab.component";

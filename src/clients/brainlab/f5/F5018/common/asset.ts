@@ -1,6 +1,6 @@
 export const selectors = {
   tab: "div.scroll_tab_inner",
-  lastTab: "div.scroll_tab_inner>li:last-child",
+  extraTab: "div.scroll_tab_inner>li.tab-extra",
   tabPanel: "div.cmp-tabs",
 };
 

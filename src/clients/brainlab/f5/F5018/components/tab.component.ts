@@ -1,6 +1,8 @@
 import { selectors, tabActiveClasses, triggerMetrics } from "../common/asset";
 
 export class TabComponent {
+  extraTabClickCount: number = 0;
+
   private getHtml = (): string => {
     const htmlString: string = `
     <li role="tab" class="cmp-tabs__tab scroll_tab_last tab-extra">
@@ -34,10 +36,14 @@ export class TabComponent {
 
     tabExtra &&
       tabExtra.addEventListener("click", () => {
+        this.extraTabClickCount++;
         this.clearActiveExceptExtra(tabList);
         callback();
-        triggerMetrics("partner-tab-click");
+
+        this.extraTabClickCount > 1 && triggerMetrics("partner-tab-click");
       });
+
+    tabExtra && tabExtra.click();
   };
 
   clearActiveExceptExtra = (tabList: NodeListOf<HTMLLIElement>) => {
