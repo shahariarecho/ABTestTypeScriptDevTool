@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
+    "build-u": "webpack --mode=development",
     "dev": "webpack-dev-server --mode=development",
     "create": "ts-node builders/template.builder.ts",
     "target": "ts-node builders/target.builder.ts",
