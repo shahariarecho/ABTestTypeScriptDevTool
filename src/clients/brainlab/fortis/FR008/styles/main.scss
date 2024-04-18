@@ -1,0 +1,442 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  div.main-component {
+    margin: 0;
+    padding: 0;
+
+    > div.hero-component {
+      padding: 10px;
+      position: relative;
+      backdrop-filter: grayscale(0.5) opacity(0.8);
+
+      div.hero-bg {
+        background-image: url("https://medianet.com/cro/fortis/fr008/header.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        filter: blur(1px);
+      }
+
+      > div.component-wrap {
+        z-index: 1;
+
+        > div.nav-component {
+          > div.component-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            > div.logo {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              > div.logo-img {
+                > img {
+                  height: 40px;
+                  width: 40px;
+                }
+              }
+
+              > div.logo-slogan {
+                margin-left: 10px;
+
+                > h3 {
+                  color: #fff;
+                }
+              }
+            }
+
+            div.nav {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              > div > a {
+                margin: 5px;
+                text-decoration: none;
+                padding: 10px 20px;
+                border-radius: 25px;
+              }
+
+              > div.request {
+                > a {
+                  border: 1px solid #fff;
+                  color: #fff;
+                  background-color: transparent;
+                }
+              }
+
+              > div.apply {
+                > a {
+                  border: 1px solid yellow;
+                  background-color: yellow;
+                  color: #000;
+                }
+              }
+            }
+          }
+        }
+
+        > div.text-form {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          margin-top: 50px;
+          margin-bottom: 50px;
+
+          > div.text-component {
+            flex: 1;
+            padding: 20px;
+
+            > div.component-wrap {
+              > div.heading {
+                > h1 {
+                  color: #fff;
+                }
+              }
+
+              > div.sub-heading {
+                > h4 {
+                  color: #fff;
+                }
+              }
+
+              > div.color-line {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                > div {
+                  height: 3px;
+                  width: 70px;
+                }
+
+                > div.red {
+                  background-color: red;
+                }
+
+                > div.green {
+                  background-color: green;
+                }
+
+                > div.yellow {
+                  background-color: yellow;
+                }
+
+                > div.blue {
+                  background-color: blue;
+                }
+              }
+
+              > div.benefits {
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                > div.item {
+                  margin: 10px;
+
+                  > div.icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    > img {
+                      height: 40px;
+                      width: 40px;
+                    }
+                  }
+
+                  > div.text {
+                    > p {
+                      text-align: center;
+                      color: #fff;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          > div.form-component {
+          }
+
+          > div.form-component {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > div.component-wrap {
+              background-color: yellow;
+              border-radius: 20px;
+              padding: 20px;
+
+              > div.heading {
+                > h3 {
+                  text-align: center;
+                  max-width: 250px;
+                }
+              }
+
+              > div.form {
+                > form {
+                  > div.input {
+                    margin: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    > select {
+                      width: 100%;
+                      border-radius: 20px;
+                      padding: 10px 20px;
+                      border: none;
+                    }
+
+                    > input {
+                      width: 100%;
+                      border-radius: 20px;
+                      padding: 10px 15px;
+                      border: none;
+                    }
+
+                    > div.error-msg {
+                      display: none;
+                    }
+                  }
+
+                  > div.action {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 25px;
+                    margin-bottom: 10px;
+
+                    > button {
+                      padding: 10px 20px;
+                      border-radius: 15px;
+                      background-color: yellow;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > div.earn-component {
+      padding: 20px;
+
+      > div.component-wrap {
+        max-width: 650px;
+        margin: 0 auto;
+
+        > div.heading {
+          > h2 {
+            text-align: center;
+          }
+        }
+
+        > div.description {
+          > p {
+          }
+        }
+
+        > div.action {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 40px;
+          margin-bottom: 20px;
+
+          > button {
+            background-color: transparent;
+            border: 2px solid #262c4a;
+            color: #262c4a;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    > div.outcome-component {
+      padding: 20px;
+
+      > div.component-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        > div.outcome-item-component {
+          > div.component-wrap {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            > div {
+              margin: 20px;
+            }
+
+            > div.text {
+              flex: 1;
+
+              > div.feature {
+                > ul {
+                  > li {
+                    margin-top: 5px;
+                  }
+                }
+              }
+            }
+
+            > div.image {
+              flex: 1;
+
+              > div.image-wrap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                > img {
+                  border-radius: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > div.outcome-component.reversed {
+      background-color: #f6f6f6;
+
+      > div.component-wrap {
+        > div.outcome-item-component {
+          > div.component-wrap {
+            flex-direction: row-reverse;
+          }
+        }
+      }
+    }
+
+    > div.story-component {
+      background-color: #f6f6f6;
+      padding: 20px;
+
+      > div.component-wrap {
+        max-width: 992px;
+        margin: 0 auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        > div {
+          margin: 20px;
+        }
+
+        > div.text {
+          flex: 1;
+          max-width: 340px;
+
+          > div.icon {
+          }
+        }
+
+        > div.story {
+          flex: 1;
+          max-width: 250px;
+          background-color: #fff;
+          padding: 25px;
+          box-shadow: 30px 30px #262c4a;
+
+          > div.quote {
+            > p {
+              margin: 0;
+            }
+          }
+
+          > div.person {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 50px;
+
+            > div.avatar {
+              > img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+              }
+            }
+
+            > div.details {
+              margin-left: 15px;
+
+              > div.name {
+                > h4 {
+                  margin: 0;
+                }
+              }
+
+              > div.education {
+                margin-top: 5px;
+
+                > p {
+                  margin: 0;
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
