@@ -5,6 +5,7 @@ import { DcnComponent } from "./dcn.component";
 import { EarnComponent } from "./earn.component";
 import { FooterComponent } from "./footer.component";
 import { HeroComponent } from "./hero/hero.component";
+import { NavComponent } from "./hero/nav.component";
 import { JourneyComponent } from "./journey.component";
 import { OutcomeComponent } from "./outcome/outcome.component";
 import { StoryComponent } from "./story.component";
@@ -18,6 +19,7 @@ export class MainComponent {
   journeyComponent: JourneyComponent = new JourneyComponent();
   aboutComponent: AboutComponent = new AboutComponent();
   footerComponent: FooterComponent = new FooterComponent();
+  navComponent: NavComponent = new NavComponent();
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -25,6 +27,9 @@ export class MainComponent {
 
   getHtml = (): string => {
     const htmlString: string = `
+      <div class="sticky-nav-component hide" >
+        ${this.navComponent.getHtml()}
+      </div>
       <div class="main-component" >
         ${this.heroComponent.getHtml()}
         ${this.earnComponent.getHtml()}
@@ -41,8 +46,6 @@ export class MainComponent {
   };
 
   init = (): void => {
-    this.removeExistElement();
-
     const body: null | HTMLBodyElement = document.querySelector("body");
 
     if (!body) {
@@ -50,10 +53,28 @@ export class MainComponent {
     }
 
     body.insertAdjacentHTML("afterbegin", this.getHtml());
+
+    this.configStickyNavBar();
   };
 
-  removeExistElement = () => {
-    const root: null | HTMLDivElement = document.querySelector("div#root");
-    root && root.remove();
+  configStickyNavBar = () => {
+    const earnSection: null | HTMLDivElement =
+      document.querySelector("div.earn-component");
+
+    const stickyNavbarSection: null | HTMLDivElement = document.querySelector(
+      "div.sticky-nav-component"
+    );
+
+    if (!earnSection || !stickyNavbarSection) {
+      return;
+    }
+
+    window.onscroll = () => {
+      if (window.scrollY >= earnSection.offsetTop) {
+        stickyNavbarSection.classList.add("sticky");
+      } else {
+        stickyNavbarSection.classList.remove("sticky");
+      }
+    };
   };
 }

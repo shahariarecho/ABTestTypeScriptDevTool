@@ -12,7 +12,9 @@ export class HeroComponent {
       <div class="hero-component" > 
         <div class="hero-bg" ></div>
         <div class="component-wrap" >
-          ${this.navComponent.getHtml()}
+          <div class="nav-component" >
+            ${this.navComponent.getHtml()}
+          </div>
           <div class="text-form" >
             ${this.textComponent.getHtml()}
             ${this.formComponent.getHtml()}
