@@ -1,4 +1,4 @@
-import { formActionLink } from "../../common/asset";
+import { formActionLink, getFromSubmissionLink } from "../../common/asset";
 
 export class FormComponent {
   getHtml = () => {
@@ -9,51 +9,48 @@ export class FormComponent {
             <h3>Want to hear more about Denver College of Nursing?</h3>
           </div>
           <div class="form" >
-            <form action="${formActionLink}" method="GET" >
+            <form onsubmit="event.preventDefault()">
               <div class="input" >
-                <select name="campus">
-                  <option value="campus">Campus</option>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select id="campus" name="campus" required="true">
+                  <option value="" disabled selected hidden>Campus</option>
+                  <option value="denver">Denver</option>
                 </select>
                 <div class="error-msg" >
                   <span>First name required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input type="text" name="firstName" placeholder="First Name" required="true">
+                <input id="first-name" type="text" name="firstName" placeholder="First Name" required="true">
                 <div class="error-msg" >
                   <span>First name required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input type="text" name="lastName" placeholder="Last Name" required="true">
+                <input id="last-name" type="text" name="lastName" placeholder="Last Name" required="true">
                 <div class="error-msg" >
                   <span>Last name required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input type="text" name="email" placeholder="Email Address" required="true">
+                <input id="email" type="text" name="email" placeholder="Email Address" required="true">
                 <div class="error-msg" >
                   <span>Email required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input type="text" name="homePhone" placeholder="Phone number" required="true">
+                <input id="phone-number" type="text" name="homePhone" placeholder="Phone number" required="true">
                 <div class="error-msg" >
                   <span>Phone number required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input type="text" name="zipCode" placeholder="ZIP Code" required="true">
+                <input id="zip-code" type="text" name="zipCode" placeholder="ZIP Code" required="true">
                 <div class="error-msg" >
                   <span>Zip code required!</span>
                 </div>
               </div>
               <div class="action" >
-                <button type="submit">Request Info</button>
+                <button>Request Info</button>
               </div>
             </form>
           </div>
@@ -62,5 +59,115 @@ export class FormComponent {
     `;
 
     return htmlString.trim();
+  };
+
+  activeForm = () => {
+    const submitButton: null | HTMLButtonElement =
+      document.querySelector("div.action>button");
+
+    const campus: null | HTMLSelectElement =
+      document.querySelector("select#campus");
+
+    const firstName: null | HTMLInputElement =
+      document.querySelector("input#first-name");
+
+    const lastName: null | HTMLInputElement =
+      document.querySelector("input#last-name");
+
+    const email: null | HTMLInputElement =
+      document.querySelector("input#email");
+
+    const zipCode: null | HTMLInputElement =
+      document.querySelector("input#zip-code");
+
+    const phoneNumber: null | HTMLInputElement =
+      document.querySelector("input#phone-number");
+
+    if (
+      !submitButton ||
+      !campus ||
+      !firstName ||
+      !lastName ||
+      !email ||
+      !zipCode ||
+      !phoneNumber
+    ) {
+      return;
+    }
+
+    submitButton.addEventListener("click", () => {
+      this.collectInputData(
+        campus,
+        firstName,
+        lastName,
+        email,
+        zipCode,
+        phoneNumber
+      );
+    });
+  };
+
+  collectInputData = (
+    campus: HTMLSelectElement,
+    firstName: HTMLInputElement,
+    lastName: HTMLInputElement,
+    email: HTMLInputElement,
+    zipCode: HTMLInputElement,
+    phoneNumber: HTMLInputElement
+  ) => {
+    if (
+      !campus.value &&
+      !firstName.value &&
+      !lastName.value &&
+      !email.value &&
+      !zipCode.value &&
+      !phoneNumber.value
+    ) {
+      return;
+    }
+
+    this.submitFormData(
+      campus.value,
+      firstName.value,
+      lastName.value,
+      email.value,
+      zipCode.value,
+      phoneNumber.value
+    );
+  };
+
+  submitFormData = async (
+    campus: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    zipCode: string,
+    phoneNumber: string
+  ) => {
+    window.location.href = getFromSubmissionLink(
+      campus,
+      firstName,
+      lastName,
+      email,
+      zipCode,
+      phoneNumber
+    );
+
+    // try {
+    //   const response = await fetch(
+    //     getFromSubmissionLink(
+    //       campus,
+    //       firstName,
+    //       lastName,
+    //       email,
+    //       zipCode,
+    //       phoneNumber
+    //     )
+    //   );
+    //   const result = await response.json();
+    //   console.log("Success:", result);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
 }

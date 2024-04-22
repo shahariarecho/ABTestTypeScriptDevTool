@@ -4,6 +4,7 @@ import { AboutComponent } from "./about.component";
 import { DcnComponent } from "./dcn.component";
 import { EarnComponent } from "./earn.component";
 import { FooterComponent } from "./footer.component";
+import { FormComponent } from "./hero/form.component";
 import { HeroComponent } from "./hero/hero.component";
 import { NavComponent } from "./hero/nav.component";
 import { JourneyComponent } from "./journey.component";
@@ -20,6 +21,7 @@ export class MainComponent {
   aboutComponent: AboutComponent = new AboutComponent();
   footerComponent: FooterComponent = new FooterComponent();
   navComponent: NavComponent = new NavComponent();
+  formComponent: FormComponent = new FormComponent();
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -53,7 +55,7 @@ export class MainComponent {
     }
 
     body.insertAdjacentHTML("afterbegin", this.getHtml());
-
+    this.formComponent.activeForm();
     this.configStickyNavBar();
   };
 
