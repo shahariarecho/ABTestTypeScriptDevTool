@@ -1,18 +1,23 @@
 export class Loader<T extends HTMLScriptElement | HTMLStyleElement> {
   load = (srcLink: string, id: string, tagName: string) => {
     const tag = document.createElement(tagName);
-    tag.setAttribute("src", srcLink);
+
+    tagName === "script"
+      ? tag.setAttribute("src", srcLink)
+      : tag.setAttribute("href", srcLink);
+
+    tagName === "link" && tag.setAttribute("rel", "stylesheet");
+
     tag.setAttribute("id", id);
+
     document.head.appendChild(tag);
 
     return new Promise<T>((resolve, reject) => {
       setTimeout(() => {
-        const scriptElement: null | T = document.querySelector<T>(
-          "script#" + id
-        );
+        const element: null | T = document.querySelector<T>(`${tagName}#` + id);
 
-        if (scriptElement) {
-          resolve(scriptElement);
+        if (element) {
+          resolve(element);
         } else {
           reject(null);
         }

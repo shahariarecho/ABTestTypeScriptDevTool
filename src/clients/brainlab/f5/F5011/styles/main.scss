@@ -1,6 +1,10 @@
 @import "./common";
 
 .#{$id} {
+  .hide {
+    display: none !important;
+  }
+
   &-2,
   &-3 {
     div#container1881153814 {
