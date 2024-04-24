@@ -47,4 +47,162 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
+
+  div.carousal-component {
+    position: relative;
+
+    > div.component-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 40px;
+
+      > div.headline {
+        border-bottom: 1px solid #333333;
+        margin-bottom: 20px;
+
+        > h3 {
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
+      }
+
+      > div.carousel {
+        > div.swiper-wrapper {
+          > div.review-item {
+            background-color: #105280;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 350px;
+
+            > div.review-item-wrap {
+              > div.date-and-star {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+
+                > div.star-incentivized {
+                  > div.start-icons {
+                    display: flex;
+
+                    > div.star-img {
+                      > img {
+                        width: 20px;
+                        height: 20px;
+                      }
+                    }
+                  }
+
+                  > div.incentivized {
+                    margin-top: 5px;
+                    > p {
+                      color: #fff;
+                      font-size: 15px;
+                    }
+                  }
+                }
+
+                > div.date {
+                  color: #fff;
+                  font-size: 15px;
+                }
+              }
+
+              > div.title {
+                > h4 {
+                  text-align: center;
+                  color: #fff;
+                  font-size: 20px;
+                }
+              }
+
+              > div.teaser {
+                padding: 10px 20px;
+
+                > p {
+                  font-size: 15px;
+                  color: #fff;
+                }
+              }
+
+              > div.full-reive-link {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                > a {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  color: #fff;
+
+                  > svg {
+                    width: 15px;
+                  }
+                }
+              }
+
+              > div.reviewer-details {
+                margin-top: 10px;
+
+                > div.author {
+                  > h5 {
+                    color: #fff;
+                    font-size: 17px;
+                  }
+                }
+
+                > div.job-description {
+                  > p {
+                    font-size: 15px;
+                    color: #fff;
+                  }
+                }
+
+                > div.company-description {
+                  > p {
+                    font-size: 15px;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      > div.carousel-controller {
+        > div.carousel-prev {
+          > div.svg {
+            > svg {
+            }
+          }
+        }
+
+        > div.carousel-next {
+          > div.svg {
+            > svg {
+            }
+          }
+        }
+      }
+    }
+
+    > div.carousel-controller {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+
+      > div.carousel-prev {
+        padding: 10px;
+      }
+
+      > div.carousel-next {
+        padding: 10px;
+      }
+    }
+  }
 }

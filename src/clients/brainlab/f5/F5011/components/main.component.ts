@@ -1,6 +1,7 @@
 import { Initializer } from "../../../../../utilities/initializer";
 import {
   mboxNames,
+  scriptLink,
   selectors,
   swiperLibrary,
   triggerMetrics,
@@ -12,14 +13,12 @@ import { Review } from "../models/review";
 import { CarouselComponent } from "./carousal.component";
 
 export class MainComponent {
-  scriptLink: string =
-    "https://d30ia583fbtg8i.cloudfront.net/trustquotes/trustquotes.js";
   isFormSubmitted: boolean = false;
   variation: string = TestInfo.VARIATION.toString();
   isReviewLoaded: boolean = false;
   reviewModels: Review[] = [];
-  isSwiperLibraryLoaded: boolean = false;
   carouselComponent: CarouselComponent = new CarouselComponent();
+  footer: null | HTMLDivElement = null;
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -27,7 +26,7 @@ export class MainComponent {
 
   getTrustRadiusHtml = (variation: string): string => {
     const v1HtmlString: string = `
-      <div class="trustradius-component hide">
+      <div class="trustradius-component">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65eb2c450ef0590906e780b0"></div>
         </div>
@@ -35,7 +34,7 @@ export class MainComponent {
     `;
 
     const v2HtmlString: string = `
-      <div class="trustradius-component hide">
+      <div class="trustradius-component">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65c0f13fe4798abb8b45d41a"></div>
         </div>
@@ -46,9 +45,7 @@ export class MainComponent {
 
   init = (): void => {
     this.variation !== "control" && this.loadTrustRadius();
-    this.addGoals();
-    this.observeReviewLoadFinish();
-    this.loadSwiperLibrary();
+    // this.addGoals();
   };
 
   loadSwiperLibrary = () => {
@@ -64,32 +61,31 @@ export class MainComponent {
             .then((jsElm) => {
               if (cssElm && jsElm) {
                 console.log("Swiper library loaded ......!");
-                this.isSwiperLibraryLoaded = true;
+                this.carouselComponent.render(this.reviewModels, this.footer);
               }
             });
       });
   };
 
   loadTrustRadius = () => {
-    const footer: null | HTMLDivElement = document.querySelector(
-      selectors.footer
-    );
+    this.footer = document.querySelector(selectors.footer);
 
-    if (footer === null) {
+    if (this.footer === null) {
       return;
     }
 
-    footer.insertAdjacentHTML(
-      "beforebegin",
+    this.footer.insertAdjacentHTML(
+      "afterend",
       this.getTrustRadiusHtml(this.variation)
     );
 
     const loader = new Loader<HTMLScriptElement>();
 
     loader
-      .load(this.scriptLink, TestInfo.ID.toString(), "script")
+      .load(scriptLink, TestInfo.ID.toString(), "script")
       .then((element) => {
-        console.log("JS loaded...!", element);
+        console.log("JS loaded...!");
+        this.observeReviewLoadFinish();
       });
   };
 
@@ -105,6 +101,7 @@ export class MainComponent {
         }
       }
     };
+
     testObserver.observe(callback);
 
     const form: null | HTMLFormElement = document.querySelector(selectors.form);
@@ -138,6 +135,7 @@ export class MainComponent {
         }
       }
     };
+
     trustradius.observe(callback);
   };
 
@@ -154,8 +152,9 @@ export class MainComponent {
         "div.tr-review-title>a"
       );
 
-      const starElm: null | HTMLSpanElement =
-        review.querySelector("span.tr-stars");
+      const ratingElm: null | HTMLSpanElement = review.querySelector(
+        "span.tr-rating>span:first-child"
+      );
 
       const incentivizedElm: null | HTMLSpanElement =
         review.querySelector("span.incentivized");
@@ -179,7 +178,7 @@ export class MainComponent {
 
       const reviewModel: Review = this.assignDataToModel(
         titleElm,
-        starElm,
+        ratingElm,
         incentivizedElm,
         dateElm,
         teaserElm,
@@ -191,21 +190,17 @@ export class MainComponent {
       this.reviewModels.push(reviewModel);
     });
 
-    console.table(this.reviewModels);
-
-    this.isSwiperLibraryLoaded &&
-      this.reviewModels.length > 0 &&
-      this.carouselComponent.render(this.reviewModels);
+    this.reviewModels.length > 0 && this.loadSwiperLibrary();
   };
 
   assignDataToModel = (
     titleElm: null | HTMLAnchorElement,
-    starElm: null | HTMLSpanElement,
+    ratingElm: null | HTMLSpanElement,
     incentivizedElm: null | HTMLSpanElement,
     dateElm: null | HTMLDivElement,
     teaserElm: null | HTMLParagraphElement,
-    jobDescriptionElm: null | HTMLSpanElement,
     authorElm: null | HTMLSpanElement,
+    jobDescriptionElm: null | HTMLSpanElement,
     companyDescriptionElms: NodeListOf<HTMLSpanElement>
   ): Review => {
     const reviewModel: Review = new Review();
@@ -215,8 +210,12 @@ export class MainComponent {
       reviewModel.allReviewLink = titleElm.getAttribute("href");
     }
 
-    if (starElm) {
-      reviewModel.startHtml = starElm.innerHTML;
+    if (ratingElm) {
+      const content = ratingElm.getAttribute("content");
+
+      if (content) {
+        reviewModel.rating = Number(content);
+      }
     }
 
     if (incentivizedElm) {

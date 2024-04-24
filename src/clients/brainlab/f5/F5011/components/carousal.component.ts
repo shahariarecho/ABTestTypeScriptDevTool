@@ -1,18 +1,68 @@
-import { leftArrowSvg, rightArrowSvg, selectors } from "../common/asset";
+import {
+  arrowSvg,
+  emptyStar,
+  fullStar,
+  halfStar,
+  leftArrowSvg,
+  rightArrowSvg,
+} from "../common/asset";
 import { Review } from "../models/review";
 
 export class CarouselComponent {
+  private generateRatingHtml = (rating: number): string => {
+    let htmlString: string = "";
+
+    const ratingOutOfFive: number = rating / 2;
+    const ratingFraction: number = rating % 2;
+
+    if (ratingFraction === 0) {
+      for (let index = 0; index < ratingOutOfFive; index++) {
+        htmlString =
+          htmlString +
+          `<div class="star-img full-star" ><img src="${fullStar}" ></div>`;
+      }
+
+      for (let index = 0; index < 5 - ratingOutOfFive; index++) {
+        htmlString =
+          htmlString +
+          `<div class="star-img empty-star" ><img src="${emptyStar}" ></div>`;
+      }
+    } else {
+      const halfReduced = ratingOutOfFive - 0.5;
+
+      for (let index = 0; index < halfReduced; index++) {
+        htmlString =
+          htmlString +
+          `<div class="star-img full-star" ><img src="${fullStar}" ></div>`;
+      }
+
+      htmlString =
+        htmlString +
+        `<div class="star-img half-star" ><img src="${halfStar}" ></div>`;
+
+      const emptyStarCount: number = 5 - (ratingOutOfFive + 0.5);
+
+      for (let index = 0; index < emptyStarCount; index++) {
+        htmlString =
+          htmlString +
+          `<div class="star-img empty-star" ><img src="${emptyStar}" ></div>`;
+      }
+    }
+
+    return htmlString.trim();
+  };
+
   private getSwiperSlideHtml = (review: Review): string => {
     const htmlString: string = `
-      <div class="review-item" >
+      <div class="swiper-slide review-item" >
         <div class="review-item-wrap" >
           <div class="date-and-star" >
-            <div class="star" >
+            <div class="star-incentivized" >
               <div class="start-icons" >
-                ${review.startHtml}
+                ${this.generateRatingHtml(review.rating)}
               </div>
               <div class="incentivized" >
-                ${review.incentivized}
+                <p>${review.incentivized}</p>
               </div>
             </div>
             <div class="date" >
@@ -23,10 +73,12 @@ export class CarouselComponent {
             <h4>${review.title}</h4>
           </div>
           <div class="teaser" >
-            <p>${review.teaser}</p>
+            <p>"${review.teaser}</p>
           </div>
           <div class="full-reive-link" >
-            <a href="${review.allReviewLink}" >Read full review</a>
+            <a href="${
+              review.allReviewLink
+            }" >Read full review &nbsp; ${arrowSvg}</a>
           </div>
           <div class="reviewer-details" >
             <div class="author" >
@@ -36,10 +88,11 @@ export class CarouselComponent {
               <p>${review.jobDescription}</p>
             </div>
             ${review.companyDescriptions
-              .map(
-                (description: string) =>
-                  `<div class="company-description" ><p>${description}</p></div>`
-              )
+              .map((description: string) => {
+                return description !== "n/a"
+                  ? `<div class="company-description" ><p>${description}</p></div>`
+                  : "";
+              })
               .join("\n")}
           </div>
         </div>
@@ -62,16 +115,16 @@ export class CarouselComponent {
                 .join("\n")}
             </div>
           </div>
-          <div class="carousel-controller" >
-            <div class="carousel-prev">
-              <div class="svg" >
-                ${leftArrowSvg}
-              </div>
+        </div>
+        <div class="carousel-controller" >
+          <div class="carousel-prev">
+            <div class="svg" >
+              ${leftArrowSvg}
             </div>
-            <div class="carousel-next">
-              <div class="svg" >
-                ${rightArrowSvg}
-              </div>
+          </div>
+          <div class="carousel-next">
+            <div class="svg" >
+              ${rightArrowSvg}
             </div>
           </div>
         </div>
@@ -80,15 +133,63 @@ export class CarouselComponent {
     return htmlString.trim();
   };
 
-  render = (reviews: Review[]) => {
-    const footer: null | HTMLDivElement = document.querySelector(
-      selectors.footer
+  render = (reviews: Review[], footer: null | HTMLDivElement) => {
+    const trustradius: null | HTMLDivElement = document.querySelector(
+      "div.trustradius-component"
     );
+
+    trustradius && trustradius.classList.add("hide");
 
     if (!footer) {
       return;
     }
 
     footer.insertAdjacentHTML("beforebegin", this.getHtml(reviews));
+    this.initSwiper();
+  };
+
+  initSwiper = () => {
+    // @ts-ignore
+    if (typeof Swiper === "function") {
+      const swiper: any = this.reactive();
+      console.log("Swiper object initialized......!");
+    } else {
+      setTimeout(() => {
+        this.initSwiper();
+      }, 250);
+    }
+  };
+
+  reactive = (): any => {
+    // @ts-ignore
+    return new Swiper(".carousel", {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".carousel-next",
+        prevEl: ".carousel-prev",
+      },
+      mousewheel: true,
+      keyboard: true,
+      breakpoints: {
+        420: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        1066: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+      },
+      on: {
+        slideChange: function () {
+          // triggerEvent("review-slide-change");
+        },
+      },
+    });
   };
 }

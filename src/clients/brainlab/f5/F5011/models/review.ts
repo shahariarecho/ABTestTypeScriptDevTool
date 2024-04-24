@@ -1,7 +1,7 @@
 export class Review {
   title: string | null = "";
   allReviewLink: string | null = "";
-  startHtml: string = "";
+  rating: number = 0;
   date: null | string = "";
   incentivized: string | null = "";
   teaser: null | string = "";
