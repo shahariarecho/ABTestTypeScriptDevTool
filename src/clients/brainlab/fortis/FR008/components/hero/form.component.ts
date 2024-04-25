@@ -144,30 +144,23 @@ export class FormComponent {
     zipCode: string,
     phoneNumber: string
   ) => {
-    window.location.href = getFromSubmissionLink(
-      campus,
-      firstName,
-      lastName,
-      email,
-      zipCode,
-      phoneNumber
-    );
+    // window.location.href = getFromSubmissionLink(
+    //   campus,
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   zipCode,
+    //   phoneNumber
+    // );
 
-    // try {
-    //   const response = await fetch(
-    //     getFromSubmissionLink(
-    //       campus,
-    //       firstName,
-    //       lastName,
-    //       email,
-    //       zipCode,
-    //       phoneNumber
-    //     )
-    //   );
-    //   const result = await response.json();
-    //   console.log("Success:", result);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+    try {
+      const response = await fetch(
+        "https://stage.denvercollegeofnursing.edu/bin/rfi?postLocation=https://edaff.edufficient.com/post?&includeDate=false&trackingClickId=&adobeTrackingID=90667384312323897381704469326664061742&state=CO&campus=denver&programOfInterest=Bachelor%20of%20Science%20in%20Nursing&firstName=test&lastName=tst&email=test%40test.com&homePhone=(222)%20222-2222&zipCode=12345&consent=1&leadFormId=51&useEASparkroomBidCid=1&BID=2582&CID=1302&isTest=0&returnId=true"
+      );
+      const result = await response.json();
+      console.log("Success:", result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 }
