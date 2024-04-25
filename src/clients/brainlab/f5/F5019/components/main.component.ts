@@ -1,11 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import {
-  mboxNames,
-  scriptLink,
-  selectors,
-  swiperLibrary,
-  triggerMetrics,
-} from "../common/asset";
+import { scriptLink, selectors, swiperLibrary } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { TestObserver } from "../common/test.observer";
 import { Loader } from "../loaders/loader";
@@ -18,65 +12,35 @@ export class MainComponent {
   isReviewLoaded: boolean = false;
   reviewModels: Review[] = [];
   carouselComponent: CarouselComponent = new CarouselComponent();
-  footer: null | HTMLDivElement = null;
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
   }
 
-  getTrustRadiusHtml = (variation: string): string => {
-    const v1HtmlString: string = `
-      <div class="trustradius-component">
-        <div class="container" >
-          <div class="trustradius-tqw" data-trustradius-id="65eb2c450ef0590906e780b0"></div>
-        </div>
-      </div>
-    `;
-
-    const v2HtmlString: string = `
+  getTrustRadiusHtml = (): string => {
+    const htmlString: string = `
       <div class="trustradius-component">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65c0f13fe4798abb8b45d41a"></div>
         </div>
       </div>
     `;
-    return variation === "2" ? v1HtmlString.trim() : v2HtmlString.trim();
+
+    return htmlString.trim();
   };
 
   init = (): void => {
     this.variation !== "control" && this.loadTrustRadius();
   };
 
-  loadSwiperLibrary = () => {
-    const cssLoader = new Loader<HTMLLinkElement>();
-    const jsLoader = new Loader<HTMLScriptElement>();
-
-    cssLoader
-      .load(swiperLibrary.css, "swiper-css", "link")
-      .then((cssElm: HTMLLinkElement) => {
-        cssElm &&
-          jsLoader
-            .load(swiperLibrary.js, "swiper-js", "script")
-            .then((jsElm) => {
-              if (cssElm && jsElm) {
-                console.log("Swiper library loaded ......!");
-                this.carouselComponent.render(this.reviewModels, this.footer);
-              }
-            });
-      });
-  };
-
   loadTrustRadius = () => {
-    this.footer = document.querySelector(selectors.footer);
+    const footer = document.querySelector(selectors.footer);
 
-    if (this.footer === null) {
+    if (footer === null) {
       return;
     }
 
-    this.footer.insertAdjacentHTML(
-      "afterend",
-      this.getTrustRadiusHtml(this.variation)
-    );
+    footer.insertAdjacentHTML("afterend", this.getTrustRadiusHtml());
 
     const loader = new Loader<HTMLScriptElement>();
 
@@ -88,38 +52,6 @@ export class MainComponent {
       });
   };
 
-  addGoals = () => {
-    const testObserver = new TestObserver(selectors.success);
-
-    const callback = (mutationList: MutationRecord[]) => {
-      for (let index = 0; index < mutationList.length; index++) {
-        const target: Element = mutationList[index].target as Element;
-        if (target.classList.contains("show") && !this.isFormSubmitted) {
-          triggerMetrics(mboxNames.formSubmittedSuccessfully);
-          this.isFormSubmitted = true;
-        }
-      }
-    };
-
-    testObserver.observe(callback);
-
-    const form: null | HTMLFormElement = document.querySelector(selectors.form);
-
-    form &&
-      form.addEventListener("click", () => {
-        triggerMetrics(mboxNames.anywhereClickInForm);
-      });
-
-    const submitButton: null | HTMLButtonElement = document.querySelector(
-      selectors.submitButton
-    );
-
-    submitButton &&
-      submitButton.addEventListener("click", () => {
-        triggerMetrics(mboxNames.submitButtonClick);
-      });
-  };
-
   observeReviewLoadFinish = () => {
     const trustradius = new TestObserver("div.trustradius-tqw");
 
@@ -127,7 +59,7 @@ export class MainComponent {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
 
-        if (target.innerHTML.length > 91150 && !this.isReviewLoaded) {
+        if (target.innerHTML.length > 91000 && !this.isReviewLoaded) {
           console.log("Review loaded....!");
           this.collectData();
           this.isReviewLoaded = true;
@@ -246,5 +178,24 @@ export class MainComponent {
     }
 
     return reviewModel;
+  };
+
+  loadSwiperLibrary = () => {
+    const cssLoader = new Loader<HTMLLinkElement>();
+    const jsLoader = new Loader<HTMLScriptElement>();
+
+    cssLoader
+      .load(swiperLibrary.css, "swiper-css", "link")
+      .then((cssElm: HTMLLinkElement) => {
+        cssElm &&
+          jsLoader
+            .load(swiperLibrary.js, "swiper-js", "script")
+            .then((jsElm) => {
+              if (cssElm && jsElm) {
+                console.log("Swiper library loaded ......!");
+                this.carouselComponent.render(this.reviewModels);
+              }
+            });
+      });
   };
 }

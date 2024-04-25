@@ -5,6 +5,7 @@ import {
   halfStar,
   leftArrowSvg,
   rightArrowSvg,
+  selectors,
   triggerMetrics,
 } from "../common/asset";
 import { Review } from "../models/review";
@@ -136,18 +137,22 @@ export class CarouselComponent {
     return htmlString.trim();
   };
 
-  render = (reviews: Review[], footer: null | HTMLDivElement) => {
+  render = (reviews: Review[]) => {
     const trustradius: null | HTMLDivElement = document.querySelector(
       "div.trustradius-component"
     );
 
+    const resourceSection: null | HTMLDivElement = document.querySelector(
+      selectors.resourceSection
+    );
+
     trustradius && trustradius.classList.add("hide");
 
-    if (!footer) {
+    if (!resourceSection) {
       return;
     }
 
-    footer.insertAdjacentHTML("beforebegin", this.getHtml(reviews));
+    resourceSection.insertAdjacentHTML("beforebegin", this.getHtml(reviews));
     this.addGoals();
     this.initSwiper();
   };
@@ -162,7 +167,7 @@ export class CarouselComponent {
 
     fullReviewLinks.forEach((link: HTMLAnchorElement) => {
       link.addEventListener("click", () => {
-        triggerMetrics("review-slide-change");
+        triggerMetrics("full-review-link-click");
       });
     });
   };
@@ -203,8 +208,8 @@ export class CarouselComponent {
           slidesPerView: 3,
           spaceBetween: 10,
         },
-        1200: {
-          slidesPerView: 3,
+        1140: {
+          slidesPerView: 4,
           spaceBetween: 10,
         },
       },
