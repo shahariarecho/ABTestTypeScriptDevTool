@@ -162,7 +162,7 @@ export class CarouselComponent {
 
     fullReviewLinks.forEach((link: HTMLAnchorElement) => {
       link.addEventListener("click", () => {
-        triggerMetrics("review-slide-change");
+        triggerMetrics("read-full-review-click");
       });
     });
   };
@@ -203,8 +203,8 @@ export class CarouselComponent {
           slidesPerView: 3,
           spaceBetween: 10,
         },
-        1200: {
-          slidesPerView: 3,
+        1140: {
+          slidesPerView: 4,
           spaceBetween: 10,
         },
       },

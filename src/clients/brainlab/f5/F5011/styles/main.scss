@@ -72,7 +72,6 @@
             background-color: #105280;
             padding: 20px;
             border-radius: 15px;
-            max-width: 350px;
 
             > div.review-item-wrap {
               display: flex;
@@ -136,6 +135,12 @@
                 > p {
                   font-size: 15px;
                   color: #fff;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  line-clamp: 3;
+                  -webkit-box-orient: vertical;
                 }
               }
 
@@ -153,6 +158,20 @@
 
                   > svg {
                     width: 15px;
+                  }
+                }
+
+                @media only screen and (max-width: 768px) {
+                  > a {
+                    padding: 5px 10px;
+                    background-color: #fff;
+                    color: #000;
+                    text-decoration: none;
+                    border-radius: 5px;
+
+                    > svg {
+                      display: none;
+                    }
                   }
                 }
               }
