@@ -1,4 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
+import { triggerMetrics } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { AboutComponent } from "./about.component";
 import { DcnComponent } from "./dcn.component";
@@ -57,6 +58,7 @@ export class MainComponent {
     body.insertAdjacentHTML("afterbegin", this.getHtml());
     this.formComponent.activeForm();
     this.configStickyNavBar();
+    this.goals();
   };
 
   configStickyNavBar = () => {
@@ -78,5 +80,22 @@ export class MainComponent {
         stickyNavbarSection.classList.remove("sticky");
       }
     };
+  };
+
+  goals = () => {
+    const callTodayLinks: null | NodeListOf<HTMLLinkElement> =
+      document.querySelectorAll("div.apply>a");
+
+    if (!callTodayLinks || callTodayLinks.length === 0) {
+      return;
+    }
+
+    console.log("callTodayLinks", callTodayLinks);
+
+    callTodayLinks.forEach((link: HTMLLinkElement) => {
+      link.addEventListener("click", () => {
+        triggerMetrics("call-today");
+      });
+    });
   };
 }

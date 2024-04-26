@@ -41,7 +41,7 @@
       backdrop-filter: grayscale(0.5) opacity(0.8);
 
       div.hero-bg {
-        background-image: url("https://medianet.com/cro/fortis/fr008/header.jpg");
+        background-image: url("https://medianet.com/cro/fortis/fr008/hero.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -187,6 +187,36 @@
                   text-align: center;
                   max-width: 250px;
                   font-size: 18px;
+                }
+              }
+
+              > div.message {
+                max-width: 250px;
+                margin-bottom: 15px;
+
+                > div.message-item {
+                  > p {
+                    text-align: center;
+                    line-height: 20px;
+                    margin: 0;
+                    padding: 0;
+                  }
+                }
+              }
+
+              > div.message.success {
+                > div.message-item {
+                  > p {
+                    color: green;
+                  }
+                }
+              }
+
+              > div.message.error {
+                > div.message-item {
+                  > p {
+                    color: red;
+                  }
                 }
               }
 
@@ -653,7 +683,7 @@
             color: #000;
           }
 
-          @media only screen and (max-width: 450px) {
+          @media only screen and (max-width: 535px) {
             display: none;
           }
         }

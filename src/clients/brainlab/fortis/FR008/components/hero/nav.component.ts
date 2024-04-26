@@ -14,10 +14,10 @@ export class NavComponent {
         </div>
         <div class="nav" >
           <div class="request" >
-            <a href="" >Request Info</a>
+            <a href="#form-component" >Request Info</a>
           </div>
           <div class="apply" >
-            <a href="" >Apply Now</a>
+            <a href="tel:885-822-3020" >Call Today! 885-822-3020</a>
           </div>
         </div>
       </div>

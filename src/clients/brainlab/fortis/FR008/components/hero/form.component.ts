@@ -1,13 +1,21 @@
-import { formActionLink, getFromSubmissionLink } from "../../common/asset";
+import { getFromSubmissionLink, triggerMetrics } from "../../common/asset";
 
 export class FormComponent {
+  campus: HTMLSelectElement | null = null;
+  firstName: HTMLInputElement | null = null;
+  lastName: HTMLInputElement | null = null;
+  email: HTMLInputElement | null = null;
+  zipCode: HTMLInputElement | null = null;
+  phoneNumber: HTMLInputElement | null = null;
+
   getHtml = () => {
     const htmlString: string = `
-      <div class="form-component">
+      <div id="form-component" class="form-component">
         <div class="component-wrap" >
           <div class="heading" >
             <h3>Want to hear more about Denver College of Nursing?</h3>
           </div>
+          <div class="message hide" ></div>
           <div class="form" >
             <form onsubmit="event.preventDefault()">
               <div class="input" >
@@ -126,6 +134,13 @@ export class FormComponent {
       return;
     }
 
+    this.campus = campus;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.zipCode = zipCode;
+    this.phoneNumber = phoneNumber;
+
     this.submitFormData(
       campus.value,
       firstName.value,
@@ -144,23 +159,76 @@ export class FormComponent {
     zipCode: string,
     phoneNumber: string
   ) => {
-    // window.location.href = getFromSubmissionLink(
-    //   campus,
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   zipCode,
-    //   phoneNumber
-    // );
+    const message: null | HTMLParagraphElement = document.querySelector(
+      "div.form-component>div.component-wrap>div.message"
+    );
 
     try {
       const response = await fetch(
-        "https://stage.denvercollegeofnursing.edu/bin/rfi?postLocation=https://edaff.edufficient.com/post?&includeDate=false&trackingClickId=&adobeTrackingID=90667384312323897381704469326664061742&state=CO&campus=denver&programOfInterest=Bachelor%20of%20Science%20in%20Nursing&firstName=test&lastName=tst&email=test%40test.com&homePhone=(222)%20222-2222&zipCode=12345&consent=1&leadFormId=51&useEASparkroomBidCid=1&BID=2582&CID=1302&isTest=0&returnId=true"
+        getFromSubmissionLink(
+          campus,
+          firstName,
+          lastName,
+          email,
+          zipCode,
+          phoneNumber
+        )
       );
       const result = await response.json();
-      console.log("Success:", result);
+      this.showResultMessage(message, result);
     } catch (error) {
-      console.error("Error:", error);
+      this.showResultMessage(message, {
+        accepted: false,
+        errors: {
+          msg: "Something went wrong, please try again!",
+        },
+      });
     }
+  };
+
+  showResultMessage = (message: null | HTMLParagraphElement, result: any) => {
+    let msgHtml = "";
+
+    if (!message) {
+      return;
+    }
+
+    message.classList.remove("hide");
+
+    if (result.accepted === "false" && result.errors) {
+      message.classList.add("error");
+      Object.values(result.errors).forEach((error) => {
+        msgHtml = msgHtml + `<div class="message-item" ><p>${error}</p></div>`;
+      });
+    } else {
+      message.classList.add("success");
+      msgHtml =
+        msgHtml +
+        `<div class="message-item" ><p>Form submitted successfully</p></div>`;
+      triggerMetrics("form-submitted");
+      this.resetForm();
+    }
+
+    message.insertAdjacentHTML("afterbegin", msgHtml);
+  };
+
+  resetForm = () => {
+    if (
+      !this.campus ||
+      !this.firstName ||
+      !this.lastName ||
+      !this.email ||
+      !this.zipCode ||
+      !this.phoneNumber
+    ) {
+      return;
+    }
+
+    this.campus.value = "";
+    this.firstName.value = "";
+    this.lastName.value = "";
+    this.email.value = "";
+    this.zipCode.value = "";
+    this.phoneNumber.value = "";
   };
 }
