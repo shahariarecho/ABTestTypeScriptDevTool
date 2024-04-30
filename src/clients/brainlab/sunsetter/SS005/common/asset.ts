@@ -2,6 +2,7 @@ export const selectors = {
   legend: "form.find-a-dealer-form>fieldset>legend",
   defaultCheckboxLabels: "div.int-cell.my-3>h5",
   defaultCheckboxes: "div.int-cell.my-3",
+  cardImage: "div.site-image-wrapper",
 };
 
 export const checkSvgIcon: string = `
@@ -27,3 +28,15 @@ export const triggerEvent = (apiName: string) => {
 
   console.log("event-triggered=", apiName);
 };
+
+export const siteImages: string[] = [
+  "https://medianet.com/cro/sunsetter/ss005/awning.jpg",
+  "https://medianet.com/cro/sunsetter/ss005/retractable.jpeg",
+  "https://medianet.com/cro/sunsetter/ss005/exterior.jpg",
+];
+
+// export const siteImages: string[] = [
+//   "https://embed.widencdn.net/img/springswindowfashions/1mc3osgwu2/240x230px@2x/SunSetter-LS21-PlatMotorPRO-StormStripe-17?keep=c&crop=yes&q=90",
+//   "https://embed.widencdn.net/img/springswindowfashions/njla22ga4m/240x230px@2x/SunSetter_Powerscreen_Inside-Out_BronzeFrame-BrownBlackFabric_0323.jpg",
+//   "https://embed.widencdn.net/img/springswindowfashions/7hose81ksv/240x230px@2x/sunsetter-easy-shade-bronze-22?keep=c&crop=yes&q=90",
+// ];

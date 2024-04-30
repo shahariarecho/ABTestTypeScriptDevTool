@@ -61,14 +61,33 @@ export class OptionComponent {
       return;
     }
 
+    const siteImages: null | NodeListOf<HTMLImageElement> =
+      document.querySelectorAll("img.site-image");
+
+    console.log("site-image=", siteImages);
+
     checkboxes.forEach((checkbox: HTMLDivElement, index: number) => {
       checkbox.addEventListener("click", () => {
         checkbox.classList.add("checked");
         triggerEvent("checkbox-option-clicked");
         this.defaultCheckboxLabels && this.defaultCheckboxLabels[index].click();
         this.uncheckExceptClicked(checkboxes, index);
+        siteImages &&
+          siteImages.length > 0 &&
+          this.hideAndShowSiteImage(index, siteImages);
       });
     });
+  };
+
+  hideAndShowSiteImage = (
+    index: number,
+    siteImages: NodeListOf<HTMLImageElement>
+  ) => {
+    siteImages.forEach((image: HTMLImageElement, imgIndex: number) => {
+      image.classList.add("hide");
+    });
+
+    siteImages[index].classList.remove("hide");
   };
 
   uncheckExceptClicked = (

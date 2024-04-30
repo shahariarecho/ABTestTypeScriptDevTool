@@ -1,9 +1,11 @@
 import { Initializer } from "../../../../../utilities/initializer";
 import { selectors, triggerEvent } from "../common/asset";
 import { TestInfo } from "../common/test.info";
+import { ImageComponent } from "./image.component";
 import { OptionComponent } from "./option.component";
 
 export class MainComponent {
+  imageComponent: ImageComponent = new ImageComponent();
   optionComponent: OptionComponent = new OptionComponent();
   variation: string = TestInfo.VARIATION.toString();
 
@@ -26,6 +28,7 @@ export class MainComponent {
       return;
     }
 
+    this.imageComponent.render();
     this.optionComponent.render(defaultCheckboxLabels);
   };
 
