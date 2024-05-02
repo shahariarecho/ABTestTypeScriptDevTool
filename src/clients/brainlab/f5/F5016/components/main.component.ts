@@ -1,7 +1,10 @@
 import { Initializer } from "../../../../../utilities/initializer";
 import {
-  getNthBigHeadingSelector,
+  arrowSvg,
+  getAllLastChildSelectors,
+  getAllSubHeadingSelectors,
   getNthSubHeadingSelector,
+  sectionIds,
 } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 
@@ -11,32 +14,47 @@ export class MainComponent {
   }
 
   init = (): void => {
-    const subHeadingSelector: string = getNthSubHeadingSelector("3");
+    const allSubHeadingSelector: string = getAllSubHeadingSelectors();
 
-    const subHeadings: null | NodeListOf<HTMLDivElement> =
-      document.querySelectorAll(subHeadingSelector);
+    const allSubHeadings: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(allSubHeadingSelector);
 
-    if (!subHeadings || subHeadings.length === 0) {
+    if (!allSubHeadings || allSubHeadings.length === 0) {
       return;
     }
 
-    subHeadings.forEach((subHeading: HTMLDivElement) => {
+    allSubHeadings.forEach((subHeading: HTMLDivElement) => {
+      console.log("heading=", subHeading);
+
       subHeading.addEventListener("click", () => {
-        console.log("HI");
+        subHeading.classList.toggle("expand");
+
         subHeading.nextElementSibling &&
           subHeading.nextElementSibling.classList.toggle("show");
       });
     });
 
-    const bigHeadingSelector: string = getNthBigHeadingSelector("3");
-    console.log("big-heading=", bigHeadingSelector);
+    const allLastChildSelectors: string = getAllLastChildSelectors();
 
-    const bigHeading: null | HTMLDivElement =
-      document.querySelector(bigHeadingSelector);
+    const allLastChild: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(allLastChildSelectors);
 
-    bigHeading &&
-      bigHeading.addEventListener("click", () => {
-        console.log("big-heading=", bigHeading);
+    allLastChild &&
+      allLastChild.forEach((child: HTMLDivElement) => {
+        child.classList.add("show");
+
+        child.previousElementSibling &&
+          child.previousElementSibling.classList.add("expand");
       });
+
+    const headingElms: null | NodeListOf<HTMLHeadingElement> =
+      document.querySelectorAll("h3.at02__title");
+
+    headingElms.forEach((heading: HTMLHeadingElement) => {
+      heading.insertAdjacentHTML(
+        "beforeend",
+        `<div class="arrow-icon">${arrowSvg}</div>`
+      );
+    });
   };
 }
