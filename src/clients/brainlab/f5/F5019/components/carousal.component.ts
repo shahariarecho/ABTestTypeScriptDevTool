@@ -78,9 +78,7 @@ export class CarouselComponent {
             <p>"${review.teaser}</p>
           </div>
           <div class="full-review-link" >
-            <a href="${
-              review.allReviewLink
-            }" >Read full review &nbsp; ${arrowSvg}</a>
+            <a href="${review.allReviewLink}" >Read full review ${arrowSvg}</a>
           </div>
           <div class="reviewer-details" >
             <div class="author" >

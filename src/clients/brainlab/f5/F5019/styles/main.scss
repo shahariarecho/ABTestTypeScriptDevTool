@@ -34,7 +34,7 @@
       > div.carousel {
         > div.swiper-wrapper {
           > div.review-item {
-            background-color: #105280;
+            background-color: #0b3180;
             padding: 20px;
             border-radius: 15px;
 
@@ -81,7 +81,7 @@
                 height: 50px;
 
                 > h4 {
-                  text-align: center;
+                  text-align: left;
                   color: #fff;
                   font-size: 20px;
                   overflow: hidden;
@@ -123,6 +123,7 @@
 
                   > svg {
                     width: 15px;
+                    margin-left: 10px;
                   }
                 }
 
