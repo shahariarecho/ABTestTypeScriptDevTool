@@ -20,8 +20,6 @@ export class CardService {
       );
 
       cardContent && link && this.addLearnMoreButtonToCard(link, cardContent);
-
-      card.setAttribute("href", "#");
     });
   };
 
