@@ -1,3 +1,4 @@
+// test name: BLTEST038.3 - XC CTA Naming
 function runTest() {
   const variation = "start";
 
