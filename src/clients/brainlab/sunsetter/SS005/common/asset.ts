@@ -3,6 +3,7 @@ export const selectors = {
   defaultCheckboxLabels: "div.int-cell.my-3>h5",
   defaultCheckboxes: "div.int-cell.my-3",
   cardImage: "div.site-image-wrapper",
+  error: "div.validation-summary-errors",
 };
 
 export const checkSvgIcon: string = `

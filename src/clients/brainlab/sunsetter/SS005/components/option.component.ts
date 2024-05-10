@@ -7,6 +7,7 @@ import {
 
 export class OptionComponent {
   defaultCheckboxLabels: null | NodeListOf<HTMLHeadingElement> = null;
+  targetElement: null | HTMLLegendElement | HTMLDivElement = null;
 
   private getHtml = (): string => {
     const htmlString: string = `
@@ -41,14 +42,20 @@ export class OptionComponent {
       selectors.legend
     );
 
-    if (!legend) {
+    const error: null | HTMLDivElement = document.querySelector(
+      selectors.error
+    );
+
+    this.targetElement = error ? error : legend;
+
+    if (!this.targetElement) {
       return;
     }
 
-    legend.nextElementSibling &&
-      legend.nextElementSibling.classList.add("vanish");
+    this.targetElement.nextElementSibling &&
+      this.targetElement.nextElementSibling.classList.add("vanish");
 
-    legend.insertAdjacentHTML("afterend", this.getHtml());
+    this.targetElement.insertAdjacentHTML("afterend", this.getHtml());
 
     this.active();
   };

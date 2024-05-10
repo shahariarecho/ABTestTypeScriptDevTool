@@ -10,7 +10,7 @@ export class MainComponent {
   variation: string = TestInfo.VARIATION.toString();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.2");
   }
 
   init = (): void => {
