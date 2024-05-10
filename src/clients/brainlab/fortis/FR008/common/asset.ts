@@ -143,7 +143,7 @@ export const getFromSubmissionLink = (
   zipCode: string,
   phoneNumber: string
 ) => {
-  return `https://stage.denvercollegeofnursing.edu/bin/rfi?postLocation=https://edaff.edufficient.com/post?&includeDate=false&trackingClickId=&adobeTrackingID=90667384312323897381704469326664061742&state=CO&campus=${campus}&programOfInterest=Bachelor%20of%20Science%20in%20Nursing&firstName=${firstName}&lastName=${lastName}&email=${email}&homePhone=${phoneNumber}&zipCode=${zipCode}&consent=1&leadFormId=51&useEASparkroomBidCid=1&BID=2582&CID=1302&isTest=0&returnId=true`;
+  return `https://www.denvercollegeofnursing.edu/bin/rfi?postLocation=https://edaff.edufficient.com/post?&includeDate=false&trackingClickId=&adobeTrackingID=90667384312323897381704469326664061742&state=CO&campus=${campus}&programOfInterest=Bachelor%20of%20Science%20in%20Nursing&firstName=${firstName}&lastName=${lastName}&email=${email}&homePhone=${phoneNumber}&zipCode=${zipCode}&consent=1&leadFormId=51&useEASparkroomBidCid=1&BID=2582&CID=1302&isTest=0&returnId=true`;
 };
 
 export const triggerMetrics = (mboxName: string) => {
