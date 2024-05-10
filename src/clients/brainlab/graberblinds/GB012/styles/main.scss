@@ -6,9 +6,6 @@
     justify-content: center;
     align-items: center;
     height: 200px;
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
 
     > div.component-wrap {
       border: 1px solid #d7d2cbbf;
@@ -17,6 +14,7 @@
       align-items: center;
       padding: 5px;
       height: 100%;
+      width: 100%;
 
       > div.text-content {
         flex: 6;
@@ -91,23 +89,6 @@
           margin-top: 5px;
         }
       }
-
-      @media only screen and (max-width: 767px) {
-        width: 100%;
-        flex-direction: column;
-      }
-
-      @media only screen and (min-width: 768px) {
-        width: 100%;
-      }
-
-      @media only screen and (min-width: 992px) {
-        width: 90%;
-      }
-
-      @media only screen and (min-width: 1200px) {
-        width: 70%;
-      }
     }
 
     @media only screen and (max-width: 767px) {
@@ -118,5 +99,35 @@
   div.studio-component.iteration-2 {
     margin-top: 50px;
     margin-bottom: 30px;
+  }
+
+  div.find-an-expert-page {
+    > div.opt-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      > div.dealer-contact-form-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        border-right: 1px solid #d5d6d7;
+
+        > div.dealer-contact-form {
+          margin-right: 50px;
+        }
+      }
+
+      > div.opt-map-wrapper {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .opt-wrapper .dealer-contact-form-wrapper::after {
+    display: none;
   }
 }

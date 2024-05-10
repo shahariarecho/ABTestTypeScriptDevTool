@@ -1,6 +1,5 @@
 export const selectors = {
-  carousal: "div#cw-carousel",
-  quality: "div.container.m-b-lg.m-t-none>div.row",
+  dealerLocator: "section.dealer-locator",
 };
 
 import { StudioModel } from "./studio.mode";

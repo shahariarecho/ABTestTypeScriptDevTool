@@ -7,7 +7,6 @@ import { StudioComponent } from "./studio.component";
 export class MainComponent {
   studioComponent: StudioComponent = new StudioComponent();
   variation: string = TestInfo.VARIATION.toString();
-  round: number = 1;
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -15,9 +14,10 @@ export class MainComponent {
 
   init = (): void => {
     const studioModel: StudioModel | undefined = studioModels.find(
-      (s: StudioModel) =>
-        s.round === this.round && s.variation === this.variation
+      (s: StudioModel) => s.variation === this.variation
     );
+
+    console.log("studio-modal=", studioModel);
 
     if (!studioModel) {
       return;

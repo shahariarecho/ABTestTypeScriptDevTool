@@ -1,8 +1,1 @@
-export enum TestInfo {
-  ID = "GB009",
-  SITE = "graberblinds",
-  TITLE = "3.9.1 - Graber Design Studios Banner -- Homepage placement",
-  CLIENT = "brainlab",
-  TARGET = "https://www.graberblinds.com",
-  VARIATION = "bmn",
-}
+export enum TestInfo {ID = 'GB012', SITE = 'graberblinds', TITLE = '5.6 - Find a Dealer_Design Studios Banner', CLIENT = 'brainlab', TARGET = 'https://www.graberblinds.com', VARIATION = 'anc'}
