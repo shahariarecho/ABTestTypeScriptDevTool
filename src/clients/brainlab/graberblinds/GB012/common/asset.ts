@@ -4,6 +4,7 @@ export const selectors = {
   addressInput: "input#address-input",
   searchExpertInput: "input.map-search-button",
   mapWrapper: "div.opt-map-wrapper",
+  formConfirmation: "div.Form__Confirmation",
 };
 
 import { StudioModel } from "./studio.mode";
