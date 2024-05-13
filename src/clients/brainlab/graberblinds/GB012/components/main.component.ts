@@ -1,5 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { studioModels } from "../common/asset";
+import { selectors, studioModels } from "../common/asset";
 import { StudioModel } from "../common/studio.mode";
 import { TestInfo } from "../common/test.info";
 import { StudioComponent } from "./studio.component";
@@ -24,5 +24,46 @@ export class MainComponent {
     }
 
     this.studioComponent.render(studioModel);
+    this.addOnRadiusSelectExpertSearch();
+    this.addDivider();
+  };
+
+  addDivider = () => {
+    const mapWrapper: null | HTMLDivElement = document.querySelector(
+      selectors.mapWrapper
+    );
+
+    if (!mapWrapper) {
+      return;
+    }
+
+    mapWrapper.insertAdjacentHTML(
+      "beforebegin",
+      `<div class="form-and-map-divider" ></div>`
+    );
+  };
+
+  addOnRadiusSelectExpertSearch = () => {
+    const radiusInput: null | HTMLSelectElement = document.querySelector(
+      selectors.radiusInput
+    );
+
+    const addressInput: null | HTMLInputElement = document.querySelector(
+      selectors.addressInput
+    );
+
+    const searchExpertInput: null | HTMLInputElement = document.querySelector(
+      selectors.searchExpertInput
+    );
+
+    if (!radiusInput || !addressInput || !searchExpertInput) {
+      return;
+    }
+
+    radiusInput.addEventListener("input", () => {
+      if (radiusInput.value && addressInput.value) {
+        searchExpertInput.click();
+      }
+    });
   };
 }

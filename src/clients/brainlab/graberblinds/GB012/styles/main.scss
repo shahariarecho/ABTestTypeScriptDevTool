@@ -105,29 +105,79 @@
     > div.opt-wrapper {
       max-width: 1200px;
       margin: 0 auto;
-      padding-top: 20px;
-      padding-bottom: 20px;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: normal;
+      padding: 20px;
 
       > div.dealer-contact-form-wrapper {
         margin: 0 !important;
         padding: 0 !important;
-        border-right: 1px solid #d5d6d7;
 
         > div.dealer-contact-form {
-          margin-right: 50px;
+          height: 100%;
+
+          > h2.request-consultation-form-heading {
+            text-align: left;
+          }
+
+          > div.request-consultation-form-intro {
+            flex: unset !important;
+          }
+        }
+      }
+
+      > div.form-and-map-divider {
+        width: 0.5px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: #53565a40;
+
+        @media only screen and (max-width: 1200px) {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          height: 0.5px;
+          width: 100%;
         }
       }
 
       > div.opt-map-wrapper {
         padding: 0 !important;
+        margin: 0 !important;
       }
     }
   }
 
   .opt-wrapper .dealer-contact-form-wrapper::after {
     display: none;
+  }
+
+  div.Form__Element > label {
+    font-weight: 700;
+  }
+
+  div.fname-element {
+    margin-top: 10px;
+  }
+
+  div.FormMultiChoice__Options > div > label {
+    font-weight: normal !important;
+  }
+
+  button.o-form__submit {
+    background-color: #231f20;
+    border-color: #231f20;
+  }
+
+  form.locator-form > fieldset > div:last-child {
+    height: 0px !important;
+    width: 0px !important;
+    visibility: hidden;
+  }
+
+  div#dealerGrid {
+    margin: 0 !important;
   }
 }

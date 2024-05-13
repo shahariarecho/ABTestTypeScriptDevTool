@@ -1,5 +1,9 @@
 export const selectors = {
   dealerLocator: "section.dealer-locator",
+  radiusInput: "select#radius-input",
+  addressInput: "input#address-input",
+  searchExpertInput: "input.map-search-button",
+  mapWrapper: "div.opt-map-wrapper",
 };
 
 import { StudioModel } from "./studio.mode";
