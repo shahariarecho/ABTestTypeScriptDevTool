@@ -38,7 +38,6 @@ export class MainComponent {
     const callback = (mutationList: MutationRecord[]) => {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
-        console.log("length=", target.innerHTML.length);
 
         if (target.innerHTML.length > 91000 && !this.isPageLoaded) {
           this.applyModification();

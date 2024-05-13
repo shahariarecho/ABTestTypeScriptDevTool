@@ -1,9 +1,15 @@
-import { rightArrowSvg, selectors, triggerEvent } from "../common/asset";
+import {
+  leftArrowSvg,
+  rightArrowSvg,
+  selectors,
+  triggerEvent,
+} from "../common/asset";
 
 export class CarouselComponent {
   paginationLastChild: null | HTMLSpanElement = null;
+  paginationFirstChild: null | HTMLSpanElement = null;
   carouselController: null | HTMLDivElement = null;
-  isPaginationLastChildFound: boolean = false;
+  isPaginationChildFound: boolean = false;
 
   private getHtml = (carouselItems: string[]): string => {
     const htmlString: string = `
@@ -18,9 +24,14 @@ export class CarouselComponent {
         </div>
         <div class="carousel-controller" >
           <div class="controller-wrap" >
-            <div class="carousel-next">
+            <div class="carousel-arrow carousel-next">
               <div class="svg" >
                 ${rightArrowSvg}
+              </div>
+            </div>
+            <div class="carousel-arrow carousel-prev hide">
+              <div class="svg" >
+                ${leftArrowSvg}
               </div>
             </div>
           </div>
@@ -49,8 +60,6 @@ export class CarouselComponent {
     if (!learnMoreLinks || learnMoreLinks.length === 0) {
       return;
     }
-
-    console.log("learnMoreLinks!", learnMoreLinks);
 
     learnMoreLinks.forEach((link: HTMLAnchorElement, index: number) => {
       link.addEventListener("click", () => {
@@ -83,15 +92,18 @@ export class CarouselComponent {
       },
       navigation: {
         nextEl: ".carousel-next",
+        prevEl: ".carousel-prev",
       },
       on: {
         slideChange: () => {
           this.findPaginationLastChild();
 
-          this.isPaginationLastChildFound &&
+          this.isPaginationChildFound &&
             this.paginationLastChild &&
+            this.paginationFirstChild &&
             this.carouselController &&
             this.hideAndShowArrow(
+              this.paginationFirstChild,
               this.paginationLastChild,
               this.carouselController
             );
@@ -111,25 +123,51 @@ export class CarouselComponent {
       "div.swiper-pagination>span:last-child"
     );
 
-    this.carouselController = document.querySelector("div.carousel-controller");
+    this.paginationFirstChild = document.querySelector(
+      "div.swiper-pagination>span:first-child"
+    );
 
-    if (this.paginationLastChild && this.carouselController) {
-      this.isPaginationLastChildFound = true;
+    this.carouselController = document.querySelector(
+      "div.carousel-controller>div.controller-wrap"
+    );
+
+    if (
+      this.paginationLastChild &&
+      this.paginationFirstChild &&
+      this.carouselController
+    ) {
+      this.isPaginationChildFound = true;
     }
 
     console.log("Finding pagination last child ......!");
   };
 
   hideAndShowArrow = (
+    paginationFirstChild: HTMLSpanElement,
     paginationLastChild: HTMLSpanElement,
     carouselController: HTMLDivElement
   ) => {
     if (
       paginationLastChild.classList.contains("swiper-pagination-bullet-active")
     ) {
-      carouselController.classList.add("hide");
+      carouselController.firstElementChild &&
+        carouselController.firstElementChild.classList.add("hide");
+      carouselController.lastElementChild &&
+        carouselController.lastElementChild.classList.remove("hide");
+      carouselController.lastElementChild &&
+        carouselController.lastElementChild.classList.add("vanish");
     } else {
-      carouselController.classList.remove("hide");
+      carouselController.lastElementChild &&
+        carouselController.lastElementChild.classList.remove("vanish");
+    }
+
+    if (
+      paginationFirstChild.classList.contains("swiper-pagination-bullet-active")
+    ) {
+      carouselController.firstElementChild &&
+        carouselController.firstElementChild.classList.remove("hide");
+      carouselController.lastElementChild &&
+        carouselController.lastElementChild.classList.add("hide");
     }
   };
 }
