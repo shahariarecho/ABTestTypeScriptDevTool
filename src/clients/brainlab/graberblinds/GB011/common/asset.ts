@@ -137,3 +137,5 @@ export const triggerEvent = (apiName: string) => {
 
   console.log("event-triggered=", apiName);
 };
+
+export const id: string = "anc";
