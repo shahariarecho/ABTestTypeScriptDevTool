@@ -25,8 +25,6 @@ export class MainComponent {
   init = (): void => {
     const currentLocation: string = window.location.pathname;
 
-    console.log("location-1", currentLocation);
-
     if (!currentLocation.includes(urlId)) {
       return;
     }
