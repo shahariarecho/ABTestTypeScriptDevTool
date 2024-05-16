@@ -56,6 +56,8 @@
         border-radius: 5px;
         margin-top: 15px;
         font-weight: bold;
+        height: max-content;
+        width: max-content;
 
         @media only screen and (max-width: 575px) {
           width: 100%;
