@@ -69,7 +69,7 @@
       > div.carousel {
         > div.swiper-wrapper {
           > div.review-item {
-            background-color: #105280;
+            background-color: #0b3180;
             padding: 20px;
             border-radius: 15px;
 
@@ -116,7 +116,7 @@
                 height: 50px;
 
                 > h4 {
-                  text-align: center;
+                  text-align: left;
                   color: #fff;
                   font-size: 20px;
                   overflow: hidden;
@@ -129,7 +129,7 @@
               }
 
               > div.teaser {
-                padding: 10px 20px;
+                padding: 15px 10px 15px 0;
                 height: 90px;
 
                 > p {
@@ -158,6 +158,7 @@
 
                   > svg {
                     width: 15px;
+                    margin-left: 10px;
                   }
                 }
 
