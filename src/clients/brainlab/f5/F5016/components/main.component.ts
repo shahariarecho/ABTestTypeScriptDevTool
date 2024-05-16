@@ -24,8 +24,6 @@ export class MainComponent {
     }
 
     allSubHeadings.forEach((subHeading: HTMLDivElement) => {
-      console.log("heading=", subHeading);
-
       subHeading.addEventListener("click", () => {
         subHeading.classList.toggle("expand");
 
@@ -36,16 +34,16 @@ export class MainComponent {
 
     const allLastChildSelectors: string = getAllLastChildSelectors();
 
-    const allLastChild: null | NodeListOf<HTMLDivElement> =
-      document.querySelectorAll(allLastChildSelectors);
+    // const allLastChild: null | NodeListOf<HTMLDivElement> =
+    //   document.querySelectorAll(allLastChildSelectors);
 
-    allLastChild &&
-      allLastChild.forEach((child: HTMLDivElement) => {
-        child.classList.add("show");
+    // allLastChild &&
+    //   allLastChild.forEach((child: HTMLDivElement) => {
+    //     child.classList.add("show");
 
-        child.previousElementSibling &&
-          child.previousElementSibling.classList.add("expand");
-      });
+    //     child.previousElementSibling &&
+    //       child.previousElementSibling.classList.add("expand");
+    //   });
 
     const headingElms: null | NodeListOf<HTMLHeadingElement> =
       document.querySelectorAll("h3.at02__title");
