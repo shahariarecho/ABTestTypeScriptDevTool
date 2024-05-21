@@ -1,4 +1,8 @@
-import { redeemNowLink } from "../common/asset";
+import {
+  redeemNowLink,
+  storageKey,
+  visitedLocationsStorageKey,
+} from "../common/asset";
 
 export class PromoPopupComponent {
   isPopupDisplayed: boolean = false;
@@ -58,12 +62,18 @@ export class PromoPopupComponent {
     skipButton.addEventListener("click", (e) => {
       offerPopup.classList.remove("show");
     });
+  };
 
-    window.onscroll = () => {
-      if (window.scrollY > 500 && !this.isPopupDisplayed) {
-        offerPopup.classList.add("show");
-        this.isPopupDisplayed = true;
-      }
-    };
+  showPromoPopup = (offerPopup: HTMLDivElement) => {
+    if (
+      !this.isPopupDisplayed &&
+      sessionStorage.getItem(storageKey) &&
+      sessionStorage.getItem(storageKey) === "no"
+    ) {
+      offerPopup.classList.add("show");
+      this.isPopupDisplayed = true;
+      sessionStorage.setItem(storageKey, "yes");
+      sessionStorage.setItem(visitedLocationsStorageKey, "");
+    }
   };
 }
