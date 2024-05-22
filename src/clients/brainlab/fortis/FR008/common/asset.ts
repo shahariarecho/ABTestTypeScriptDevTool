@@ -151,3 +151,5 @@ export const triggerMetrics = (mboxName: string) => {
   adobe.target.trackEvent({ mbox: mboxName });
   console.log("mbox=", mboxName);
 };
+
+export const thankyouEndpoint: string = "/content/denver/en/thank-you.html";

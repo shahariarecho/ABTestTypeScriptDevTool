@@ -1,4 +1,8 @@
-import { getFromSubmissionLink, triggerMetrics } from "../../common/asset";
+import {
+  getFromSubmissionLink,
+  thankyouEndpoint,
+  triggerMetrics,
+} from "../../common/asset";
 
 export class FormComponent {
   campus: HTMLSelectElement | null = null;
@@ -22,6 +26,7 @@ export class FormComponent {
                 <select id="campus" name="campus" required="true">
                   <option value="" disabled selected hidden>Campus</option>
                   <option value="denver">Denver</option>
+                  <option value="houston">Houston</option>
                 </select>
                 <div class="error-msg" >
                   <span>First name required!</span>
@@ -193,6 +198,7 @@ export class FormComponent {
       return;
     }
 
+    message.innerHTML = "";
     message.classList.remove("hide");
 
     if (result.accepted === "false" && result.errors) {
@@ -207,6 +213,7 @@ export class FormComponent {
         `<div class="message-item" ><p>Form submitted successfully</p></div>`;
       triggerMetrics("form-submitted");
       this.resetForm();
+      this.redirectToThankYouPage();
     }
 
     message.insertAdjacentHTML("afterbegin", msgHtml);
@@ -230,5 +237,11 @@ export class FormComponent {
     this.email.value = "";
     this.zipCode.value = "";
     this.phoneNumber.value = "";
+  };
+
+  redirectToThankYouPage = () => {
+    setTimeout(() => {
+      window.location.href = `https://${window.location.host}${thankyouEndpoint}`;
+    }, 1000);
   };
 }

@@ -25,7 +25,7 @@ export class MainComponent {
   formComponent: FormComponent = new FormComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.5");
   }
 
   getHtml = (): string => {
@@ -89,8 +89,6 @@ export class MainComponent {
     if (!callTodayLinks || callTodayLinks.length === 0) {
       return;
     }
-
-    console.log("callTodayLinks", callTodayLinks);
 
     callTodayLinks.forEach((link: HTMLLinkElement) => {
       link.addEventListener("click", () => {
