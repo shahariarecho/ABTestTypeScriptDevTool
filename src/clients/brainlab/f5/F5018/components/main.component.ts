@@ -8,7 +8,7 @@ export class MainComponent {
   tabPanelComponent: TabPanelComponent = new TabPanelComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.5");
   }
 
   init = (): void => {

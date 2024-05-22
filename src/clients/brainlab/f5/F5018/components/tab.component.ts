@@ -43,7 +43,7 @@ export class TabComponent {
         this.extraTabClickCount > 1 && triggerMetrics("partner-tab-click");
       });
 
-    tabExtra && tabExtra.click();
+    // tabExtra && tabExtra.click();
   };
 
   clearActiveExceptExtra = (tabList: NodeListOf<HTMLLIElement>) => {
