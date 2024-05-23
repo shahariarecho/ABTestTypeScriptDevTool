@@ -24,7 +24,7 @@ export class FormComponent {
             <form onsubmit="event.preventDefault()">
               <div class="input" >
                 <select id="campus" name="campus" required="true">
-                  <option value="" disabled selected hidden>Campus</option>
+                  <option value="" disabled selected hidden>Campus*</option>
                   <option value="denver">Denver</option>
                   <option value="houston">Houston</option>
                 </select>
@@ -33,31 +33,31 @@ export class FormComponent {
                 </div>
               </div>
               <div class="input" >
-                <input id="first-name" type="text" name="firstName" placeholder="First Name" required="true">
+                <input id="first-name" type="text" name="firstName" placeholder="First Name*" required="true">
                 <div class="error-msg" >
                   <span>First name required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input id="last-name" type="text" name="lastName" placeholder="Last Name" required="true">
+                <input id="last-name" type="text" name="lastName" placeholder="Last Name*" required="true">
                 <div class="error-msg" >
                   <span>Last name required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input id="email" type="text" name="email" placeholder="Email Address" required="true">
+                <input id="email" type="text" name="email" placeholder="Email Address*" required="true">
                 <div class="error-msg" >
                   <span>Email required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input id="phone-number" type="text" name="homePhone" placeholder="Phone number" required="true">
+                <input id="phone-number" type="text" name="homePhone" placeholder="Phone number*" required="true">
                 <div class="error-msg" >
                   <span>Phone number required!</span>
                 </div>
               </div>
               <div class="input" >
-                <input id="zip-code" type="text" name="zipCode" placeholder="ZIP Code" required="true">
+                <input id="zip-code" type="text" name="zipCode" placeholder="ZIP Code*" required="true">
                 <div class="error-msg" >
                   <span>Zip code required!</span>
                 </div>
