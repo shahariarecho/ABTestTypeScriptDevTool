@@ -6,23 +6,25 @@ import { TestObserver } from "../observer/test.observer";
 
 export class MainComponent {
   isElementFound: boolean = false;
+  isByodFound: boolean = false;
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "3.5.5");
   }
 
   init = (): void => {
     const body: HTMLBodyElement | null = document.querySelector("body");
-    body && this.addOrRemoveByod(body);
 
     LocationObserver.listen((location: string) => {
       this.isElementFound = false;
+      this.isByodFound = false;
     });
 
     const testObserver = new TestObserver("body");
     const callback = (mutationList: MutationRecord[]) => {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
+        // console.log("classlist=", target);
 
         if (
           target.innerHTML &&
@@ -30,7 +32,19 @@ export class MainComponent {
           !this.isElementFound
         ) {
           this.addListener();
+
           this.isElementFound = true;
+        }
+
+        if (
+          target.classList &&
+          target.classList.contains("product-tile") &&
+          !this.isByodFound
+        ) {
+          setTimeout(() => {
+            body && this.addOrRemoveByod(body);
+          }, 500);
+          this.isByodFound = true;
         }
       }
     };
@@ -67,40 +81,28 @@ export class MainComponent {
   };
 
   addOrRemoveByod = (body: HTMLBodyElement) => {
-    const filterHref: string = this.filterHref();
-
-    if (filterHref.includes("filters")) {
-      body && body.classList.remove("byod");
-    } else {
+    if (this.isFirstProductByod()) {
       body && body.classList.add("byod");
+    } else {
+      body && body.classList.remove("byod");
     }
   };
 
-  filterHref = (): string => {
-    const params = new URLSearchParams(location.search);
-    let hrefString: string = window.location.href;
+  isFirstProductByod = (): boolean => {
+    const byodLink: HTMLAnchorElement | null = document.querySelector(
+      selectors.byodLink
+    );
 
-    const values: [string, string][] = Array.from(params);
+    console.log("byod-link=", byodLink);
 
-    values.forEach((val: [string, string]) => {
-      if (val[1] === "A") {
-        hrefString = hrefString.replace("filters=A", "f=A");
-        console.log("hrefString=", hrefString);
-      }
-
-      if (val[1] === "p") {
-        hrefString = hrefString.replace("filters=p", "f=p");
-      }
-
-      if (val[1] === "l") {
-        hrefString = hrefString.replace("filters=l", "f=l");
-      }
-
-      if (val[1] === "e") {
-        hrefString = hrefString.replace("filters=e", "f=e");
-      }
-    });
-
-    return hrefString;
+    if (
+      byodLink &&
+      byodLink.getAttribute("href") &&
+      byodLink.getAttribute("href") === "/shopping/details/sim"
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 }
