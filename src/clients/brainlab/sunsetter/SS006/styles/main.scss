@@ -38,6 +38,14 @@
         width: 100%;
       }
 
+      input {
+        border: 2px solid #ffc600;
+      }
+
+      select {
+        border: 2px solid #ffc600;
+      }
+
       div.form-vertical {
         display: flex;
         flex-direction: row-reverse;
@@ -46,7 +54,7 @@
         width: 100% !important;
 
         > input {
-          padding: 5px;
+          padding: 8px;
           width: 75%;
 
           @media only screen and (max-width: 767px) {
@@ -55,7 +63,7 @@
         }
 
         > select {
-          padding: 5px;
+          padding: 8px;
           width: 75%;
 
           @media only screen and (max-width: 767px) {

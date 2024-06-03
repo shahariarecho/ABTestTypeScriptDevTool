@@ -16,6 +16,7 @@ export class MainComponent {
     );
 
     if (rightHeader) {
+      console.log("No observer needed, found on page load....!");
       this.applyModification(rightHeader, false);
       return;
     }
@@ -32,8 +33,10 @@ export class MainComponent {
         ) {
           const homeRightHeader: HTMLAnchorElement | null =
             document.querySelector(selectors.homeRightHeader);
+          console.log("home-right-header=", homeRightHeader);
 
           this.applyModification(homeRightHeader, true);
+          console.log("Modification applied.....!");
 
           this.isElementFound = true;
         }

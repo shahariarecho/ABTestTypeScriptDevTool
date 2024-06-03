@@ -4,5 +4,5 @@ export enum TestInfo {
   TITLE = "8.14 Social Proof Reviews",
   CLIENT = "brainlab",
   TARGET = "https://www.consumercellular.com/shopping",
-  VARIATION = "2",
+  VARIATION = "1",
 }
