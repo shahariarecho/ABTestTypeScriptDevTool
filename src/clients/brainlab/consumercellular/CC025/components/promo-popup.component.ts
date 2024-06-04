@@ -1,4 +1,6 @@
 import {
+  closeIconSvg,
+  promoCode,
   redeemNowLink,
   storageKey,
   visitedLocationsStorageKey,
@@ -12,23 +14,26 @@ export class PromoPopupComponent {
       <div class="offer-popup" >
         <div class="promo-popup-component" >
           <div class="component-wrap" >
+            <div class="close-icon" >
+              ${closeIconSvg}
+            </div>
             <div class="headline" >
-              <h1>Unlock $25 Off</h1>
+              <h1>Unlock $25 Off now!*</h1>
             </div>
             <div class="sub-title" >
-              <h3>REDEEM TODAY, ENTER PROMO CODE</h3>
+              <h3>REDEEM NOW & ENTER PROMO CODE</h3>
             </div>
             <div class="title" >
-              <h2><span class="highlight-text" >'SAVE25'</span> AT CHECKOUT</h2>
+              <h2><span class="promo-code" >${promoCode}</span> AT CHECKOUT</h2>
             </div>
             <div class="redeem-now" >
-              <a href="${redeemNowLink}" >REDEEM NOW</a>
+              <a href="${redeemNowLink}?promo-code=${promoCode}" >REDEEM NOW</a>
             </div>
             <div class="skip-offer" >
               <a>SKIP OFFER</a>
             </div>
             <div class="notice" >
-              <p>DON'T MISS OUT ON THIS LIMITED TIME OFFER!</p>
+              <p>New customers get $25 in credit applied as a $5 credit over 5 invoices. Limit one promo per new account. Availability subject to change.</p>
             </div>
           </div>
         </div>
@@ -52,14 +57,14 @@ export class PromoPopupComponent {
     const offerPopup: null | HTMLDivElement =
       document.querySelector("div.offer-popup");
 
-    const skipButton: null | HTMLDivElement =
-      document.querySelector("div.skip-offer>a");
+    const closeIcon: null | HTMLDivElement =
+      document.querySelector("div.close-icon");
 
-    if (!offerPopup || !skipButton) {
+    if (!offerPopup || !closeIcon) {
       return;
     }
 
-    skipButton.addEventListener("click", (e) => {
+    closeIcon.addEventListener("click", (e) => {
       offerPopup.classList.remove("show");
     });
   };

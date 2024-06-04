@@ -27,6 +27,17 @@
         border: 4px solid #a2dced;
         border-radius: 10px;
         margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > div.close-icon {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          cursor: pointer;
+        }
 
         > div.headline {
           > h1 {
@@ -36,7 +47,7 @@
             font-size: 2.5em;
 
             @media only screen and (max-width: 556px) {
-              font-size: 30px;
+              font-size: 20px;
             }
           }
         }
@@ -51,7 +62,7 @@
             font-size: 23px;
 
             @media only screen and (max-width: 556px) {
-              font-size: 20px;
+              font-size: 15px;
             }
           }
         }
@@ -65,12 +76,12 @@
             font-size: 37px;
             text-align: center;
 
-            > span.highlight-text {
+            > span.promo-code {
               color: #f26631;
             }
 
             @media only screen and (max-width: 556px) {
-              font-size: 25px;
+              font-size: 17px;
             }
           }
         }
@@ -92,6 +103,7 @@
         }
 
         > div.skip-offer {
+          display: none !important;
           margin-top: 35px;
           display: flex;
           justify-content: center;
@@ -107,16 +119,30 @@
         }
 
         > div.notice {
-          margin-top: 40px;
+          margin-top: 20px;
+          max-width: 450px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           > p {
             text-align: center;
             color: #fff;
-            font-size: 20px;
+            font-size: 17px;
+            text-transform: uppercase;
 
             @media only screen and (max-width: 556px) {
-              font-size: 17px;
+              font-size: 13px;
             }
           }
+
+          @media only screen and (max-width: 556px) {
+            max-width: fit-content;
+          }
+        }
+
+        @media only screen and (max-width: 400px) {
+          padding: 30px 17px;
         }
       }
     }
