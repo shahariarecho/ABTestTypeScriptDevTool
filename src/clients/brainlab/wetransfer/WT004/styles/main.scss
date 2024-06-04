@@ -2,14 +2,14 @@
 
 .#{$id} {
   div.toast-component {
-    background: #9452ff;
+    background: #5268ff;
     bottom: 15px;
     color: #fff;
     display: block;
     left: 15px;
     box-sizing: border-box;
     position: fixed;
-    transform: translate3d(0, 120%, 0);
+    transform: translate3d(0, 130%, 0);
     transition: transform 1s;
     width: calc(100% - 30px);
     z-index: 999;
@@ -40,6 +40,12 @@
         background-color: #fff;
         color: #460a00;
         border: 1px solid #fff;
+      }
+
+      > a:hover {
+        background-color: #000;
+        border-color: #000;
+        color: #fff;
       }
 
       > div.close-icon {

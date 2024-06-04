@@ -6,12 +6,11 @@ import {
 } from "../common/asset";
 
 export class ToastComponent {
-  private cookieSectionCheckingCount: number = 0;
   private toast: null | HTMLDivElement = null;
 
-  private getHtml = (toastAppearanceClass: string): string => {
+  private getHtml = (): string => {
     const htmlString: string = `
-      <div class="toast-component ${toastAppearanceClass}" >
+      <div class="toast-component" >
         <div class="component-wrap" >
           <p>Ready to send big files?</p>
           <a class="start-btn" href="${getStartedLink}" >Get Started</a>
@@ -36,13 +35,17 @@ export class ToastComponent {
 
     const toastAppearanceClass: string = isCookieExist ? "toast-show" : "";
 
-    body.insertAdjacentHTML("beforeend", this.getHtml(toastAppearanceClass));
+    body.insertAdjacentHTML("beforeend", this.getHtml());
 
     this.toast = document.querySelector("div.toast-component");
 
     !isCookieExist && this.addCookieSectionListener();
 
     this.addToastListener();
+
+    setTimeout(() => {
+      this.toast && this.toast.classList.add(toastAppearanceClass);
+    }, 500);
   };
 
   addToastListener = () => {
