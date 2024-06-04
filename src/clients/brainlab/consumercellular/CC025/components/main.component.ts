@@ -68,7 +68,7 @@ export class MainComponent {
     if (params.has("promo-code")) {
       const promoCode: string | null = params.get("promo-code");
       console.log("Promo code found....!");
-      promoCode && this.submitPromoCode(promoCode);
+      promoCode && this.findPromoCodeInput(promoCode);
     }
   };
 
@@ -89,33 +89,44 @@ export class MainComponent {
     testObserver.observe(callback);
   };
 
-  submitPromoCode = async (promoCode: string) => {
-    const res = await fetch(
-      "https://www.consumercellular.com/shopping/api/basket/ApplyPromoCode/" +
-        promoCode,
-      {
-        headers: {
-          accept: "application/json, text/plain, */*",
-          "accept-language": "en-US,en;q=0.9",
-          priority: "u=1, i",
-          "referrer-policy": "strict-origin-when-cross-origin",
-          "sec-ch-ua":
-            '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
-          "sec-ch-ua-mobile": "?0",
-          "sec-ch-ua-platform": '"Windows"',
-          "sec-fetch-dest": "empty",
-          "sec-fetch-mode": "cors",
-          "sec-fetch-site": "same-origin",
-          cookie: document.cookie,
-          Referer: window.location.href,
-          "Referrer-Policy": "strict-origin-when-cross-origin",
-        },
-        body: null,
-        method: "POST",
-      }
-    );
+  submitPromoCode = (promoCode: string) => {
+    const promoCodeInputs: null | NodeListOf<HTMLInputElement> =
+      document.querySelectorAll(selectors.promoCodeInput);
 
-    console.log("res=", res);
+    const promoCodeSubmits: null | NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll(selectors.promoCodeSubmit);
+
+    if (
+      !promoCodeInputs ||
+      promoCodeInputs.length === 0 ||
+      !promoCodeSubmits ||
+      promoCodeSubmits.length === 0
+    ) {
+      return;
+    }
+
+    console.log("Promo code input and submit button found....!");
+
+    promoCodeInputs.forEach((input: HTMLInputElement) => {
+      input.removeAttribute("disabled");
+      input.value = promoCode;
+    });
+
+    if (isMobile()) {
+      promoCodeInputs[0].removeAttribute("disabled");
+      promoCodeInputs[0].value = promoCode;
+
+      promoCodeSubmits[0].removeAttribute("disabled");
+      promoCodeSubmits[0].click();
+      return;
+    }
+
+    promoCodeInputs[1].removeAttribute("disabled");
+    promoCodeInputs[1].value = promoCode;
+    promoCodeInputs[1].focus();
+
+    promoCodeSubmits[1].removeAttribute("disabled");
+    promoCodeSubmits[1].click();
   };
 
   shopPopupAccordingToVisitedLocationHistory = (
