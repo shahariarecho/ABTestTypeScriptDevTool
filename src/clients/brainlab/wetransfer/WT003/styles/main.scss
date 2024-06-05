@@ -20,12 +20,16 @@
         > div.swiper-wrapper {
           > section {
             background: none !important;
-            width: 80%;
+            width: 95%;
 
             > div.ui-column {
               > div.ui-column__container {
                 opacity: 1 !important;
               }
+            }
+
+            @media only screen and (max-width: 768px) {
+              width: 90%;
             }
           }
         }
@@ -50,13 +54,22 @@
     > div.carousel-controller {
       position: absolute;
       top: 45%;
-      left: 79%;
-      width: max-content;
+      width: 100%;
       z-index: 2;
-      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       > div.controller-wrap {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+
         > div.carousel-arrow {
+          cursor: pointer;
+
           > div.svg {
             display: flex;
             justify-content: center;

@@ -29,7 +29,7 @@ export class CarouselComponent {
                 ${rightArrowSvg}
               </div>
             </div>
-            <div class="carousel-arrow carousel-prev hide">
+            <div class="carousel-arrow carousel-prev">
               <div class="svg" >
                 ${leftArrowSvg}
               </div>
@@ -85,7 +85,10 @@ export class CarouselComponent {
     // @ts-ignore
     return new Swiper(".carousel", {
       slidesPerView: "auto",
-      spaceBetween: 30,
+      spaceBetween: 5,
+      // freeMode: true,
+      parallax: true,
+      loop: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -96,17 +99,17 @@ export class CarouselComponent {
       },
       on: {
         slideChange: () => {
-          this.findPaginationLastChild();
+          // this.findPaginationLastChild();
 
-          this.isPaginationChildFound &&
-            this.paginationLastChild &&
-            this.paginationFirstChild &&
-            this.carouselController &&
-            this.hideAndShowArrow(
-              this.paginationFirstChild,
-              this.paginationLastChild,
-              this.carouselController
-            );
+          // this.isPaginationChildFound &&
+          //   this.paginationLastChild &&
+          //   this.paginationFirstChild &&
+          //   this.carouselController &&
+          //   this.hideAndShowArrow(
+          //     this.paginationFirstChild,
+          //     this.paginationLastChild,
+          //     this.carouselController
+          //   );
 
           triggerEvent("carousal-slide-changed");
         },
