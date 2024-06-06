@@ -9,14 +9,16 @@ import {
 import { TestInfo } from "../common/test.info";
 import { LocationObserver } from "../observer/location.observer";
 import { TestObserver } from "../observer/test.observer";
+import { PromoNotificationComponent } from "./promo-notification.component";
 import { PromoPopupComponent } from "./promo-popup.component";
 
 export class MainComponent {
   promoPopupComponent: PromoPopupComponent = new PromoPopupComponent();
   isPromoInputFound: boolean = false;
+  isShaken: boolean = false;
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "1.1.1");
   }
 
   init = (): void => {
@@ -68,19 +70,21 @@ export class MainComponent {
     if (params.has("promo-code")) {
       const promoCode: string | null = params.get("promo-code");
       console.log("Promo code found....!");
-      promoCode && this.findPromoCodeInput(promoCode);
+      promoCode && this.findPromoCodeInput();
     }
   };
 
-  findPromoCodeInput = (promoCode: string) => {
+  findPromoCodeInput = () => {
+    console.log("Promo code input observing....!");
     const testObserver = new TestObserver("body");
+
     const callback = (mutationList: MutationRecord[]) => {
       for (let index = 0; index < mutationList.length; index++) {
         const target: Element = mutationList[index].target as Element;
 
         if (target.innerHTML.length > 210000 && !this.isPromoInputFound) {
-          this.submitPromoCode(promoCode);
-          console.log("Promo code input observing....!");
+          this.showPromoCodeNotification();
+          console.log("Promo code input found...!");
           this.isPromoInputFound = true;
         }
       }
@@ -89,16 +93,25 @@ export class MainComponent {
     testObserver.observe(callback);
   };
 
-  submitPromoCode = (promoCode: string) => {
-    const promoCodeInputs: null | NodeListOf<HTMLInputElement> =
-      document.querySelectorAll(selectors.promoCodeInput);
+  showPromoCodeNotification = () => {
+    const promoCodeFrames: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(selectors.promoCodeFrame);
 
-    const promoCodeSubmits: null | NodeListOf<HTMLButtonElement> =
+    const promoCodeSubmits: null | NodeListOf<HTMLDivElement> =
       document.querySelectorAll(selectors.promoCodeSubmit);
 
+    const discountAppliedText: null | HTMLDivElement = document.querySelector(
+      selectors.discountAppliedText
+    );
+
+    const carts: null | NodeListOf<HTMLAnchorElement> =
+      document.querySelectorAll(selectors.cart);
+
+    console.log("cart-length=", carts.length);
+
     if (
-      !promoCodeInputs ||
-      promoCodeInputs.length === 0 ||
+      !promoCodeFrames ||
+      promoCodeFrames.length === 0 ||
       !promoCodeSubmits ||
       promoCodeSubmits.length === 0
     ) {
@@ -107,26 +120,43 @@ export class MainComponent {
 
     console.log("Promo code input and submit button found....!");
 
-    promoCodeInputs.forEach((input: HTMLInputElement) => {
-      input.removeAttribute("disabled");
-      input.value = promoCode;
+    promoCodeFrames.forEach((frame: HTMLDivElement) => {
+      !discountAppliedText &&
+        carts &&
+        carts.length > 1 &&
+        setTimeout(() => {
+          frame.insertAdjacentHTML(
+            "beforeend",
+            PromoNotificationComponent.render()
+          );
+
+          this.hideNotificationOnApply(promoCodeSubmits);
+          isMobile() && this.shakeNotificationOnMobile();
+        }, 100);
     });
+  };
 
-    if (isMobile()) {
-      promoCodeInputs[0].removeAttribute("disabled");
-      promoCodeInputs[0].value = promoCode;
+  hideNotificationOnApply = (promoCodeSubmits: NodeListOf<HTMLDivElement>) => {
+    const promoNotifications: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll("div.promo-notification-component");
 
-      promoCodeSubmits[0].removeAttribute("disabled");
-      promoCodeSubmits[0].click();
+    if (!promoNotifications || promoNotifications.length == 0) {
       return;
     }
 
-    promoCodeInputs[1].removeAttribute("disabled");
-    promoCodeInputs[1].value = promoCode;
-    promoCodeInputs[1].focus();
+    promoCodeSubmits.forEach((btn: HTMLDivElement) => {
+      btn.addEventListener("click", () => {
+        promoNotifications.forEach((notification: HTMLDivElement) => {
+          notification.classList.add("hide");
+        });
 
-    promoCodeSubmits[1].removeAttribute("disabled");
-    promoCodeSubmits[1].click();
+        history.replaceState(
+          null,
+          "",
+          `${window.location.protocol}//${window.location.hostname}${window.location.pathname}`
+        );
+      });
+    });
   };
 
   shopPopupAccordingToVisitedLocationHistory = (
@@ -141,5 +171,26 @@ export class MainComponent {
       (location: string) => location === "/shopping/checkout"
     );
     checkoutIndex !== -1 && this.promoPopupComponent.showPromoPopup(offerPopup);
+  };
+
+  shakeNotificationOnMobile = () => {
+    const mobileNotification: null | HTMLDivElement = document.querySelector(
+      "div.input-component-frame.hide-phone-up>div.promo-notification-component"
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log("entry.boundingClientRect.top=", entry);
+
+        if (entry.isIntersecting && entry.boundingClientRect.top > 0) {
+          mobileNotification && mobileNotification.classList.remove("shake");
+          setTimeout(() => {
+            mobileNotification && mobileNotification.classList.add("shake");
+          }, 100);
+        }
+      });
+    });
+
+    mobileNotification && observer.observe(mobileNotification);
   };
 }
