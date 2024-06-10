@@ -1,5 +1,10 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors, swiperLibrary } from "../common/asset";
+import {
+  products,
+  selectors,
+  swiperLibrary,
+  triggerEvent,
+} from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { Loader } from "../loaders/loader";
 import { CarouselComponent } from "./carousel.component";
@@ -23,9 +28,15 @@ export class MainComponent {
             .load(swiperLibrary.js, "swiper-js", "script")
             .then((jsElm) => {
               jsElm && console.log("Swiper library loaded...!");
-              jsElm && this.carouselComponent.reactive();
+              jsElm && this.activeCarousals();
             });
       });
+  };
+
+  activeCarousals = () => {
+    products.forEach((product: any) => {
+      this.carouselComponent.reactive(product.name);
+    });
   };
 
   getHtml = () => {
@@ -37,16 +48,22 @@ export class MainComponent {
           </div>
           <div class="category-buttons" >
             <div class="buttons-container" >
-              <button id="shades" class="active" >Shades</button>
-              <button id="blinds" >Blinds</button>
-              <button id="shutters" >Shutters</button>
-              <button id="drapery" >Drapery</button>
+            ${products
+              .map(
+                (product: any) =>
+                  `<button class="${product.name}-shade" >${product.name}s</button>`
+              )
+              .join("\n")}
             </div>
           </div>
           <div class="description" >
             <p>Graber shades blend form and function to increase comfort and convenience for every home. Choose from a wide selection of designs that offer privacy, precise light control, easy operation, and protection from excess heat, glare, and UV rays—in on-trend colors and materials.</p>
           </div>
-          ${this.carouselComponent.getHtml("shade")}
+          ${products
+            .map((product: any, index: number) =>
+              this.carouselComponent.render(product.name, product.list, index)
+            )
+            .join("\n")}
         </div>
       </div>
     `;
@@ -64,5 +81,48 @@ export class MainComponent {
 
     homePageCarousel.insertAdjacentHTML("beforeend", this.getHtml());
     this.loadSwiper();
+    this.addCategoryButtonListener();
+    this.carouselComponent.addCardClickListener();
+  };
+
+  addCategoryButtonListener = () => {
+    const categoryButtons: null | NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll("div.buttons-container>button");
+
+    const carousels: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll("div.carousel-component");
+
+    if (
+      !categoryButtons ||
+      categoryButtons.length === 0 ||
+      !carousels ||
+      carousels.length === 0
+    ) {
+      return;
+    }
+
+    categoryButtons[0].classList.add("active");
+
+    categoryButtons.forEach((btn: HTMLButtonElement, index: number) => {
+      btn.addEventListener("click", () => {
+        this.removeActive(categoryButtons, carousels);
+        btn.classList.add("active");
+        carousels[index].classList.add("active");
+        triggerEvent("navigation-button-click");
+      });
+    });
+  };
+
+  removeActive = (
+    categoryButtons: NodeListOf<HTMLButtonElement>,
+    carousels: NodeListOf<HTMLDivElement>
+  ) => {
+    categoryButtons.forEach((btn: HTMLButtonElement) => {
+      btn.classList.remove("active");
+    });
+
+    carousels.forEach((carousel: HTMLDivElement) => {
+      carousel.classList.remove("active");
+    });
   };
 }

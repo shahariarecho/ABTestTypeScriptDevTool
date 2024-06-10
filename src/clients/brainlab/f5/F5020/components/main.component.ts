@@ -12,7 +12,7 @@ export class MainComponent {
   heroElm: null | HTMLElement = null;
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.5");
   }
 
   getLinkHtml = (href: string, text: string) => {

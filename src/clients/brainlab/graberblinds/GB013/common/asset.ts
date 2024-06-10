@@ -2,176 +2,244 @@ export const selectors = {
   homePageCarousel: "main#main-content>div>div:first-child",
 };
 
-export const products = {
-  shade: [
-    {
-      id: 0,
-      href: "/window-treatments/shades/cellular-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/vn3ire22tg/345x200px@2x/graber-1556-cellular-shades-rs18-v1_flipped.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
-      heading: "Cellular Shades",
-      description:
-        "Soft, versatile shades in a honeycomb-shaped cell design that traps air for maximum insulation and energy savings.",
-    },
-    {
-      id: 1,
-      href: "/window-treatments/shades/layered-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/hnufi1tusl/345x200px@2x/graber-4683-layered-shades-rs15-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
-      heading: "Layered Shades",
-      description:
-        "Materials with clean lines and a fabric-wrapped cassette for a modern take on light control.",
-    },
-    {
-      id: 2,
-      href: "/window-treatments/shades/natural-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/5jbwqmxnbx/345x200px@2x/graber-83320-natural-shades-room-darkening-rs21-v1.webp?crop=true&keep=nw&q=80&color=ffffffff&u=uitqtx",
-      heading: "Natural Shades",
-      description:
-        "Made with sustainable materials, our collection of earthy weaves, mixed textures, and metallic accents are an elegant way to bring the outdoors in.",
-    },
-    {
-      id: 3,
-      href: "/window-treatments/shades/roller-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/hw2f2mlkf2/345x200px@2x/graber-21393-roller-shades-rs20-v1.webp?keep=c&crop=y&quality=90",
-      heading: "Roller Shades",
-      description:
-        "Graber tailors these shades to your light control preferences, from sheer to blackout, while providing a clean, upscale look.",
-    },
-    {
-      id: 4,
-      href: "/window-treatments/shades/sheer-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/kfkdlhqkoq/345x200px@2x/graber-6124-sheer-shades-rs15-v1.webp?crop=true&keep=c&q=80&color=ffffffff&u=gzwudq",
-      heading: "Sheer Shades",
-      description:
-        "Seamless layers of sheer fabric create airy elegance while providing UV protection and light filtering.",
-    },
-    {
-      id: 5,
-      href: "/window-treatments/shades/solar-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/f10lp0w7ab/345x200px@2x/graber-10314-solar-shades-rs20-v2.webp?keep=c&crop=y&quality=90",
-      heading: "Solar Shades",
-      description:
-        "Stylish, semi-opaque fabrics offer glare and UV protection while maintaining an open view to the outdoors.",
-    },
-    {
-      id: 6,
-      href: "/window-treatments/shades/exterior-solar-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/ykddtw6ip7/345x200px@2x/Graber-47706-Solar-Shades-RS17-V1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
-      heading: "Exterior Solar Shades",
-      description:
-        "Light-filtering materials block UV rays and control temperature while adding flair to your outdoor space.",
-    },
-    {
-      id: 7,
-      href: "/window-treatments/shades/roman-shades/classic-roman-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/rrpkbsbjux/345x200px@2x/graber-3990-classic-roman-shades-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
-      heading: "Classic Roman Shades",
-      description:
-        "Featuring crisp lines and neutral hues, Graber Classic Roman Shades have a traditional design that creates a sleek, modern look.",
-    },
-    {
-      id: 8,
-      href: "/window-treatments/shades/roman-shades/tailored-roman-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/yzr8jorw6q/345x200px@2x/graber-1192-soft-roman-shade-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
-      heading: "Tailored Roman Shades",
-      description:
-        "Graber Tailored Roman Shades use dramatic colors, distinctive designs, and hand-tailoring to harness the power of fabric.",
-    },
-  ],
-  blind: [
-    {
-      id: 0,
-      href: "/window-treatments/blinds/wood-blinds/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/rws5golzew/345x200px@2x/graber-3030-wood-blinds-rs18-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
-      heading: "Wood Blinds",
-      description:
-        "Responsibly-sourced wood adds a rich warmth and insulation to any interior",
-    },
-    {
-      id: 1,
-      href: "/window-treatments/blinds/composite-and-faux-wood-blinds/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/u4fyop6l3o/345x200px@2x/Graber-2738-Faux-Wood-Blinds-RS17-V1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
-      heading: "Composite and Faux<br> Wood Blinds",
-      description:
-        "Durable alternatives to wood that are engineered to withstand moisture",
-    },
-    {
-      id: 2,
-      href: "/window-treatments/blinds/vertical-blinds/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/yn0tdcnrwe/345x200px@2x/graber-3131-vinyl-vertical-blinds-rs22-v2.webp?keep=c&crop=yes&q=90",
-      heading: "Vertical Blinds",
-      description:
-        "Coordinate your home with timeless solutions for light control in wide windows and patio doors",
-    },
-    {
-      id: 3,
-      href: "/window-treatments/blinds/vinyl-blinds/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/wxemork9td/345x200px@2x/graber-752-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
-      heading: "Vinyl Blinds",
-      description:
-        "A lightweight choice with light control and easy operation in a range of on-trend styles ",
-    },
-    {
-      id: 4,
-      href: "/window-treatments/blinds/aluminum-blinds/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/rtuogswdwq/345x200px@2x/graber-760-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
-      heading: "Aluminum Blinds",
-      description:
-        "Budget-friendly, durable solution for precise light control on windows of any size",
-    },
-    {
-      id: 5,
-      href: "/window-treatments/shades/sheer-shades/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/rzicxvusqh/345x200px@2x/graber-5242-sheer-shades-rs20-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
-      heading: "Soft Blinds",
-      description:
-        "Also known as Sheer Shades, Soft Blinds gently filter incoming light, while operating like traditional blinds.",
-    },
-  ],
-  drapery: [
-    {
-      id: 0,
-      href: "/window-treatments/drapery/artisan-drapery/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/osbicv3fb5/345x200px@2x/graber-5870-drapery-rs20-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
-      heading: "Custom Drapery",
-      description:
-        "Trendy fabrics in an array of styles can elegantly complete a room or coordinate with other window treatments ",
-    },
-    {
-      id: 1,
-      href: "/window-treatments/drapery/natural-drapes/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/t0flavhstt/345x200px@2x/graber-25052-natural-shades-drapes-rs21-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
-      heading: "Natural Drapes",
-      description:
-        "Graber Natural Drapes provide a great renewable material solution for wide windows and patio doors",
-    },
-    {
-      id: 2,
-      href: "/window-treatments/drapery/valances-and-cornices/",
-      imgSrc:
-        "https://embed.widencdn.net/img/springswindowfashions/oxsmbvwyh5/345x200px@2x/graber-1211-soft-roman-shade-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
-      heading: "Valances and Cornices",
-      description:
-        "Eye-catching accessories that can stand alone or complement your Graber window treatments.",
-    },
-  ],
-};
+export const products = [
+  {
+    name: "shade",
+    list: [
+      {
+        id: 0,
+        href: "/window-treatments/shades/cellular-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/vn3ire22tg/345x200px@2x/graber-1556-cellular-shades-rs18-v1_flipped.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
+        heading: "Cellular Shades",
+        description:
+          "Soft, versatile shades in a honeycomb-shaped cell design that traps air for maximum insulation and energy savings.",
+      },
+      {
+        id: 1,
+        href: "/window-treatments/shades/layered-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/hnufi1tusl/345x200px@2x/graber-4683-layered-shades-rs15-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
+        heading: "Layered Shades",
+        description:
+          "Materials with clean lines and a fabric-wrapped cassette for a modern take on light control.",
+      },
+      {
+        id: 2,
+        href: "/window-treatments/shades/natural-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/5jbwqmxnbx/345x200px@2x/graber-83320-natural-shades-room-darkening-rs21-v1.webp?crop=true&keep=nw&q=80&color=ffffffff&u=uitqtx",
+        heading: "Natural Shades",
+        description:
+          "Made with sustainable materials, our collection of earthy weaves, mixed textures, and metallic accents are an elegant way to bring the outdoors in.",
+      },
+      {
+        id: 3,
+        href: "/window-treatments/shades/roller-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/hw2f2mlkf2/345x200px@2x/graber-21393-roller-shades-rs20-v1.webp?keep=c&crop=y&quality=90",
+        heading: "Roller Shades",
+        description:
+          "Graber tailors these shades to your light control preferences, from sheer to blackout, while providing a clean, upscale look.",
+      },
+      {
+        id: 4,
+        href: "/window-treatments/shades/sheer-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/kfkdlhqkoq/345x200px@2x/graber-6124-sheer-shades-rs15-v1.webp?crop=true&keep=c&q=80&color=ffffffff&u=gzwudq",
+        heading: "Sheer Shades",
+        description:
+          "Seamless layers of sheer fabric create airy elegance while providing UV protection and light filtering.",
+      },
+      {
+        id: 5,
+        href: "/window-treatments/shades/solar-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/f10lp0w7ab/345x200px@2x/graber-10314-solar-shades-rs20-v2.webp?keep=c&crop=y&quality=90",
+        heading: "Solar Shades",
+        description:
+          "Stylish, semi-opaque fabrics offer glare and UV protection while maintaining an open view to the outdoors.",
+      },
+      {
+        id: 6,
+        href: "/window-treatments/shades/exterior-solar-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/ykddtw6ip7/345x200px@2x/Graber-47706-Solar-Shades-RS17-V1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
+        heading: "Exterior Solar Shades",
+        description:
+          "Light-filtering materials block UV rays and control temperature while adding flair to your outdoor space.",
+      },
+      {
+        id: 7,
+        href: "/window-treatments/shades/roman-shades/classic-roman-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rrpkbsbjux/345x200px@2x/graber-3990-classic-roman-shades-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Classic Roman Shades",
+        description:
+          "Featuring crisp lines and neutral hues, Graber Classic Roman Shades have a traditional design that creates a sleek, modern look.",
+      },
+      {
+        id: 8,
+        href: "/window-treatments/shades/roman-shades/tailored-roman-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/yzr8jorw6q/345x200px@2x/graber-1192-soft-roman-shade-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Tailored Roman Shades",
+        description:
+          "Graber Tailored Roman Shades use dramatic colors, distinctive designs, and hand-tailoring to harness the power of fabric.",
+      },
+    ],
+  },
+  {
+    name: "blind",
+    list: [
+      {
+        id: 0,
+        href: "/window-treatments/blinds/wood-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rws5golzew/345x200px@2x/graber-3030-wood-blinds-rs18-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Wood Blinds",
+        description:
+          "Responsibly-sourced wood adds a rich warmth and insulation to any interior",
+      },
+      {
+        id: 1,
+        href: "/window-treatments/blinds/composite-and-faux-wood-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/u4fyop6l3o/345x200px@2x/Graber-2738-Faux-Wood-Blinds-RS17-V1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Composite and Faux<br> Wood Blinds",
+        description:
+          "Durable alternatives to wood that are engineered to withstand moisture",
+      },
+      {
+        id: 2,
+        href: "/window-treatments/blinds/vertical-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/yn0tdcnrwe/345x200px@2x/graber-3131-vinyl-vertical-blinds-rs22-v2.webp?keep=c&crop=yes&q=90",
+        heading: "Vertical Blinds",
+        description:
+          "Coordinate your home with timeless solutions for light control in wide windows and patio doors",
+      },
+      {
+        id: 3,
+        href: "/window-treatments/blinds/vinyl-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/wxemork9td/345x200px@2x/graber-752-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Vinyl Blinds",
+        description:
+          "A lightweight choice with light control and easy operation in a range of on-trend styles ",
+      },
+      {
+        id: 4,
+        href: "/window-treatments/blinds/aluminum-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rtuogswdwq/345x200px@2x/graber-760-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Aluminum Blinds",
+        description:
+          "Budget-friendly, durable solution for precise light control on windows of any size",
+      },
+      {
+        id: 5,
+        href: "/window-treatments/shades/sheer-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rzicxvusqh/345x200px@2x/graber-5242-sheer-shades-rs20-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Soft Blinds",
+        description:
+          "Also known as Sheer Shades, Soft Blinds gently filter incoming light, while operating like traditional blinds.",
+      },
+    ],
+  },
+  {
+    name: "shutter",
+    list: [
+      {
+        id: 0,
+        href: "/window-treatments/blinds/wood-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rws5golzew/345x200px@2x/graber-3030-wood-blinds-rs18-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Wood Blinds",
+        description:
+          "Responsibly-sourced wood adds a rich warmth and insulation to any interior",
+      },
+      {
+        id: 1,
+        href: "/window-treatments/blinds/composite-and-faux-wood-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/u4fyop6l3o/345x200px@2x/Graber-2738-Faux-Wood-Blinds-RS17-V1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Composite and Faux<br> Wood Blinds",
+        description:
+          "Durable alternatives to wood that are engineered to withstand moisture",
+      },
+      {
+        id: 2,
+        href: "/window-treatments/blinds/vertical-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/yn0tdcnrwe/345x200px@2x/graber-3131-vinyl-vertical-blinds-rs22-v2.webp?keep=c&crop=yes&q=90",
+        heading: "Vertical Blinds",
+        description:
+          "Coordinate your home with timeless solutions for light control in wide windows and patio doors",
+      },
+      {
+        id: 3,
+        href: "/window-treatments/blinds/vinyl-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/wxemork9td/345x200px@2x/graber-752-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Vinyl Blinds",
+        description:
+          "A lightweight choice with light control and easy operation in a range of on-trend styles ",
+      },
+      {
+        id: 4,
+        href: "/window-treatments/blinds/aluminum-blinds/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rtuogswdwq/345x200px@2x/graber-760-aluminum-horizontal-blinds-rs20-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Aluminum Blinds",
+        description:
+          "Budget-friendly, durable solution for precise light control on windows of any size",
+      },
+      {
+        id: 5,
+        href: "/window-treatments/shades/sheer-shades/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/rzicxvusqh/345x200px@2x/graber-5242-sheer-shades-rs20-v1.webp?crop=true&keep=c&color=ffffffff&u=tqysvj",
+        heading: "Soft Blinds",
+        description:
+          "Also known as Sheer Shades, Soft Blinds gently filter incoming light, while operating like traditional blinds.",
+      },
+    ],
+  },
+  {
+    name: "drapery",
+    list: [
+      {
+        id: 0,
+        href: "/window-treatments/drapery/artisan-drapery/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/osbicv3fb5/345x200px@2x/graber-5870-drapery-rs20-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
+        heading: "Custom Drapery",
+        description:
+          "Trendy fabrics in an array of styles can elegantly complete a room or coordinate with other window treatments ",
+      },
+      {
+        id: 1,
+        href: "/window-treatments/drapery/natural-drapes/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/t0flavhstt/345x200px@2x/graber-25052-natural-shades-drapes-rs21-v1.webp?crop=true&keep=c&color=ffffffff&u=sepr1w",
+        heading: "Natural Drapes",
+        description:
+          "Graber Natural Drapes provide a great renewable material solution for wide windows and patio doors",
+      },
+      {
+        id: 2,
+        href: "/window-treatments/drapery/valances-and-cornices/",
+        imgSrc:
+          "https://embed.widencdn.net/img/springswindowfashions/oxsmbvwyh5/345x200px@2x/graber-1211-soft-roman-shade-rs22-v1.webp?keep=c&crop=yes&quality=80&u=docgsq",
+        heading: "Valances and Cornices",
+        description:
+          "Eye-catching accessories that can stand alone or complement your Graber window treatments.",
+      },
+    ],
+  },
+];
 
 export const triggerEvent = (apiName: string) => {
   //@ts-ignore

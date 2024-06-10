@@ -1,29 +1,6 @@
 @import "./common";
 
 .#{$id} {
-  &__hide {
-    display: none !important;
-  }
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
-  }
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-  }
-
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-  }
-
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-  }
-
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-  }
-
   div.main-component {
     background-color: #4a7d8726;
     display: flex;
@@ -31,7 +8,7 @@
     align-items: center;
 
     > div.component-wrap {
-      max-width: 1280px;
+      max-width: 100%;
       padding: 20px 20px 40px 20px;
 
       > div.heading {
@@ -58,6 +35,11 @@
         align-items: center;
 
         > div.buttons-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+
           > button {
             margin: 20px 10px;
             height: 40px;
@@ -66,6 +48,7 @@
             background-color: #ffffff;
             font-weight: 500;
             border-radius: 3px;
+            text-transform: capitalize;
           }
 
           > button.active {
@@ -86,7 +69,19 @@
           text-align: center;
         }
       }
+
+      @media only screen and (min-width: 1200px) {
+        max-width: 1200px;
+      }
     }
+  }
+
+  div.carousel-component {
+    display: none;
+  }
+
+  div.carousel-component.active {
+    display: block !important;
   }
 
   .container-carousel {
@@ -125,7 +120,6 @@
   }
 
   .swiper-slide {
-    width: 350px !important;
     height: 400px !important;
     border: 1px solid #d5d6d780;
     cursor: pointer;

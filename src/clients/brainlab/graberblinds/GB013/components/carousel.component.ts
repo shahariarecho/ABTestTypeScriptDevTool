@@ -9,7 +9,7 @@ import { Card } from "../models/card";
 export class CarouselComponent {
   static getSwiperSlideHtml = (card: Card, index: number): string => {
     const htmlString: string = `
-      <div class="swiper-slide carousel-item-${index}">
+      <div class="swiper-slide carousel-item-${index}" slide-link="${card.href}" >
         <div class="blind-card" >
           <div class="card-img">
             <img src="${card.imgSrc}" alt="">
@@ -26,14 +26,16 @@ export class CarouselComponent {
     return htmlString.trim();
   };
 
-  getHtml = (carousel: string): string => {
+  getHtml = (category: string, products: Card[], index: number): string => {
+    const activeClassName: string = index === 0 ? "active" : "";
+
     const htmlString: string = `
-      <div class="carousel-component ${carousel}" >
+      <div class="carousel-component ${category}-carousel ${activeClassName}" >
         <div class="component-wrap" >
           <div class="container-carousel">
-          <div class="swiper carousel">
+          <div class="swiper carousel-${category}">
             <div class="swiper-wrapper">
-            ${products.shade
+            ${products
               .map((card: Card, index: number) =>
                 CarouselComponent.getSwiperSlideHtml(card, index)
               )
@@ -41,13 +43,13 @@ export class CarouselComponent {
             </div>
           </div>
           <div class="carousel-controller" >
-            <div class="carousel-prev">
+            <div class="${category}-carousel-prev carousel-prev">
               <div class="svg" >
                 ${leftArrowSvg}
               </div>
             </div>
-            <div class="carousel-pagination"></div>
-            <div class="carousel-next">
+            <div class="${category}-carousel-pagination carousel-pagination"></div>
+            <div class="${category}-carousel-next carousel-next">
               <div class="svg" >
                 ${rightArrowSvg}
               </div>
@@ -61,31 +63,61 @@ export class CarouselComponent {
     return htmlString.trim();
   };
 
-  render = () => {
-    return this.getHtml();
+  render = (category: string, products: Card[], index: number) => {
+    return this.getHtml(category, products, index);
   };
 
-  reactive = (): any => {
-    console.log("Swiper initializing....!");
+  reactive = (category: string): any => {
+    console.log(`Swiper ${category} initializing....!`);
 
     // @ts-ignore
-    return new Swiper(".carousel", {
-      slidesPerView: "auto",
+    return new Swiper(".carousel-" + category, {
+      slidesPerView: 1,
       spaceBetween: 30,
       navigation: {
-        nextEl: ".carousel-next",
-        prevEl: ".carousel-prev",
+        nextEl: `.${category}-carousel-next`,
+        prevEl: `.${category}-carousel-prev`,
       },
       pagination: {
-        el: ".carousel-pagination",
+        el: `.${category}-carousel-pagination`,
         type: "bullets",
         clickable: true,
+      },
+      breakpoints: {
+        420: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        1140: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
       },
       on: {
         sliderMove: function () {
           triggerEvent("window-treatments-blinds-carousel-move");
         },
       },
+    });
+  };
+
+  addCardClickListener = () => {
+    const slides: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll("div.swiper-slide");
+    slides.forEach((slide: HTMLDivElement) => {
+      slide.addEventListener("click", () => {
+        const cardLink: string | null = slide.getAttribute("slide-link");
+        triggerEvent("card-click");
+        window.location.href = `${window.location.origin}${cardLink}`;
+      });
     });
   };
 }
