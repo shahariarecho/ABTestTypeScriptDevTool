@@ -44,6 +44,8 @@ export class ServiceComponent {
       blindCards.push(blindCard);
     });
 
+    console.log("blind-cards=", JSON.stringify(blindCards));
+
     return blindCards;
   };
 }

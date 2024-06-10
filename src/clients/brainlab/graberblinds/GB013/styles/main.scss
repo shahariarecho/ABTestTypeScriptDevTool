@@ -1,0 +1,186 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  div.main-component {
+    background-color: #4a7d8726;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div.component-wrap {
+      max-width: 1280px;
+      padding: 20px 20px 40px 20px;
+
+      > div.heading {
+        > h1 {
+          font-family: "CapitoliumHeadLight", "Lucida Bright", "Palatino",
+            "Palatino Linotype", "Palatino LT STD", "Georgia", serif;
+          font-style: normal;
+          letter-spacing: 0;
+          text-transform: none;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-weight: normal;
+          color: #231f20;
+          font-size: var(--step-4);
+          line-height: 1.24;
+          text-align: center;
+        }
+      }
+
+      > div.category-buttons {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > div.buttons-container {
+          > button {
+            margin: 20px 10px;
+            height: 40px;
+            width: 100px;
+            border: 2px solid #231f20;
+            background-color: #ffffff;
+            font-weight: 500;
+            border-radius: 3px;
+          }
+
+          > button.active {
+            border: 2px solid #4a7d87;
+            background-color: #4a7d87;
+            color: #ffffff;
+          }
+        }
+      }
+
+      > div.description {
+        max-width: 830px;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+        > p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .container-carousel {
+    height: 450px;
+
+    div.carousel-controller {
+      width: max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+
+      .carousel-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        > span.swiper-pagination-bullet-active {
+          background-color: #4a7d87 !important;
+        }
+      }
+
+      div.carousel-prev,
+      div.carousel-next {
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1;
+
+        > div.svg {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .swiper-slide {
+    width: 350px !important;
+    height: 400px !important;
+    border: 1px solid #d5d6d780;
+    cursor: pointer;
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.1), 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+
+    > div.blind-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      > div.card-img {
+        flex: 1;
+
+        > img {
+          width: 100%;
+        }
+      }
+
+      > div.card-content {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+        align-items: flex-start;
+
+        > h2 {
+          color: #000;
+          line-height: 28px;
+          @media only screen and (max-width: 768px) {
+            font-size: 17px;
+          }
+        }
+
+        > p {
+          margin-top: 10px;
+          color: #000;
+          line-height: 24px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 15px;
+          }
+        }
+
+        > a {
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+}
