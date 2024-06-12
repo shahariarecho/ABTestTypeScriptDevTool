@@ -26,7 +26,7 @@ export class MainComponent {
 
   getTrustRadiusHtml = (variation: string): string => {
     const v1HtmlString: string = `
-      <div class="trustradius-component">
+      <div class="trustradius-component hide">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65eb2c450ef0590906e780b0"></div>
         </div>
@@ -34,7 +34,7 @@ export class MainComponent {
     `;
 
     const v2HtmlString: string = `
-      <div class="trustradius-component">
+      <div class="trustradius-component hide">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65c0f13fe4798abb8b45d41a"></div>
         </div>

@@ -19,7 +19,7 @@ export class MainComponent {
 
   getTrustRadiusHtml = (): string => {
     const htmlString: string = `
-      <div class="trustradius-component">
+      <div class="trustradius-component hide">
         <div class="container" >
           <div class="trustradius-tqw" data-trustradius-id="65c0f13fe4798abb8b45d41a"></div>
         </div>
