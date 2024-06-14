@@ -1,0 +1,77 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  div.disclaimer-component {
+    margin-top: 50px;
+  }
+
+  div.trade-in-prompt.on-top {
+    display: none;
+  }
+
+  div.message-component {
+    padding: 1em;
+    border-radius: 0.5rem;
+    width: 100%;
+    background-color: #d9f0f6;
+    color: #001e45;
+    font-size: 1.6rem;
+
+    font-weight: 500;
+
+    > div.component-wrap {
+      > p {
+        margin: 0 !important;
+        line-height: 1.5;
+      }
+
+      > p.free {
+        font-weight: bold;
+      }
+
+      > p.redeem {
+        > a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  div#shopping-page-container
+    > div.body-content
+    > div.container
+    > div.grid-container {
+    margin-top: 10px;
+  }
+
+  div.placeholder-device-header {
+    margin-top: 35px;
+  }
+
+  div.product-image {
+    margin-bottom: 15px;
+  }
+}
