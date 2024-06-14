@@ -68,7 +68,7 @@ export class CarouselComponent {
   };
 
   reactive = (category: string): any => {
-    console.log(`Swiper ${category} initializing....!`);
+    console.debug(`Swiper ${category} initializing....!`);
 
     // @ts-ignore
     return new Swiper(".carousel-" + category, {

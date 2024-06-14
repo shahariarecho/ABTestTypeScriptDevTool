@@ -13,7 +13,7 @@ export class MainComponent {
   carouselComponent: CarouselComponent = new CarouselComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.5");
   }
 
   loadSwiper = () => {
@@ -27,16 +27,22 @@ export class MainComponent {
           jsLoader
             .load(swiperLibrary.js, "swiper-js", "script")
             .then((jsElm) => {
-              jsElm && console.log("Swiper library loaded...!");
+              jsElm && console.debug("Swiper library loaded...!");
               jsElm && this.activeCarousals();
             });
       });
   };
 
   activeCarousals = () => {
-    products.forEach((product: any) => {
-      this.carouselComponent.reactive(product.name);
-    });
+    console.debug("Searching swiper....!");
+    // @ts-ignore
+    if (typeof Swiper === "function") {
+      products.forEach((product: any) => {
+        this.carouselComponent.reactive(product.name);
+      });
+    } else {
+      this.activeCarousals();
+    }
   };
 
   getHtml = () => {
