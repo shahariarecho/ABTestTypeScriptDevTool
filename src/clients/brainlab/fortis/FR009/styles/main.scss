@@ -1,0 +1,113 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  body > main {
+    display: none;
+  }
+
+  div.main-component {
+    > div.component-wrap {
+      > div.navbar-component {
+        background-color: #001b32;
+        padding: 10px 20px;
+
+        > div.component-wrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          > div.logo {
+            > img {
+              width: 100px;
+              height: 50px;
+            }
+          }
+
+          > div.cta {
+            > button {
+              background-color: #fdb913;
+              border-radius: 35px;
+              color: #000000;
+              padding: 15px 30px;
+              font-weight: 700;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      > div.hero-component {
+        background-image: url("https://brainlabs.digital/cro/fortis/fr009/hero-bg.jpg");
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+
+        > div.component-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          > div.heading {
+            margin-top: 50px;
+
+            > h2 {
+              color: #fff;
+              font-style: italic;
+              line-height: 0.7;
+              text-align: center;
+            }
+          }
+
+          > div.sub-heading {
+            > h4 {
+              color: #fdb913;
+              font-style: italic;
+            }
+          }
+
+          > div.cta {
+            > button {
+              background-color: #fdb913;
+              border-radius: 35px;
+              color: #000000;
+              padding: 15px 30px;
+              font-weight: 700;
+              cursor: pointer;
+            }
+          }
+
+          > div.description {
+            > p {
+              color: #fff;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+  }
+}
