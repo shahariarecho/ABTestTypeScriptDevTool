@@ -17,7 +17,7 @@ export class CarouselComponent {
           <div class="card-content">
             <h2>${card.heading}</h2>
             <p>${card.description}</p>
-            <a href="${card.href}" >Take a look</a>
+            <a class="link" href="${card.href}" >Take a look</a>
           </div>
         </div>
       </div>
