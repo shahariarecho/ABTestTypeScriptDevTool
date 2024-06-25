@@ -62,10 +62,20 @@ export class SuccessStoryComponent {
     return htmlString.trim();
   };
 
-  render = (unbounceTitle: HTMLDivElement) => {
+  render = () => {
+    const aboutComponent: null | HTMLDivElement = document.querySelector(
+      "div.about-component"
+    );
+
+    if (!aboutComponent) {
+      return;
+    }
+
     const stories: SuccessStory[] = this.collectSuccessStories();
 
-    unbounceTitle.insertAdjacentHTML("afterend", this.getHtml(stories));
+    console.log("stories", stories);
+
+    aboutComponent.insertAdjacentHTML("afterend", this.getHtml(stories));
 
     const leftArrow: null | HTMLDivElement =
       document.querySelector("div.left-arrow");

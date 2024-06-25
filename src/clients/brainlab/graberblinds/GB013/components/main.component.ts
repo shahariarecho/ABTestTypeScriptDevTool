@@ -13,7 +13,7 @@ export class MainComponent {
   carouselComponent: CarouselComponent = new CarouselComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.5");
+    Initializer.init(TestInfo, "1.1.5");
   }
 
   loadSwiper = () => {

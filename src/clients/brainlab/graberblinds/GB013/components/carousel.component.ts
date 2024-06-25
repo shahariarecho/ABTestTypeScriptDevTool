@@ -84,8 +84,12 @@ export class CarouselComponent {
         clickable: true,
       },
       breakpoints: {
-        420: {
+        499: {
           slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        500: {
+          slidesPerView: 2,
           spaceBetween: 10,
         },
         768: {
