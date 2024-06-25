@@ -1,5 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors } from "../common/asset";
+import { selectors, telInfo } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { LocationObserver } from "../observer/location.observer";
 import { TestObserver } from "../observer/test.observer";
@@ -14,7 +14,7 @@ export class MainComponent {
   messageComponent: MessageComponent = new MessageComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.1.1");
   }
 
   init = (): void => {
@@ -45,7 +45,7 @@ export class MainComponent {
         );
 
         if (blueBar && !this.isBlueBarFound && this.isPathNameApplicable()) {
-          this.messageComponent.render(blueBar);
+          this.messageComponent.render(blueBar, telInfo.byod);
           this.isBlueBarFound = true;
         }
 
@@ -58,7 +58,7 @@ export class MainComponent {
           !this.isTradeInPromptFound &&
           this.isPathNameApplicable()
         ) {
-          this.messageComponent.render(tradeInPrompt);
+          this.messageComponent.render(tradeInPrompt, telInfo.plp);
           this.isTradeInPromptFound = true;
         }
       }

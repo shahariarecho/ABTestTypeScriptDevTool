@@ -4,11 +4,23 @@ export const selectors = {
   bodyContent: "div#shopping-page-container>div.body-content",
 };
 
+export const telInfo = {
+  byod: {
+    telNumber: 8887660504,
+    telText: "(888)766-0504",
+  },
+  plp: {
+    telNumber: 8887660506,
+    telText: "(888)766-0506",
+  },
+};
+
 export const tradeMessage = {
   free: "Buy any phone and get two months of service free.",
   term: "This offer is for new customers. Terms apply.*",
-  redeem:
-    "Call <a class='tel-number' href='tel:+8887660504' >(888)766-0504</a> to redeem offer. Offer ends July 31, 2024.",
+  redeem: (telInfo: any): string => {
+    return `Call <a class='tel-number' href='tel:+${telInfo.telNumber}' >${telInfo.telText}</a> to redeem offer. Offer ends July 31, 2024.`;
+  },
 };
 
 export const disclaimer: string =
