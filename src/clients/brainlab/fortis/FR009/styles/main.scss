@@ -25,7 +25,9 @@
   }
 
   body > main {
-    display: none;
+    > div > div:not(:last-child) {
+      display: none;
+    }
   }
 
   div.main-component {
@@ -609,6 +611,226 @@
                 > p {
                   margin: 0 !important;
                 }
+              }
+            }
+          }
+        }
+      }
+
+      > div.footer-component {
+        padding: 20px;
+        background-color: #f3f4f7;
+
+        > div.component-wrap {
+          max-width: 992px;
+          margin: 20px auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            > div.text-content {
+              > p {
+                margin: 0 !important;
+              }
+            }
+          }
+
+          > div.location {
+          }
+
+          > div.email {
+          }
+
+          > div.contact {
+          }
+        }
+      }
+
+      > div.copyright-component {
+        padding: 20px;
+
+        > div.component-wrap {
+          > div.copyright-info {
+            > p {
+              text-align: center;
+              margin: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div#rfiModal {
+    > div.rfi {
+      background-color: #001b32;
+      border-radius: 15px;
+      height: max-content;
+      width: 450px;
+
+      > div.rfi-modal-container {
+        padding: 20px;
+
+        > div.form-header {
+          margin-top: 20px;
+          margin-bottom: 20px;
+
+          > div {
+            h4 {
+              margin: 0 !important;
+              text-align: center;
+              font-weight: 900;
+            }
+
+            > a {
+              margin: 0 !important;
+              text-align: center;
+            }
+          }
+
+          > div.title {
+            > h4 {
+              color: #ffffff;
+              font-style: italic;
+            }
+          }
+
+          > div.sub-title {
+            > h4 {
+              color: #ffffff;
+              font-style: italic;
+            }
+          }
+
+          > div.tel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > a {
+              color: #fdb913;
+              font-style: italic;
+              font-weight: 900;
+            }
+          }
+
+          > div.availability {
+            > h4 {
+              color: #5cb7e7;
+            }
+          }
+        }
+
+        > div.modal-header {
+          display: none;
+        }
+
+        > div.modal-content {
+          > div.disclaimer {
+            margin-top: 10px;
+
+            > p {
+              color: #fff;
+              margin: 0;
+
+              a {
+                color: #fff;
+                text-decoration: underline;
+              }
+            }
+          }
+
+          input,
+          select {
+            border-radius: 10px;
+            border: 2px solid #5cb7e7;
+          }
+
+          > div.form-el {
+            > div {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              > div.label {
+                width: 120px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                > p {
+                  margin: 0 !important;
+                  color: #fff;
+                }
+                > span {
+                  margin-left: 5px;
+                  color: red;
+                }
+              }
+
+              > select {
+                margin-left: 10px;
+              }
+            }
+          }
+
+          > div:nth-child(3),
+          div:nth-child(4),
+          div:nth-child(5),
+          div:nth-child(6),
+          div:nth-child(7) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            > div.label {
+              width: 120px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              > p {
+                margin: 0 !important;
+                color: #fff;
+              }
+              > span {
+                margin-left: 5px;
+                color: red;
+              }
+            }
+
+            > input {
+              margin-left: 10px;
+            }
+          }
+
+          > div.submit {
+            > button {
+              width: fit-content;
+              padding: 10px 40px;
+              color: #012b51;
+              border-radius: 5px;
+              text-transform: uppercase;
+              font-size: 15px;
+              font-weight: 900;
+            }
+          }
+
+          > div.required {
+            margin-top: 15px;
+
+            > p {
+              margin: 0;
+              color: #ffffff;
+
+              > span {
+                color: #ff0000;
+                margin-right: 5px;
               }
             }
           }

@@ -1,8 +1,16 @@
-import { title } from "../../FR006/common/asset";
-
 export const selectors = {
   successStories: "div.success-stories",
   main: "body>main",
+  existApplyBtn: "div.rfi-btn>a",
+  newApplyBtn: "div.cta>button",
+  modalHeader: "div#rfiModal>div.rfi>div.rfi-modal-container>div.modal-header",
+  programSelect: "select.program-select",
+  firstName: "input#firstName",
+  lastName: "input#lastName",
+  email: "input#email",
+  phone: "input#phone",
+  zip: "input#zip",
+  disclaimer: "div.disclaimer",
 };
 
 export const leftArrowSvg = `
@@ -221,3 +229,22 @@ export const promises = [
     description: `At campuses nationwide, Fortis offers career education and training programs in the nursing, healthcare, medical, dental, skilled trades, massage and cosmetology career fields.`,
   },
 ];
+
+export const companyInfo = {
+  location: {
+    icon: "https://brainlabs.digital/cro/fortis/fr009/address.png",
+    city: "Fortis Institute - Houston North",
+    address: "450 N. Sam Houston Parkway E, Suite 200",
+    zipCode: "Houston, TX 77060",
+  },
+  email: {
+    icon: "https://brainlabs.digital/cro/fortis/fr009/email.png",
+    email: "admission@fortis.edu",
+  },
+  contact: {
+    icon: "https://brainlabs.digital/cro/fortis/fr009/phone.png",
+    type: "Telephone",
+    numberText: "855-980-1886",
+    number: 8559801886,
+  },
+};

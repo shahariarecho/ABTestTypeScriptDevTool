@@ -4,6 +4,8 @@ import { TestInfo } from "../common/test.info";
 import { AboutComponent } from "./about.component";
 import { ContactComponent } from "./contact.component";
 import { FeatureComponent } from "./feature.component";
+import { FooterComponent } from "./footer.component";
+import { FormModifierComponent } from "./form-modifier.component";
 import { HeroComponent } from "./hero.component";
 import { NavbarComponent } from "./navbar.component";
 import { OfferComponent } from "./offer.component";
@@ -19,6 +21,8 @@ export class MainComponent {
   successStoryComponent: SuccessStoryComponent = new SuccessStoryComponent();
   offerComponent: OfferComponent = new OfferComponent();
   promiseComponent: PromiseComponent = new PromiseComponent();
+  footerComponent: FooterComponent = new FooterComponent();
+  formModifierComponent: FormModifierComponent = new FormModifierComponent();
 
   constructor() {
     Initializer.init(TestInfo, "0.0.1");
@@ -45,6 +49,7 @@ export class MainComponent {
             subTitle: "",
             description: "Your Career Starts Here.",
           })}
+          ${this.footerComponent.getHtml()}
         </div>
       </div>
     `;
@@ -61,5 +66,26 @@ export class MainComponent {
 
     main.insertAdjacentHTML("afterend", this.getHtml());
     this.successStoryComponent.render();
+    this.configApplyForm();
+    this.formModifierComponent.modify();
+  };
+
+  configApplyForm = () => {
+    const existApplyBtn: null | HTMLAnchorElement = document.querySelector(
+      selectors.existApplyBtn
+    );
+
+    const newApplyBtns: null | NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll(selectors.newApplyBtn);
+
+    if (!existApplyBtn || !newApplyBtns || newApplyBtns.length === 0) {
+      return;
+    }
+
+    newApplyBtns.forEach((btn: HTMLButtonElement) => {
+      btn.addEventListener("click", () => {
+        existApplyBtn.click();
+      });
+    });
   };
 }
