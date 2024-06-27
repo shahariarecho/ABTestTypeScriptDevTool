@@ -5,6 +5,7 @@ export const selectors = {
   nthAemGrid:
     "div.root.responsivegrid>div>div.responsivegrid.aem-GridColumn.aem-GridColumn--default--12 > div.aem-Grid>div:nth-child",
   guideSlider: "div[data-component-title='Ceros']",
+  footer: "div[data-component-title='Footer']",
 };
 
 export const mboxNames = {
