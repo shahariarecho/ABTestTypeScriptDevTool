@@ -61,6 +61,6 @@ export class CarousalComponent {
       return;
     }
 
-    middleDescription.insertAdjacentHTML("afterend", this.getHtml());
+    // middleDescription.insertAdjacentHTML("afterend", this.getHtml());
   };
 }

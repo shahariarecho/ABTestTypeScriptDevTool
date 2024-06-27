@@ -19,12 +19,12 @@ export class MainComponent {
   learnStepComponent: LearnStepComponent = new LearnStepComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.1.1");
   }
 
   init = (): void => {
     this.addGoals();
-    this.variation === "1" && this.applyModification();
+    this.applyModification();
   };
 
   applyModification = () => {
@@ -43,10 +43,19 @@ export class MainComponent {
     }
 
     carousel.classList.add("carousal");
-
     const clonedCarousel = carousel.cloneNode(true);
-
     carousel.remove();
+
+    if (this.variation === "1") {
+      const footer: null | HTMLDivElement = document.querySelector(
+        selectors.footer
+      );
+
+      footer &&
+        footer.insertAdjacentElement("beforebegin", clonedCarousel as Element);
+
+      return;
+    }
 
     const platter: null | HTMLDivElement = document.querySelector(
       selectors.nthAemGrid + "(4)"
