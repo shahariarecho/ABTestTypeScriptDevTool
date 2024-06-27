@@ -35,6 +35,7 @@
         padding: 10px 20px;
         position: fixed;
         width: 100%;
+        z-index: 1;
 
         > div.component-wrap {
           display: flex;
@@ -63,11 +64,10 @@
       }
 
       > div.hero-component {
-        background-image: url("https://brainlabs.digital/cro/fortis/fr009/hero-bg.jpg");
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover; /* Resize the background image to cover the entire container */
-        padding-top: 150px;
+        padding-top: 100px;
 
         > div.component-wrap {
           display: flex;
@@ -85,6 +85,7 @@
               font-style: italic;
               line-height: 0.7;
               text-align: center;
+              font-weight: 900;
             }
           }
 
@@ -92,6 +93,7 @@
             > h4 {
               color: #fdb913;
               font-style: italic;
+              font-weight: 900;
             }
           }
 
@@ -111,6 +113,36 @@
             > p {
               color: #fff;
               font-style: italic;
+            }
+          }
+        }
+      }
+
+      > div.hero-component.top {
+        background-image: url("https://brainlabs.digital/cro/fortis/fr009/hero-bg.jpg");
+      }
+
+      > div.hero-component.bottom {
+        background-image: url("https://brainlabs.digital/cro/fortis/fr009/bottom-hero-bg.jpg");
+        background-position: top;
+        padding-bottom: 50px;
+
+        > div.component-wrap {
+          > div.heading {
+            > h2 {
+              font-size: 18px;
+              font-weight: 900;
+            }
+
+            > h2:last-child {
+              display: none;
+            }
+          }
+
+          > div.sub-heading {
+            > h4 {
+              color: #5cb7e7;
+              font-weight: 900;
             }
           }
         }
@@ -429,6 +461,157 @@
 
         @media only screen and (max-width: 768px) {
           margin-top: 40px;
+        }
+      }
+
+      > div.offer-component {
+        padding: 20px;
+
+        > div.component-wrap {
+          max-width: 992px;
+          margin: 20px auto;
+
+          > div.header {
+            > h4 {
+              text-align: center;
+              font-weight: bold;
+              font-style: italic;
+            }
+          }
+
+          > div.offers {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            > div.offer {
+              flex: 1;
+              margin: 30px;
+
+              > div.program {
+                margin-top: 20px;
+
+                > div.title {
+                  > h4 {
+                    font-weight: bold;
+                    font-style: italic;
+                    margin: 0 !important;
+                  }
+                }
+
+                > div.item {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  background-color: #f3f4f7;
+                  padding: 15px;
+
+                  > div.icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    > img {
+                      width: 40px;
+                      height: 40px;
+                    }
+                  }
+
+                  > div.name {
+                    margin-left: 15px;
+
+                    > h5 {
+                      margin: 0 !important;
+                      font-style: italic;
+                      font-weight: bold;
+                    }
+                  }
+                }
+
+                > div.border {
+                  background-color: #f3f4f7;
+                  width: 100%;
+
+                  > div.wrap {
+                    margin: 0 auto;
+                    width: 90%;
+                    border-bottom: 1px solid lightgray;
+                  }
+                }
+
+                > div.border:last-child {
+                  display: none;
+                }
+              }
+            }
+          }
+
+          > div.cta {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            > button {
+              background-color: #fdb913;
+              border-radius: 35px;
+              color: #000000;
+              padding: 15px 30px;
+              font-weight: 700;
+              cursor: pointer;
+              border-color: #fdb913;
+            }
+          }
+        }
+      }
+
+      > div.promise-component {
+        padding: 20px;
+        background-color: #f3f4f7;
+
+        > div.component-wrap {
+          max-width: 992px;
+          margin: 20px auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          > div.promise {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 20px;
+
+            > div.icon {
+              width: 200px;
+
+              > img {
+                width: 100%;
+              }
+            }
+
+            > div.text-content {
+              margin-left: 20px;
+
+              > div.title {
+                > h6 {
+                  margin: 0 !important;
+                  font-weight: 900;
+                  font-size: 16px;
+                  font-style: italic;
+                }
+              }
+
+              > div.description {
+                margin-top: 10px;
+
+                > p {
+                  margin: 0 !important;
+                }
+              }
+            }
+          }
         }
       }
     }

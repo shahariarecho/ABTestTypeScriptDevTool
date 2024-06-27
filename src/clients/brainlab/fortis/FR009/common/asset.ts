@@ -138,69 +138,86 @@ export const abouts = [
   },
 ];
 
-export const offers = {
-  nursingPrograms: {
-    title: "Nursing Programs",
-    items: [
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/nursing.png",
-        title: "PRACTICAL NURSING (LPN)",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/associate.png",
-        title: "ASSOCIATE DEGREE IN NURSING (ADN)",
-      },
-    ],
+export const offers = [
+  [
+    {
+      title: "Nursing Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/nursing.png",
+          name: "PRACTICAL NURSING (LPN)",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/associate.png",
+          name: "ASSOCIATE DEGREE IN NURSING (ADN)",
+        },
+      ],
+    },
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical-ray.png",
+          name: "MEDICAL ASSISTING WITH BASIC X-RAY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical-coding.png",
+          name: "MEDICAL BILLING AND CODING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/healthcare.png",
+          name: "HEALTHCARE MANAGEMENT",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Dental Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
+          name: "DENTAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-hygiene.png",
+          name: "DENTAL HYGIENE",
+        },
+      ],
+    },
+    {
+      title: "Skilled Trades Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/hvac.png",
+          name: "HVAC-R",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/welding.png",
+          name: "WELDING TECHNOLOGY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/electrical.png",
+          name: "ELECTRICAL SYSTEMS TECHNICIAN",
+        },
+      ],
+    },
+  ],
+];
+
+export const promises = [
+  {
+    icon: "https://brainlabs.digital/cro/fortis/fr009/handshake.png",
+    title: "OUR PROMISE TO YOU",
+    description: `Fortis is committed to train you with the knowledge and skills to get started in many fields, with program options to help customize your skills and goals with the proper training you need to get started!`,
   },
-  healthcareOrMedicalPrograms: {
-    title: "Healthcare/Medical Programs",
-    items: [
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
-        title: "MEDICAL ASSISTING",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/medical-ray.png",
-        title: "MEDICAL ASSISTING WITH BASIC X-RAY",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/medical-coding.png",
-        title: "MEDICAL BILLING AND CODING",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/healthcare.png",
-        title: "HEALTHCARE MANAGEMENT",
-      },
-    ],
+  {
+    icon: "https://brainlabs.digital/cro/fortis/fr009/people.png",
+    title: "ABOUT US",
+    description: `At campuses nationwide, Fortis offers career education and training programs in the nursing, healthcare, medical, dental, skilled trades, massage and cosmetology career fields.`,
   },
-  dentalPrograms: {
-    title: "Dental Programs",
-    items: [
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
-        title: "DENTAL ASSISTING",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/dental-hygiene.png",
-        title: "DENTAL HYGIENE",
-      },
-    ],
-  },
-  skilledTradesPrograms: {
-    title: "Skilled Trades Programs",
-    items: [
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/hvac.png",
-        title: "HVAC-R",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/welding.png",
-        title: "WELDING TECHNOLOGY",
-      },
-      {
-        icon: "https://brainlabs.digital/cro/fortis/fr009/electrical.png",
-        title: "ELECTRICAL SYSTEMS TECHNICIAN",
-      },
-    ],
-  },
-};
+];
