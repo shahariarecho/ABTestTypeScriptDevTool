@@ -33,7 +33,7 @@ export class AboutComponent {
           )
           .join("\n")}
           <div class="cta" >
-            <button>LEARN HOW TO APPLY</button>
+            <button mbox-name="about-apply-button" >LEARN HOW TO APPLY</button>
           </div>
         </div>
       </div>

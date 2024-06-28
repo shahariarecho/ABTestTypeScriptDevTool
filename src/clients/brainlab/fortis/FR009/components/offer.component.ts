@@ -1,4 +1,4 @@
-import { offers } from "../common/asset";
+import { houstonOffers, offers } from "../common/asset";
 
 export class OfferComponent {
   getItemHtml = (item: any): string => {
@@ -41,6 +41,10 @@ export class OfferComponent {
   };
 
   getHtml = (): string => {
+    const requiredOffer = window.location.pathname.includes("/houston-north")
+      ? houstonOffers
+      : offers;
+
     const htmlString: string = `
       <div class="offer-component" >
         <div class="component-wrap" >
@@ -48,10 +52,12 @@ export class OfferComponent {
             <h4>Programs Offered At Fortis [Campus]</h4>
           </div>
           <div class="offers" >
-            ${offers.map((offer: any) => this.getOfferHtml(offer)).join("\n")}
+            ${requiredOffer
+              .map((offer: any) => this.getOfferHtml(offer))
+              .join("\n")}
           </div>
           <div class="cta" >
-            <button>LEARN HOW TO APPLY</button>
+            <button mbox-name="offer-apply-button" >LEARN HOW TO APPLY</button>
           </div>
         </div>
       </div>

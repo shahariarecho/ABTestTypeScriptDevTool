@@ -1,5 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors } from "../common/asset";
+import { selectors, triggerMetrics } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { AboutComponent } from "./about.component";
 import { ContactComponent } from "./contact.component";
@@ -84,6 +84,8 @@ export class MainComponent {
 
     newApplyBtns.forEach((btn: HTMLButtonElement) => {
       btn.addEventListener("click", () => {
+        const mboxName: null | string = btn.getAttribute("mbox-name");
+        mboxName && triggerMetrics(mboxName + "-click");
         existApplyBtn.click();
       });
     });

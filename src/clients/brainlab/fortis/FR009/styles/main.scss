@@ -1,4 +1,7 @@
 @import "./common";
+// @import url(https://db.onlinewebfonts.com/c/ec168b653affffecc8f1eeead79189c4?family=DIN-BlackItalic);
+// https://www.onlinewebfonts.com/download/ec168b653affffecc8f1eeead79189c4
+// font-family: "DIN-BlackItalic";
 
 .#{$id} {
   &__hide {
@@ -57,10 +60,15 @@
               border-radius: 35px;
               color: #000000;
               padding: 15px 30px;
-              font-weight: 700;
+              font-weight: 800;
               cursor: pointer;
               border-color: #fdb913;
             }
+          }
+
+          @media only screen and (max-width: 450px) {
+            flex-direction: column;
+            padding-bottom: 10px;
           }
         }
       }
@@ -88,6 +96,10 @@
               line-height: 0.7;
               text-align: center;
               font-weight: 900;
+
+              @media only screen and (max-width: 630px) {
+                font-size: 25px;
+              }
             }
           }
 
@@ -105,7 +117,7 @@
               border-radius: 35px;
               color: #000000;
               padding: 15px 30px;
-              font-weight: 700;
+              font-weight: 800;
               cursor: pointer;
               border-color: #fdb913;
             }
@@ -161,8 +173,6 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 50px;
-          margin-bottom: 50px;
 
           > div.feature-item {
             display: flex;
@@ -170,6 +180,7 @@
             align-items: center;
             flex-direction: column;
             max-width: 250px;
+            margin: 50px;
 
             > div.icon {
               > svg {
@@ -186,6 +197,7 @@
                 margin: 0;
                 font-style: italic;
                 color: #002b51;
+                font-weight: 900;
               }
             }
 
@@ -200,6 +212,11 @@
                 font-weight: 500;
               }
             }
+          }
+
+          @media only screen and (max-width: 992px) {
+            flex-wrap: wrap;
+            justify-content: center;
           }
         }
       }
@@ -236,7 +253,7 @@
 
               > a {
                 color: #5cb7e7;
-                font-weight: bold;
+                font-weight: 900;
                 font-style: italic;
                 text-decoration: underline;
                 font-size: 25px;
@@ -245,11 +262,16 @@
           }
 
           > div.description {
+            margin-top: 20px;
+
             > p {
               font-size: 22px;
-              font-weight: bold;
+              font-weight: 900;
               font-style: italic;
               color: #fff;
+              text-align: center;
+              margin: 0;
+              line-height: 1.2;
 
               > span {
                 color: #fdb913;
@@ -305,10 +327,18 @@
                 }
               }
             }
+
+            @media only screen and (max-width: 768px) {
+              flex-direction: column;
+            }
           }
 
           > div.about-item.reverse {
             flex-direction: row-reverse;
+
+            @media only screen and (max-width: 768px) {
+              flex-direction: column;
+            }
           }
 
           > div.cta {
@@ -322,7 +352,7 @@
               border-radius: 35px;
               color: #000000;
               padding: 15px 30px;
-              font-weight: 700;
+              font-weight: 800;
               cursor: pointer;
               border-color: #fdb913;
             }
@@ -460,10 +490,6 @@
             }
           }
         }
-
-        @media only screen and (max-width: 768px) {
-          margin-top: 40px;
-        }
       }
 
       > div.offer-component {
@@ -476,8 +502,12 @@
           > div.header {
             > h4 {
               text-align: center;
-              font-weight: bold;
+              font-weight: 900;
               font-style: italic;
+
+              @media only screen and (max-width: 768px) {
+                margin: 0;
+              }
             }
           }
 
@@ -495,9 +525,13 @@
 
                 > div.title {
                   > h4 {
-                    font-weight: bold;
+                    font-weight: 900;
                     font-style: italic;
                     margin: 0 !important;
+
+                    @media only screen and (max-width: 768px) {
+                      text-align: center;
+                    }
                   }
                 }
 
@@ -525,7 +559,7 @@
                     > h5 {
                       margin: 0 !important;
                       font-style: italic;
-                      font-weight: bold;
+                      font-weight: 900;
                     }
                   }
                 }
@@ -546,6 +580,12 @@
                 }
               }
             }
+
+            @media only screen and (max-width: 768px) {
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
           }
 
           > div.cta {
@@ -559,9 +599,13 @@
               border-radius: 35px;
               color: #000000;
               padding: 15px 30px;
-              font-weight: 700;
+              font-weight: 800;
               cursor: pointer;
               border-color: #fdb913;
+            }
+
+            @media only screen and (max-width: 768px) {
+              margin-top: 10px;
             }
           }
         }
@@ -614,6 +658,12 @@
               }
             }
           }
+
+          @media only screen and (max-width: 768px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
 
@@ -635,10 +685,16 @@
             flex-direction: column;
             text-align: center;
 
+            width: 300px;
+
             > div.text-content {
               > p {
                 margin: 0 !important;
               }
+            }
+
+            @media only screen and (max-width: 768px) {
+              margin: 50px;
             }
           }
 
@@ -649,6 +705,12 @@
           }
 
           > div.contact {
+          }
+
+          @media only screen and (max-width: 768px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
           }
         }
       }
@@ -810,6 +872,10 @@
           }
 
           > div.submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
             > button {
               width: fit-content;
               padding: 10px 40px;

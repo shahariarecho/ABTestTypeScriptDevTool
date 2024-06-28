@@ -11,7 +11,7 @@ export class HeroComponent {
             <h4>${data.description}</h4>
           </div>
           <div class="cta" >
-            <button>LEARN HOW TO APPLY</button>
+            <button mbox-name="${placement}-hero-apply-button" >LEARN HOW TO APPLY</button>
           </div>
           <div class="description" >
             <p>Classes taught in English only</p>

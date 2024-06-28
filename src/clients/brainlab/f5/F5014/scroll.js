@@ -17,6 +17,7 @@ function runTest() {
   let is25PercentScrolled = false;
   let is50PercentScrolled = false;
   let is75PercentScrolled = false;
+  let is95PercentScrolled = false;
 
   document.addEventListener("scroll", (event) => {
     const percent = getScrollPercent();
@@ -28,18 +29,23 @@ function runTest() {
     }
 
     if (percent > 25 && !is25PercentScrolled) {
-      triggerMetrics("25-percent-scroll");
+      triggerMetrics("25-percent-scrolled");
       is25PercentScrolled = true;
     }
 
     if (percent > 50 && !is50PercentScrolled) {
-      triggerMetrics("50-percent-scroll");
+      triggerMetrics("50-percent-scrolled");
       is50PercentScrolled = true;
     }
 
     if (percent > 75 && !is75PercentScrolled) {
-      triggerMetrics("75-percent-scroll");
+      triggerMetrics("75-percent-scrolled");
       is75PercentScrolled = true;
+    }
+
+    if (percent > 95 && !is95PercentScrolled) {
+      triggerMetrics("95-percent-scrolled");
+      is95PercentScrolled = true;
     }
   });
 }

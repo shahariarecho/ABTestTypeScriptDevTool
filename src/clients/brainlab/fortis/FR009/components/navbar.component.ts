@@ -9,7 +9,7 @@ export class NavbarComponent {
             <img src="${logo}" alt="logo-img" >
           </div>
           <div class="cta" >
-            <button>LEARN HOW TO APPLY TODAY</button>
+            <button mbox-name="navbar-apply-button" >LEARN HOW TO APPLY TODAY</button>
           </div>
         </div>
       </div>

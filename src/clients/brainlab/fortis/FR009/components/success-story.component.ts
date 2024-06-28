@@ -73,8 +73,6 @@ export class SuccessStoryComponent {
 
     const stories: SuccessStory[] = this.collectSuccessStories();
 
-    console.log("stories", stories);
-
     aboutComponent.insertAdjacentHTML("afterend", this.getHtml(stories));
 
     const leftArrow: null | HTMLDivElement =

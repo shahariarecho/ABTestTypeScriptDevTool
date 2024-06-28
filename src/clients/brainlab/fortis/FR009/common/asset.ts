@@ -217,6 +217,52 @@ export const offers = [
   ],
 ];
 
+export const houstonOffers = [
+  [
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/healthcare.png",
+          name: "HEALTHCARE MANAGEMENT",
+        },
+      ],
+    },
+    {
+      title: "Dental Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
+          name: "DENTAL ASSISTING",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Medical Technology Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/surgical.png",
+          name: "SURGICAL TECHNOLOGY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/sterile.png",
+          name: "STERILE PROCESSING TECHNICIAN",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/radiologic.png",
+          name: "RADIOLOGICAL TECHNOLOGY",
+        },
+      ],
+    },
+  ],
+];
+
 export const promises = [
   {
     icon: "https://brainlabs.digital/cro/fortis/fr009/handshake.png",
@@ -247,4 +293,10 @@ export const companyInfo = {
     numberText: "855-980-1886",
     number: 8559801886,
   },
+};
+
+export const triggerMetrics = (mboxName: string) => {
+  // @ts-ignore
+  adobe.target.trackEvent({ mbox: mboxName });
+  console.log("mbox=", mboxName);
 };
