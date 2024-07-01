@@ -1,5 +1,10 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { selectors, triggerMetrics } from "../common/asset";
+import {
+  campusInfo,
+  runningCampus,
+  selectors,
+  triggerMetrics,
+} from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { AboutComponent } from "./about.component";
 import { ContactComponent } from "./contact.component";
@@ -25,17 +30,21 @@ export class MainComponent {
   formModifierComponent: FormModifierComponent = new FormModifierComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.1.1");
   }
 
   private getHtml = (): string => {
+    //@ts-ignore
+    const campusName: string = campusInfo[runningCampus].name;
+    console.log("campus-name = ", campusName);
+
     const htmlString: string = `
       <div class="main-component" >
         <div class="component-wrap" >
           ${this.navbarComponent.getHtml()}
           ${this.heroComponent.getHtml("top", {
             title: "IGNITE YOUR FUTURE AT",
-            subTitle: "FORTIS COLLEGE [CAMPUS]",
+            subTitle: `FORTIS COLLEGE ${campusName.toUpperCase()}`,
             description: "Take Your Career Into Your Own Hands",
           })}
           ${this.featureComponent.getHtml()}

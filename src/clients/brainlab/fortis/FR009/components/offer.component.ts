@@ -1,4 +1,4 @@
-import { houstonOffers, offers } from "../common/asset";
+import { campusInfo, runningCampus } from "../common/asset";
 
 export class OfferComponent {
   getItemHtml = (item: any): string => {
@@ -41,20 +41,20 @@ export class OfferComponent {
   };
 
   getHtml = (): string => {
-    const requiredOffer = window.location.pathname.includes("/houston-north")
-      ? houstonOffers
-      : offers;
+    //@ts-ignore
+    const offers = campusInfo[runningCampus].offers;
+
+    //@ts-ignore
+    const campusName: string = campusInfo[runningCampus].name;
 
     const htmlString: string = `
       <div class="offer-component" >
         <div class="component-wrap" >
           <div class="header" >
-            <h4>Programs Offered At Fortis [Campus]</h4>
+            <h4>Programs Offered At Fortis ${campusName}</h4>
           </div>
           <div class="offers" >
-            ${requiredOffer
-              .map((offer: any) => this.getOfferHtml(offer))
-              .join("\n")}
+            ${offers.map((offer: any) => this.getOfferHtml(offer)).join("\n")}
           </div>
           <div class="cta" >
             <button mbox-name="offer-apply-button" >LEARN HOW TO APPLY</button>

@@ -146,6 +146,214 @@ export const abouts = [
   },
 ];
 
+export const norfolkOffers = [
+  [
+    {
+      title: "Nursing Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/associate.png",
+          name: "ASSOCIATE DEGREE IN NURSING (ADN)",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/nursing.png",
+          name: "PRACTICAL NURSING (LPN)",
+        },
+      ],
+    },
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Dental Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
+          name: "DENTAL ASSISTING",
+        },
+      ],
+    },
+    {
+      title: "Skilled Trades Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/hvac.png",
+          name: "HVAC-R",
+        },
+      ],
+    },
+  ],
+];
+
+export const houstonOffers = [
+  [
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/healthcare.png",
+          name: "HEALTHCARE MANAGEMENT",
+        },
+      ],
+    },
+    {
+      title: "Dental Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
+          name: "DENTAL ASSISTING",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Medical Technology Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/surgical.png",
+          name: "SURGICAL TECHNOLOGY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/sterile.png",
+          name: "STERILE PROCESSING TECHNICIAN",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/radiologic.png",
+          name: "RADIOLOGICAL TECHNOLOGY",
+        },
+      ],
+    },
+  ],
+];
+
+export const cutlerOffers = [
+  [
+    {
+      title: "Nursing Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/associate.png",
+          name: "ASSOCIATE DEGREE IN NURSING (ADN)",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/nursing.png",
+          name: "PRACTICAL NURSING (LPN)",
+        },
+      ],
+    },
+  ],
+];
+
+export const landoverOffers = [
+  [
+    {
+      title: "Dental Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
+          name: "DENTAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-hygiene.png",
+          name: "DENTAL HYGIENE",
+        },
+      ],
+    },
+    {
+      title: "Medical Technology Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/radiologic.png",
+          name: "RADIOLOGICAL TECHNOLOGY",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical-coding.png",
+          name: "MEDICAL BILLING AND CODING",
+        },
+      ],
+    },
+  ],
+];
+
+export const colombusOffers = [
+  [
+    {
+      title: "Nursing Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/associate.png",
+          name: "ASSOCIATE DEGREE IN NURSING (ADN)",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/nursing.png",
+          name: "PRACTICAL NURSING (LPN)",
+        },
+      ],
+    },
+    {
+      title: "Healthcare/Medical Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical-ray.png",
+          name: "MEDICAL ASSISTING WITH BASIC X-RAY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
+          name: "MEDICAL ASSISTING",
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "Medical Technology Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/surgical.png",
+          name: "SURGICAL TECHNOLOGY",
+        },
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/radiologic.png",
+          name: "RADIOLOGICAL TECHNOLOGY",
+        },
+      ],
+    },
+    {
+      title: "Skilled Trades Programs",
+      items: [
+        {
+          icon: "https://brainlabs.digital/cro/fortis/fr009/hvac.png",
+          name: "HVAC-R",
+        },
+      ],
+    },
+  ],
+];
+
 export const offers = [
   [
     {
@@ -217,52 +425,6 @@ export const offers = [
   ],
 ];
 
-export const houstonOffers = [
-  [
-    {
-      title: "Healthcare/Medical Programs",
-      items: [
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/medical.png",
-          name: "MEDICAL ASSISTING",
-        },
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/healthcare.png",
-          name: "HEALTHCARE MANAGEMENT",
-        },
-      ],
-    },
-    {
-      title: "Dental Programs",
-      items: [
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/dental-assisting.png",
-          name: "DENTAL ASSISTING",
-        },
-      ],
-    },
-  ],
-  [
-    {
-      title: "Medical Technology Programs",
-      items: [
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/surgical.png",
-          name: "SURGICAL TECHNOLOGY",
-        },
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/sterile.png",
-          name: "STERILE PROCESSING TECHNICIAN",
-        },
-        {
-          icon: "https://brainlabs.digital/cro/fortis/fr009/radiologic.png",
-          name: "RADIOLOGICAL TECHNOLOGY",
-        },
-      ],
-    },
-  ],
-];
-
 export const promises = [
   {
     icon: "https://brainlabs.digital/cro/fortis/fr009/handshake.png",
@@ -300,3 +462,28 @@ export const triggerMetrics = (mboxName: string) => {
   adobe.target.trackEvent({ mbox: mboxName });
   console.log("mbox=", mboxName);
 };
+
+export const campusInfo = {
+  houston: {
+    name: "Houston North",
+    offers: houstonOffers,
+  },
+  cutler: {
+    name: "Cutler Bay",
+    offers: cutlerOffers,
+  },
+  landover: {
+    name: "Landover",
+    offers: landoverOffers,
+  },
+  columbus: {
+    name: "Westerville",
+    offers: colombusOffers,
+  },
+  norfolk: {
+    name: "Norfolk",
+    offers: norfolkOffers,
+  },
+};
+
+export const runningCampus: string = "houston";

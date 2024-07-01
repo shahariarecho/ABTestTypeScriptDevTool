@@ -65,9 +65,7 @@
 
   div.learn-step-component {
     > div.component-wrap {
-      max-width: 1440px;
       margin: 0 auto;
-      padding: 20px;
 
       > div.headline {
         margin-bottom: 30px;
@@ -93,6 +91,35 @@
             margin-left: 30px;
           }
         }
+      }
+
+      @media only screen and (max-width: 575px) {
+        padding: 20px;
+      }
+
+      @media only screen and (min-width: 576px) {
+        max-width: 540px;
+        padding: 20px 25px;
+      }
+
+      @media only screen and (min-width: 768px) {
+        max-width: 720px;
+        padding: 20px 25px;
+      }
+
+      @media only screen and (min-width: 992px) {
+        max-width: 960px;
+        padding: 20px 25px;
+      }
+
+      @media only screen and (min-width: 1200px) {
+        max-width: 1140px;
+        padding: 20px 25px;
+      }
+
+      @media only screen and (min-width: 1600px) {
+        max-width: 1440px;
+        padding: 20px 35px;
       }
     }
   }
