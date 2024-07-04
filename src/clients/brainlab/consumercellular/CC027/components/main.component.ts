@@ -14,7 +14,7 @@ export class MainComponent {
   messageComponent: MessageComponent = new MessageComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.1.1");
+    Initializer.init(TestInfo, "0.1.7");
   }
 
   init = (): void => {

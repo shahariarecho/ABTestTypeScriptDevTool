@@ -15,9 +15,12 @@ export const telInfo = {
   },
 };
 
+export const storeLink: string =
+  "https://www.consumercellular.com/retailstores";
+
 export const tradeMessage = {
   free: "Buy any phone and get two months of service free.",
-  term: "This offer is for new customers. Terms apply.*",
+  term: `This offer is for new customers and ONLY available by calling or visiting a <a class="store" href="${storeLink}" target="_blank" >Consumer Cellular store</a>. Terms apply.*`,
   redeem: (telInfo: any): string => {
     return `Call <a class='tel-number' href='tel:+${telInfo.telNumber}' >${telInfo.telText}</a> to redeem offer. Offer ends July 31, 2024.`;
   },

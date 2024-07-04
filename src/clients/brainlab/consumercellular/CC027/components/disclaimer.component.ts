@@ -12,6 +12,14 @@ export class DisclaimerComponent {
   };
 
   render = (bodyContent: HTMLDivElement) => {
+    const dc: null | HTMLDivElement = document.querySelector(
+      "div.disclaimer-component"
+    );
+
+    if (dc) {
+      return;
+    }
+
     bodyContent.insertAdjacentHTML("beforeend", this.getHtml());
   };
 }

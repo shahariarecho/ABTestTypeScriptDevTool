@@ -183,7 +183,7 @@ export class FormComponent {
       this.showResultMessage(message, result);
     } catch (error) {
       this.showResultMessage(message, {
-        accepted: false,
+        accepted: "false",
         errors: {
           msg: "Something went wrong, please try again!",
         },

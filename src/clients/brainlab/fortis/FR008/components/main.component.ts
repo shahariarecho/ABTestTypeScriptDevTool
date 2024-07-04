@@ -25,7 +25,7 @@ export class MainComponent {
   formComponent: FormComponent = new FormComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.5");
+    Initializer.init(TestInfo, "0.0.7");
   }
 
   getHtml = (): string => {

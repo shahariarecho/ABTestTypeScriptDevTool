@@ -15,6 +15,14 @@ export class MessageComponent {
   };
 
   render = (target: Element, telInfo: any) => {
+    const mc: null | HTMLDivElement = document.querySelector(
+      "div.message-component"
+    );
+
+    if (mc) {
+      return;
+    }
+
     target.insertAdjacentHTML("afterend", this.getHtml(telInfo));
   };
 }
