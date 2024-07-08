@@ -25,8 +25,9 @@ export class MainComponent {
         if (
           !this.isPromoSectionFound &&
           body &&
-          body.innerHTML.length > 247886
+          body.innerHTML.length > 200000
         ) {
+          console.log("Modification apply started....!");
           this.applyModification();
           this.isPromoSectionFound = true;
         }
@@ -53,7 +54,7 @@ export class MainComponent {
       selectors.promoSection
     );
 
-    var chosen: number = Math.random() < 0.5 ? 0 : 1;
+    var chosen: number = new Date().getTime() % 2;
 
     const imageInfo: any = imageInfos.find(
       (image: any) => image.variation === this.variation
