@@ -32,12 +32,31 @@ export const swiperLibrary = {
   css: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css",
 };
 
-export const imgLinks: string[] = [
-  "https://brainlabs.digital/cro/sunsetter/ss007/1.jpg",
-  "https://brainlabs.digital/cro/sunsetter/ss007/2.jpg",
-  "https://brainlabs.digital/cro/sunsetter/ss007/3.jpg",
-  "https://brainlabs.digital/cro/sunsetter/ss007/3.jpg",
-  "https://brainlabs.digital/cro/sunsetter/ss007/3.jpg",
+export const imgLinks = [
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/1.jpg",
+    serial: 0,
+  },
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/2.jpg",
+    serial: 1,
+  },
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/3.jpg",
+    serial: 2,
+  },
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/1.jpg",
+    serial: 0,
+  },
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/2.jpg",
+    serial: 1,
+  },
+  {
+    link: "https://brainlabs.digital/cro/sunsetter/ss007/3.jpg",
+    serial: 2,
+  },
 ];
 
 export const cities = [
@@ -93,12 +112,8 @@ export const cities = [
   { key: "WY", value: "Wyoming" },
 ];
 
-export const heroImageLink: string =
-  "https://embed.widencdn.net/img/springswindowfashions/1y2qhmzaip/1064x420px@2x/SunSetter-WebAlt22-SemiMotor-WhiteFrame-Perf-VillaStripe.jpeg";
-
-export const steps = [
-  {
-    step: 1,
-    heroOverLayText: "Transform Your Outdoor Space with SunSetter",
-  },
+export const heroImageLinks: string[] = [
+  "https://brainlabs.digital/cro/sunsetter/ss007/hero-img-1.jpg",
+  "https://brainlabs.digital/cro/sunsetter/ss007/hero-img-2.jpg",
+  "https://brainlabs.digital/cro/sunsetter/ss007/hero-img-3.jpg",
 ];

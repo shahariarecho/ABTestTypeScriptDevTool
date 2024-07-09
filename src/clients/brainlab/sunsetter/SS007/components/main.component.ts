@@ -1,10 +1,9 @@
 import { Initializer } from "../../../../../utilities/initializer";
 
 import {
-  heroImageLink,
+  heroImageLinks,
   imgLinks,
   selectors,
-  steps,
   swiperLibrary,
 } from "../common/asset";
 import { TestInfo } from "../common/test.info";
@@ -20,9 +19,13 @@ export class MainComponent {
     Initializer.init(TestInfo, "0.0.1");
   }
 
-  getHtml = () => {
-    const step = steps.find((step) => step.step === 1);
+  getHeroImageHtml = (imgLink: any, index: number): string => {
+    const activeClass: string = index === 0 ? "active" : "";
+    const htmlString: string = `<img class="${activeClass} hero-image" src="${imgLink}" alt="hero-image" >`;
+    return htmlString.trim();
+  };
 
+  getHtml = () => {
     const htmlString: string = `
       <div class="main-component" >
         <div class="component-wrap" >
@@ -30,12 +33,17 @@ export class MainComponent {
             <div class="hero-component" >
               <div class="component-wrap" >
                 <div class="img" >
-                  <img src="${heroImageLink}" alt="hero-image" >
+                  ${heroImageLinks
+                    .map((imgLink: any, index: number) =>
+                      this.getHeroImageHtml(imgLink, index)
+                    )
+                    .join("\n")}
                 </div>
                 <div class="hero-overlay" >
                   <div class="overlay-wrap" >
                     <div class="overlay-text" >
-                      <h2>${step?.heroOverLayText}</h2>
+                      <h2 class="step-one" >Transform Your Outdoor Space with SunSetter</h2>
+                      <h2 class="step-two" >Elevate Your Outdoor Space with SunSetter Awnings</h2>
                     </div>
                     <div class="overlay-cta" >
                       <a class="price" href="" >Get Pricing</a>

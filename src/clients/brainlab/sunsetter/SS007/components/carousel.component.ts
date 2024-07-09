@@ -1,13 +1,13 @@
 import { leftArrowSvg, rightArrowSvg, triggerEvent } from "../common/asset";
 
 export class CarouselComponent {
-  getSwiperSlideHtml = (imgLink: string, index: number): string => {
-    const className: string = index % 2 === 0 ? "" : "card-blue";
+  getSwiperSlideHtml = (imgLink: any, index: number): string => {
+    const activeClass: string = index === 0 ? "active" : "";
 
     const htmlString: string = `
       <div class="swiper-slide carousel-item-${index}">
-        <div class="image-card ${className}" >
-          <img src="${imgLink}" >
+        <div class="image-card ${activeClass}" serial="${imgLink.serial}" >
+          <img src="${imgLink.link}" >
         </div>
       </div>
     `;
@@ -15,7 +15,7 @@ export class CarouselComponent {
     return htmlString.trim();
   };
 
-  getHtml = (imgLinks: string[]): string => {
+  getHtml = (imgLinks: any): string => {
     const htmlString: string = `
       <div class="carousel-component" >
         <div class="component-wrap" >
@@ -60,6 +60,7 @@ export class CarouselComponent {
   };
 
   reactive = (): any => {
+    this.addImageListener();
     // @ts-ignore
     return new Swiper(".carousel", {
       slidesPerView: 1,
@@ -92,6 +93,44 @@ export class CarouselComponent {
           triggerEvent("review-slide-change");
         },
       },
+    });
+  };
+
+  addImageListener = () => {
+    const images: null | NodeListOf<HTMLDivElement> =
+      document.querySelectorAll("div.image-card");
+    const heroImages: null | NodeListOf<HTMLImageElement> =
+      document.querySelectorAll("img.hero-image");
+
+    if (
+      !images ||
+      !heroImages ||
+      images.length === 0 ||
+      heroImages.length === 0
+    ) {
+      return;
+    }
+
+    images.forEach((imgCard: HTMLDivElement, index: number) => {
+      imgCard.addEventListener("click", () => {
+        this.removeActive(images, heroImages);
+        imgCard.classList.add("active");
+        const serial: null | string = imgCard.getAttribute("serial");
+        serial && heroImages[Number(serial)].classList.add("active");
+      });
+    });
+  };
+
+  removeActive = (
+    images: NodeListOf<HTMLDivElement>,
+    heroImages: NodeListOf<HTMLImageElement>
+  ) => {
+    images.forEach((imgCard: HTMLDivElement, index: number) => {
+      imgCard.classList.remove("active");
+    });
+
+    heroImages.forEach((image: HTMLImageElement, index: number) => {
+      image.classList.remove("active");
     });
   };
 }
