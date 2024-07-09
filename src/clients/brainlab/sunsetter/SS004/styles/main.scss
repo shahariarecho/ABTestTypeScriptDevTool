@@ -92,4 +92,32 @@
       }
     }
   }
+
+  > div.carousel-controller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+
+    > div.carousel-prev {
+      padding: 10px;
+    }
+
+    > div.carousel-pagination {
+      width: max-content;
+
+      > span.swiper-pagination-bullet {
+        width: 15px;
+        height: 15px;
+      }
+
+      > span.swiper-pagination-bullet-active {
+        background: #fd6;
+      }
+    }
+
+    > div.carousel-next {
+      padding: 10px;
+    }
+  }
 }
