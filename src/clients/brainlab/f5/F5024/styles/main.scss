@@ -1,0 +1,207 @@
+@import "./common";
+
+.#{$id} {
+  &__hide {
+    display: none !important;
+  }
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+  }
+
+  div.c01.aem-GridColumn.aem-GridColumn--default--12 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 50px 60px;
+
+    > div.grid-container {
+      display: flex;
+      flex-direction: column;
+      flex: 0.7;
+
+      > div.bg-default {
+        display: none;
+      }
+    }
+
+    > div.form-component {
+      display: flex;
+      flex-direction: column;
+      flex: 0.3;
+
+      > div.component-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        background-color: #ffffff;
+
+        > div.form-header {
+          > div.form-title {
+          }
+
+          > div.form-progress-container {
+            > div.form-progress {
+            }
+
+            > div:last-child {
+              display: none;
+            }
+
+            > div:first-child {
+              display: flex;
+            }
+          }
+
+          > div.form-progress-container.next {
+            > div:last-child {
+              display: flex;
+            }
+
+            > div:first-child {
+              display: none;
+            }
+          }
+        }
+
+        > form {
+          width: fit-content !important;
+
+          > div.mktoFormRow {
+            > div.mktoFormCol {
+              margin: 10px;
+
+              > div.mktoOffset {
+                display: none;
+              }
+
+              > div.mktoFieldWrap {
+                display: flex;
+                flex-direction: column;
+
+                > label {
+                  width: 100% !important;
+                  font-family: "Neusa";
+
+                  > div.mktoAsterix {
+                    display: none;
+                  }
+                }
+
+                > input {
+                  border: 2px solid #e0dddd;
+                  border-radius: 3px;
+                  padding: 10px 15px;
+                  margin-top: 10px;
+                  background-color: #fff;
+                  font-style: italic;
+                }
+
+                > div.mktoGutter {
+                  display: none;
+                }
+              }
+            }
+
+            p {
+              display: none;
+            }
+          }
+
+          > div.mktoButtonRow {
+            display: none;
+          }
+
+          > div:nth-child(15) {
+            display: none;
+          }
+
+          > div:nth-child(16) {
+            display: none;
+          }
+
+          > div.mktoFormRow.row-to-col {
+            > div.mktoFormCol {
+              float: none;
+              position: static;
+              margin-top: 0 !important;
+
+              > div.mktoRequiredField {
+                width: 100%;
+
+                > input {
+                  width: 100% !important;
+                }
+              }
+            }
+          }
+
+          > div.mktoFormRow.hide {
+            display: none;
+          }
+        }
+
+        > div.form-footer {
+          > div.disclaimer {
+            > p {
+            }
+          }
+
+          > div.from-actions {
+            > div.action-right {
+              > button.back {
+                display: none;
+              }
+            }
+
+            > div.action-left {
+              > button.next {
+                display: block;
+              }
+
+              > button.submit {
+                display: none;
+              }
+            }
+          }
+
+          > div.from-actions.next {
+            > div.action-right {
+              > button.back {
+                display: block;
+              }
+            }
+
+            > div.action-left {
+              > button.next {
+                display: none;
+              }
+
+              > button.submit {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

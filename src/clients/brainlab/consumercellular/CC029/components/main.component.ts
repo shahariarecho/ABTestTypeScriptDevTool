@@ -1,5 +1,5 @@
 import { Initializer } from "../../../../../utilities/initializer";
-import { imageInfos, selectors } from "../common/asset";
+import { imageInfos, selectors, triggerMetrics } from "../common/asset";
 import { TestInfo } from "../common/test.info";
 import { LocationObserver } from "../observer/location.observer";
 import { TestObserver } from "../observer/test.observer";
@@ -67,5 +67,21 @@ export class MainComponent {
         "beforeend",
         this.getPromoTitleHtml(img.imageUrl, img.link)
       );
+
+    promoSection && this.addGoals();
+  };
+
+  addGoals = () => {
+    const tile: null | HTMLAnchorElement = document.querySelector(
+      "div.promo-title-component>a"
+    );
+
+    if (!tile) {
+      return;
+    }
+
+    tile.addEventListener("click", () => {
+      triggerMetrics("shopping-tile-click");
+    });
   };
 }

@@ -13,8 +13,8 @@ export const imageInfos = [
       },
       {
         imageUrl:
-          "https://brainlabs.digital/cro/consumercellular/cc029/sumsung.jpg",
-        link: "https://savings.consumercellular.com/motorolarazrprelaunch",
+          "https://brainlabs.digital/cro/consumercellular/cc029/samsung.jpg",
+        link: "https://savings.consumercellular.com/samsungprelaunch",
       },
     ],
   },
@@ -23,14 +23,20 @@ export const imageInfos = [
     images: [
       {
         imageUrl:
-          "https://brainlabs.digital/cro/consumercellular/cc029/razar.jpg",
+          "https://brainlabs.digital/cro/consumercellular/cc029/razar-two.jpg",
         link: "https://www.consumercellular.com/shopping/details/motorola_razr_2024/overview",
       },
       {
         imageUrl:
-          "https://brainlabs.digital/cro/consumercellular/cc029/sumsung.jpg",
+          "https://brainlabs.digital/cro/consumercellular/cc029/samsung-two.jpg",
         link: "https://www.consumercellular.com/shopping/choose/device?filters=Samsung",
       },
     ],
   },
 ];
+
+export const triggerMetrics = (mboxName: string) => {
+  console.log("mbox=", mboxName);
+  // @ts-ignore
+  adobe && adobe.target && adobe.target.trackEvent({ mbox: mboxName });
+};
