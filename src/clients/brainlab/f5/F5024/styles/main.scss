@@ -45,161 +45,274 @@
       display: flex;
       flex-direction: column;
       flex: 0.3;
+      background-color: #fff;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
 
       > div.component-wrap {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: fit-content;
-        background-color: #ffffff;
-
-        > div.form-header {
-          > div.form-title {
-          }
-
-          > div.form-progress-container {
-            > div.form-progress {
-            }
-
-            > div:last-child {
-              display: none;
-            }
-
-            > div:first-child {
-              display: flex;
-            }
-          }
-
-          > div.form-progress-container.next {
-            > div:last-child {
-              display: flex;
-            }
-
-            > div:first-child {
-              display: none;
-            }
-          }
+        > div.form-success {
+          display: none;
         }
 
-        > form {
-          width: fit-content !important;
+        > div.form-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: fit-content;
+          max-width: 370px;
 
-          > div.mktoFormRow {
-            > div.mktoFormCol {
-              margin: 10px;
+          > div.form-header {
+            > div.form-title {
+              > h3 {
+                text-align: center;
+              }
+            }
 
-              > div.mktoOffset {
+            > div.form-progress-container {
+              margin-top: 15px;
+
+              > div.form-progress {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                > div.progress-text {
+                  > p {
+                    font-family: "Neusa";
+                    font-size: 15px;
+                    font-weight: 600;
+                    font-style: italic;
+                  }
+                }
+              }
+
+              > div:last-child {
                 display: none;
               }
 
-              > div.mktoFieldWrap {
+              > div:first-child {
                 display: flex;
-                flex-direction: column;
+              }
+            }
 
-                > label {
-                  width: 100% !important;
-                  font-family: "Neusa";
+            > div.form-progress-container.next {
+              > div:last-child {
+                display: flex;
+              }
 
-                  > div.mktoAsterix {
+              > div:first-child {
+                display: none;
+              }
+            }
+          }
+
+          > form {
+            width: 100% !important;
+
+            > div.mktoFormRow {
+              > div.mktoFormCol {
+                margin: 10px;
+
+                > div.mktoOffset {
+                  display: none;
+                }
+
+                > div.mktoFieldWrap {
+                  display: flex;
+                  flex-direction: column;
+
+                  > label {
+                    width: 100% !important;
+                    font-family: "Neusa";
+
+                    > div.mktoAsterix {
+                      display: none;
+                    }
+                  }
+
+                  > input {
+                    border: 2px solid #e0dddd;
+                    border-radius: 3px;
+                    padding: 10px 15px;
+                    margin-top: 10px;
+                    background-color: #fff;
+                    font-style: italic;
+                  }
+
+                  > select {
+                    border: 2px solid #e0dddd;
+                    border-radius: 3px;
+                    padding: 10px 15px;
+                    margin-top: 10px;
+                    background-color: #fff;
+                    font-style: italic;
+                  }
+
+                  > div.mktoGutter {
                     display: none;
                   }
+
+                  > div.mktoError {
+                    position: static !important;
+
+                    > div.mktoErrorArrowWrap {
+                      display: none !important;
+                    }
+                  }
+                }
+              }
+
+              p {
+                display: none;
+              }
+            }
+
+            > div.mktoButtonRow {
+              display: none;
+            }
+
+            > div:nth-child(2) {
+              display: flex;
+
+              input {
+                width: 100% !important;
+              }
+            }
+
+            > div:nth-child(15) {
+              display: none;
+            }
+
+            > div:nth-child(16) {
+              display: none;
+            }
+
+            > div.mktoFormRow.row-to-col {
+              > div.mktoFormCol {
+                float: none;
+                position: static;
+                margin-top: 0 !important;
+
+                > div.mktoRequiredField {
+                  width: 100%;
+
+                  > input {
+                    width: 100% !important;
+                  }
+                }
+              }
+            }
+
+            > div.mktoFormRow.hide {
+              display: none;
+            }
+          }
+
+          > form.next {
+            > div:nth-child(2) {
+              display: none;
+            }
+
+            > div:nth-child(3) {
+              display: none;
+            }
+
+            > div:nth-child(4) {
+              display: block;
+            }
+
+            > div:nth-child(5) {
+              display: block;
+            }
+          }
+
+          > div.form-footer {
+            > div.disclaimer {
+              margin-top: 15px;
+
+              > p {
+                font-family: "Neusa";
+                font-style: italic;
+                font-size: 15px;
+              }
+            }
+
+            > div.from-actions {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 15px;
+
+              > div.action-right {
+                > button.back {
+                  display: none;
+                  color: #000;
+                  background-color: transparent;
+                  border-color: #000000;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  padding: 2px 20px;
+                  border: 1px solid #000000;
+                  font-family: "Neusa";
+                  font-size: 17px;
+                }
+              }
+
+              > div.action-left {
+                > button {
+                  color: #fff;
+                  background-color: #0e6eb9;
+                  border-color: #0e6eb9;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  padding: 2px 20px;
+                  border: 1px solid #0e6eb9;
+                  font-family: "Neusa";
+                  font-size: 17px;
                 }
 
-                > input {
-                  border: 2px solid #e0dddd;
-                  border-radius: 3px;
-                  padding: 10px 15px;
-                  margin-top: 10px;
-                  background-color: #fff;
-                  font-style: italic;
+                > button.next {
+                  display: block;
                 }
 
-                > div.mktoGutter {
+                > button.submit {
                   display: none;
                 }
               }
             }
 
-            p {
-              display: none;
-            }
-          }
+            > div.from-actions.next {
+              > div.action-right {
+                > button.back {
+                  display: block;
+                }
+              }
 
-          > div.mktoButtonRow {
-            display: none;
-          }
+              > div.action-left {
+                > button.next {
+                  display: none;
+                }
 
-          > div:nth-child(15) {
-            display: none;
-          }
-
-          > div:nth-child(16) {
-            display: none;
-          }
-
-          > div.mktoFormRow.row-to-col {
-            > div.mktoFormCol {
-              float: none;
-              position: static;
-              margin-top: 0 !important;
-
-              > div.mktoRequiredField {
-                width: 100%;
-
-                > input {
-                  width: 100% !important;
+                > button.submit {
+                  display: block;
                 }
               }
             }
           }
+        }
+      }
 
-          > div.mktoFormRow.hide {
-            display: none;
-          }
+      > div.component-wrap.submitted {
+        > div.form-success {
+          display: block;
         }
 
-        > div.form-footer {
-          > div.disclaimer {
-            > p {
-            }
-          }
-
-          > div.from-actions {
-            > div.action-right {
-              > button.back {
-                display: none;
-              }
-            }
-
-            > div.action-left {
-              > button.next {
-                display: block;
-              }
-
-              > button.submit {
-                display: none;
-              }
-            }
-          }
-
-          > div.from-actions.next {
-            > div.action-right {
-              > button.back {
-                display: block;
-              }
-            }
-
-            > div.action-left {
-              > button.next {
-                display: none;
-              }
-
-              > button.submit {
-                display: block;
-              }
-            }
-          }
+        > div.form-container {
+          display: none;
         }
       }
     }

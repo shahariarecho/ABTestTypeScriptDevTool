@@ -20,30 +20,35 @@ export class FormComponent {
     const htmlString: string = `
       <div class="form-component" >
         <div class="component-wrap" >
-          <div class="form-header" >
-            <div class="form-title" >
-              <h3>Secure Your API Today</h3>
-            </div>
-            <div class="form-progress-container">
-              ${formSteps
-                .map((step: any, index: number) =>
-                  this.getFormProgressHtml(step, index)
-                )
-                .join("\n")}
-            </div>
+          <div class="form-success" >
+            <p>Form submitted successfully!</p>
           </div>
-          <form id="mktoForm_${mktoForms2.formId}"></form>
-          <div class="form-footer" >
-            <div class="disclaimer" >
-              <p>The information you provide will be treated in accordance with the F5 <a href="#" >Privacy Notice.</a></p>
-            </div>
-            <div class="from-actions" >
-              <div class="action-right" >
-                <button class="back" >Back</button>
+          <div class="form-container" >
+            <div class="form-header" >
+              <div class="form-title" >
+                <h3>Secure Your API Today</h3>
               </div>
-              <div class="action-left" >
-                <button class="next" >Next</button>
-                <button class="submit" >Submit</button>
+              <div class="form-progress-container">
+                ${formSteps
+                  .map((step: any, index: number) =>
+                    this.getFormProgressHtml(step, index)
+                  )
+                  .join("\n")}
+              </div>
+            </div>
+            <form id="mktoForm_${mktoForms2.formId}"></form>
+            <div class="form-footer" >
+              <div class="disclaimer" >
+                <p>The information you provide will be treated in accordance with the F5 <a href="#" >Privacy Notice.</a></p>
+              </div>
+              <div class="from-actions" >
+                <div class="action-right" >
+                  <button class="back" >Back</button>
+                </div>
+                <div class="action-left" >
+                  <button class="next" >Next</button>
+                  <button class="submit" >Submit</button>
+                </div>
               </div>
             </div>
           </div>
@@ -81,5 +86,78 @@ export class FormComponent {
     emailAndForm && emailAndForm.classList.add("row-to-col");
     job && job.classList.add("hide");
     companyAndLocation && companyAndLocation.classList.add("hide");
+
+    this.configFormActions();
+  };
+
+  configFormActions = () => {
+    const nextButton: HTMLButtonElement | null =
+      document.querySelector("button.next");
+    const backButton: HTMLButtonElement | null =
+      document.querySelector("button.back");
+    const submitButton: HTMLButtonElement | null =
+      document.querySelector("button.submit");
+    const formProgressContainer: null | HTMLDivElement = document.querySelector(
+      "div.form-progress-container"
+    );
+    const formActions: null | HTMLDivElement =
+      document.querySelector("div.from-actions");
+
+    const originalSubmitButton: null | HTMLButtonElement =
+      document.querySelector("button.mktoButton");
+
+    const form: null | HTMLFormElement = document.querySelector(
+      "div.form-container>form"
+    );
+
+    if (
+      !nextButton ||
+      !backButton ||
+      !submitButton ||
+      !formActions ||
+      !formProgressContainer ||
+      !originalSubmitButton ||
+      !form
+    ) {
+      return;
+    }
+
+    nextButton.addEventListener("click", () => {
+      originalSubmitButton.click();
+
+      setTimeout(() => {
+        const errors: NodeListOf<HTMLDivElement> | null =
+          document.querySelectorAll(selectors.nameEmailPhoneError);
+        console.log("error=", errors);
+
+        if (errors.length === 0) {
+          formProgressContainer.classList.add("next");
+          formActions.classList.add("next");
+          form.classList.add("next");
+        }
+      }, 100);
+    });
+
+    backButton.addEventListener("click", () => {
+      formProgressContainer.classList.remove("next");
+      formActions.classList.remove("next");
+      form.classList.remove("next");
+    });
+
+    submitButton.addEventListener("click", () => {
+      originalSubmitButton.click();
+
+      setTimeout(() => {
+        const errors: NodeListOf<HTMLDivElement> | null =
+          document.querySelectorAll(selectors.nameEmailPhoneError);
+        console.log("error=", errors);
+
+        if (errors.length !== 0) {
+          formProgressContainer.classList.remove("next");
+          formActions.classList.remove("next");
+          form.classList.remove("next");
+        }
+      }, 100);
+    });
   };
 }

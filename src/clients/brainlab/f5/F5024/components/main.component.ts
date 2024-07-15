@@ -38,6 +38,11 @@ export class MainComponent {
             this.formComponent.configForm();
 
             form.onSuccess((values: any, followUpUrl: any) => {
+              const formWrap: null | HTMLDivElement =
+                document.querySelector("div.component-wrap");
+
+              formWrap && formWrap.classList.add("submitted");
+
               console.log(mboxNames.formSubmittedSuccessfully);
               // show success message
               // @ts-ignore

@@ -1,6 +1,8 @@
 export const selectors = {
   heroSection: "div.c01.aem-GridColumn.aem-GridColumn--default--12",
   fromNthRow: "form.mktoForm>div:nth-child",
+  nameEmailPhoneError:
+    "form.mktoForm>div:nth-child(3) div.mktoError, form.mktoForm>div:nth-child(2) div.mktoError",
 };
 
 export const scriptLink: string =
