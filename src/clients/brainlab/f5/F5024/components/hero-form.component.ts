@@ -1,6 +1,6 @@
-import { formSteps, mktoForms2, selectors } from "../common/asset";
+import { f5NoticeUrl, formInfo, formSteps, selectors } from "../common/asset";
 
-export class FormComponent {
+export class HeroFormComponent {
   getFormProgressHtml = (step: any, index: number): string => {
     const htmlString: string = `
       <div class="form-progress" >
@@ -16,19 +16,24 @@ export class FormComponent {
     return htmlString.trim();
   };
 
-  getHtml = (): string => {
+  getHtml = (componentClassName: string, formInfo: any): string => {
+    const descriptionClass: string = formInfo.description ? "" : "hide";
+
     const htmlString: string = `
-      <div class="form-component" >
-        <div class="component-wrap" >
+      <div class="${componentClassName}" >
+        <div class="component-wrap ${formInfo.id}" >
           <div class="form-success" >
             <p>Form submitted successfully!</p>
           </div>
           <div class="form-container" >
             <div class="form-header" >
               <div class="form-title" >
-                <h3>Secure Your API Today</h3>
+                <h3>${formInfo.title}</h3>
               </div>
-              <div class="form-progress-container">
+              <div class="form-description ${descriptionClass}" >
+                <p>${formInfo.description}</p>
+              </div>
+              <div class="form-progress-container ${formInfo.id}">
                 ${formSteps
                   .map((step: any, index: number) =>
                     this.getFormProgressHtml(step, index)
@@ -36,18 +41,21 @@ export class FormComponent {
                   .join("\n")}
               </div>
             </div>
-            <form id="mktoForm_${mktoForms2.formId}"></form>
+            <form 
+              id="mktoForm_${formInfo.formId}" 
+              class="${formInfo.id}" >
+            </form>
             <div class="form-footer" >
               <div class="disclaimer" >
-                <p>The information you provide will be treated in accordance with the F5 <a href="#" >Privacy Notice.</a></p>
+                <p>The information you provide will be treated in accordance with the F5 <a href="${f5NoticeUrl}" >Privacy Notice.</a></p>
               </div>
-              <div class="from-actions" >
+              <div class="from-actions ${formInfo.id}" >
                 <div class="action-right" >
-                  <button class="back" >Back</button>
+                  <button class="back ${formInfo.id}" >Back</button>
                 </div>
                 <div class="action-left" >
-                  <button class="next" >Next</button>
-                  <button class="submit" >Submit</button>
+                  <button class="next ${formInfo.id}" >Next</button>
+                  <button class="submit ${formInfo.id}" >Submit</button>
                 </div>
               </div>
             </div>
@@ -67,20 +75,23 @@ export class FormComponent {
       return;
     }
 
-    heroSection.insertAdjacentHTML("beforeend", this.getHtml());
+    heroSection.insertAdjacentHTML(
+      "beforeend",
+      this.getHtml("hero-form-component", formInfo.hero)
+    );
   };
 
   configForm = () => {
     const emailAndForm: null | HTMLDivElement = document.querySelector(
-      selectors.fromNthRow + "(3)"
+      selectors.heroFromNthRow + "(3)"
     );
 
     const job: null | HTMLDivElement = document.querySelector(
-      selectors.fromNthRow + "(4)"
+      selectors.heroFromNthRow + "(4)"
     );
 
     const companyAndLocation: null | HTMLDivElement = document.querySelector(
-      selectors.fromNthRow + "(5)"
+      selectors.heroFromNthRow + "(5)"
     );
 
     emailAndForm && emailAndForm.classList.add("row-to-col");
@@ -92,22 +103,25 @@ export class FormComponent {
 
   configFormActions = () => {
     const nextButton: HTMLButtonElement | null =
-      document.querySelector("button.next");
+      document.querySelector("button.next.hero");
     const backButton: HTMLButtonElement | null =
-      document.querySelector("button.back");
+      document.querySelector("button.back.hero");
     const submitButton: HTMLButtonElement | null =
-      document.querySelector("button.submit");
+      document.querySelector("button.submit.hero");
     const formProgressContainer: null | HTMLDivElement = document.querySelector(
-      "div.form-progress-container"
+      "div.form-progress-container.hero"
     );
-    const formActions: null | HTMLDivElement =
-      document.querySelector("div.from-actions");
+    const formActions: null | HTMLDivElement = document.querySelector(
+      "div.from-actions.hero"
+    );
 
     const originalSubmitButton: null | HTMLButtonElement =
-      document.querySelector("button.mktoButton");
+      document.querySelector("form.hero button.mktoButton");
+
+    console.log("hero-original=", originalSubmitButton);
 
     const form: null | HTMLFormElement = document.querySelector(
-      "div.form-container>form"
+      "div.form-container>form.hero"
     );
 
     if (
@@ -127,7 +141,7 @@ export class FormComponent {
 
       setTimeout(() => {
         const errors: NodeListOf<HTMLDivElement> | null =
-          document.querySelectorAll(selectors.nameEmailPhoneError);
+          document.querySelectorAll(selectors.heroNameEmailPhoneError);
         console.log("error=", errors);
 
         if (errors.length === 0) {
@@ -149,7 +163,7 @@ export class FormComponent {
 
       setTimeout(() => {
         const errors: NodeListOf<HTMLDivElement> | null =
-          document.querySelectorAll(selectors.nameEmailPhoneError);
+          document.querySelectorAll(selectors.heroNameEmailPhoneError);
         console.log("error=", errors);
 
         if (errors.length !== 0) {

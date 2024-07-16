@@ -3,7 +3,7 @@ export class Loader<T extends HTMLScriptElement | HTMLStyleElement> {
     const tag = document.createElement(tagName);
     tag.setAttribute("src", srcLink);
     tag.setAttribute("id", id);
-    document.head.appendChild(tag);
+    document.head.insertAdjacentElement("afterbegin", tag);
 
     return new Promise<T>((resolve, reject) => {
       setTimeout(() => {
