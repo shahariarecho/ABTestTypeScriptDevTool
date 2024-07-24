@@ -7,7 +7,7 @@ export class FormComponent {
         <div class="headline" >
           <h3>Get a Free Information Kit along with your savings!</h3>
         </div>
-        <form action="/api/PostHomePageCI" class="customer-form" method="post">
+        <form action="/api/PostHomePageCI" class="customer-form step-two" method="post">
           <div class="input-area" >
             <div class="name" >
               <label>Address</label>
@@ -55,7 +55,7 @@ export class FormComponent {
           </div>
           <div class="submit-area" >
             <div class="cta" >
-              <input type="submit" value="Show Prices" >
+              <button id="show-price-btn" >Show Prices</button>
             </div>
           </div>
         </form>
@@ -79,7 +79,7 @@ export class FormComponent {
         <div class="headline" >
           <h3>Get an Instant $200 Savings on America’s #1 Best Selling Awning!</h3>
         </div>
-        <form action="/api/PostHomePageCI" class="customer-form" method="post">
+        <form class="customer-form step-one">
           <div class="input-area" >
             <div class="name" >
               <label>First Name</label>
@@ -136,7 +136,7 @@ export class FormComponent {
               <p><span>*</span> Required Fields</p>
             </div>
             <div class="cta" >
-              <input type="submit" value="View Prices" >
+              <button id="view-price-btn" >View Prices</button>
             </div>
           </div>
         </form>
@@ -160,5 +160,145 @@ export class FormComponent {
     `;
 
     return htmlString.trim();
+  };
+
+  active = () => {
+    const customerForm: null | HTMLFormElement = document.querySelector(
+      "form.customer-form.step-one"
+    );
+
+    const firstName: null | HTMLInputElement =
+      document.querySelector("input#FirstName");
+
+    const lastName: null | HTMLInputElement =
+      document.querySelector("input#LastName");
+
+    const email: null | HTMLInputElement =
+      document.querySelector("input#Email");
+
+    const contactOptionId: null | HTMLInputElement = document.querySelector(
+      "input#ContactOptionId"
+    );
+
+    const zipCode: null | HTMLInputElement =
+      document.querySelector("input#ZipCode");
+
+    const phone: null | HTMLInputElement =
+      document.querySelector("input#Phone");
+
+    const viewPriceBtn: null | HTMLInputElement = document.querySelector(
+      "button#view-price-btn"
+    );
+
+    if (!firstName) {
+      return;
+    }
+
+    if (!lastName) {
+      return;
+    }
+
+    if (!email) {
+      return;
+    }
+
+    if (!contactOptionId) {
+      return;
+    }
+
+    if (!zipCode) {
+      return;
+    }
+
+    if (!phone) {
+      return;
+    }
+
+    if (!customerForm) {
+      return;
+    }
+
+    customerForm.addEventListener("submit", (e: SubmitEvent) => {
+      e.preventDefault();
+      console.log("prevent-default");
+    });
+
+    viewPriceBtn &&
+      viewPriceBtn.addEventListener("click", () => {
+        this.submit(
+          {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            contactOptionId: contactOptionId.value,
+            zipCode: zipCode.value,
+            phone: phone.value,
+          },
+          1
+        );
+      });
+  };
+
+  submit = async (data: any, step: number) => {
+    console.log("step-one-data=", data);
+
+    const formData = new FormData();
+
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("contactOptionId", data.contactOptionId);
+    formData.append("zipCode", data.zipCode);
+    formData.append("phone", data.phone);
+
+    const response = await fetch(
+      "https://www.sunsetter.com/api/PostHomePageCI",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    console.log(await response.json());
+
+    // const form = document.createElement("form");
+    // document.body.appendChild(form);
+
+    // form.action = "https://www.sunsetter.com/api/PostHomePageCI";
+    // form.method = "post";
+
+    // const firstName = document.createElement("input");
+    // firstName.value = data.firstName;
+    // firstName.name = "FirstName";
+    // form.appendChild(firstName);
+
+    // const lastName = document.createElement("input");
+    // lastName.value = data.lastName;
+    // lastName.name = "LastName";
+    // form.appendChild(lastName);
+
+    // const zipCode = document.createElement("input");
+    // zipCode.value = data.zipCode;
+    // zipCode.name = "ZipCode";
+    // form.appendChild(zipCode);
+
+    // const phone = document.createElement("input");
+    // phone.value = data.phone;
+    // phone.name = "Phone";
+    // form.appendChild(phone);
+
+    // const contactOptionId = document.createElement("input");
+    // contactOptionId.value = data.contactOptionId;
+    // contactOptionId.name = "ContactOptionId";
+    // form.appendChild(contactOptionId);
+
+    // const email = document.createElement("input");
+    // email.value = data.email;
+    // email.name = "Email";
+    // form.appendChild(email);
+
+    // console.log("forma=", form);
+
+    // form.submit();
   };
 }

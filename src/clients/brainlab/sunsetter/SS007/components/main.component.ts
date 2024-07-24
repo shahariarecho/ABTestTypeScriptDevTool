@@ -91,5 +91,6 @@ export class MainComponent {
 
     headerSection.insertAdjacentHTML("afterend", this.getHtml());
     this.carouselComponent.initSwiper();
+    this.formComponent.active();
   };
 }
