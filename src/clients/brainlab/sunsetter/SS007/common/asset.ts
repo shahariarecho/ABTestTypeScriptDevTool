@@ -117,3 +117,9 @@ export const heroImageLinks: string[] = [
   "https://brainlabs.digital/cro/sunsetter/ss007/hero-img-2.jpg",
   "https://brainlabs.digital/cro/sunsetter/ss007/hero-img-3.jpg",
 ];
+
+export const skipForNowLink: string =
+  "https://www.sunsetter.com/cm/find-a-dealer/results";
+
+export const emailRegularExpression: string =
+  "^(([^<>()[]\\.,;:s@@&quot;]+(.[^<>()[]\\.,;:s@@&quot;]+)*)|(&quot;.+&quot;))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$";

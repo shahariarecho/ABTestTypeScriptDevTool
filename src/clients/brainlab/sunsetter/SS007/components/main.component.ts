@@ -16,7 +16,7 @@ export class MainComponent {
   formComponent: FormComponent = new FormComponent();
 
   constructor() {
-    Initializer.init(TestInfo, "0.0.1");
+    Initializer.init(TestInfo, "0.0.3");
   }
 
   getHeroImageHtml = (imgLink: any, index: number): string => {

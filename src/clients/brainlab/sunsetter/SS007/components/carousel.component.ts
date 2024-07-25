@@ -65,6 +65,7 @@ export class CarouselComponent {
     return new Swiper(".carousel", {
       slidesPerView: 1,
       spaceBetween: 10,
+      autoplay: false,
       navigation: {
         nextEl: ".carousel-next",
         prevEl: ".carousel-prev",

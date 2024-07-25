@@ -1,19 +1,30 @@
-import { cities } from "../common/asset";
+import { cities, skipForNowLink, triggerEvent } from "../common/asset";
 
 export class FormComponent {
+  formComponent: HTMLDivElement | null = null;
+  errorMsg: HTMLDivElement | null = null;
+
   getStepTwoFormHtml = (): string => {
     const htmlString: string = `
       <div class="component-wrap step-two" >
         <div class="headline" >
-          <h3>Get a Free Information Kit along with your savings!</h3>
+          <h3>Receive a FREE Information Kit along with Savings!</h3>
         </div>
-        <form action="/api/PostHomePageCI" class="customer-form step-two" method="post">
+        <form class="customer-form">
           <div class="input-area" >
             <div class="name" >
               <label>Address</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="AddressLine1" maxlength="40" name="AddressLine1" placeholder="Address 1" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="AddressLine1" 
+                maxlength="40" 
+                name="AddressLine1" 
+                placeholder="Address 1" 
+                type="text" 
+                value=""
+              required>
             </div>
           </div>
           <div class="input-area" >
@@ -21,15 +32,15 @@ export class FormComponent {
               <label>Address 2</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="AddressLine2" maxlength="40" name="AddressLine2" placeholder="Address 2" type="text" value="">
-            </div>
-          </div>
-          <div class="input-area" >
-            <div class="name" >
-              <label>Zip Code</label>
-            </div>
-            <div class="input" >
-              <input autocomplete="on" class="autopopulate-zipcode" id="ZipCode" maxlength="20" name="ZipCode" placeholder="Zip Code" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="AddressLine2" 
+                maxlength="40" 
+                name="AddressLine2" 
+                placeholder="Address 2" 
+                type="text" 
+                value=""
+              required>
             </div>
           </div>
           <div class="input-area" >
@@ -37,12 +48,20 @@ export class FormComponent {
               <label>City</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="City" maxlength="30" name="City" placeholder="City" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="City" 
+                maxlength="30" 
+                name="City" 
+                placeholder="City" 
+                type="text" 
+                value=""
+              required>
             </div>
           </div>
           <div class="input-area" >
             <div class="input" >
-              <select id="State" name="State">
+              <select id="State" name="State" required>
                 <option selected="selected" value="">Select State</option>
                 ${cities
                   .map(
@@ -55,13 +74,13 @@ export class FormComponent {
           </div>
           <div class="submit-area" >
             <div class="cta" >
-              <button id="show-price-btn" >Show Prices</button>
+              <button id="show-price-btn" >Find a Dealer</button>
             </div>
           </div>
         </form>
         <div class="form-footer" >
           <div class="skip" >
-            <a>Skip for now</a>
+            <a href="${skipForNowLink}" >Skip for now</a>
           </div>
           <div class="footer-text" >
             <p>Your contact information is kept confidential. We do not distribute it to outside sources. Read our <a href="/cm/privacy/" >privacy policy</a>.</p>
@@ -77,15 +96,23 @@ export class FormComponent {
     const htmlString: string = `
       <div class="component-wrap step-one" >
         <div class="headline" >
-          <h3>Get an Instant $200 Savings on America’s #1 Best Selling Awning!</h3>
+          <h3>Find an Authorized SunSetter Dealer Near You!</h3>
         </div>
-        <form class="customer-form step-one">
+        <form class="customer-form">
           <div class="input-area" >
             <div class="name" >
               <label>First Name</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="FirstName" maxlength="30" name="FirstName" placeholder="First Name" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="FirstName" 
+                maxlength="30" 
+                name="FirstName" 
+                placeholder="First Name" 
+                type="text" 
+                value=""
+              >
             </div>
           </div>
           <div class="input-area" >
@@ -93,7 +120,14 @@ export class FormComponent {
               <label>Last Name</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="LastName" maxlength="30" name="LastName" placeholder="Last Name" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="LastName" 
+                maxlength="30" 
+                name="LastName" 
+                placeholder="Last Name" 
+                type="text" value=""
+              >
             </div>
           </div>
           <div class="input-area" >
@@ -101,12 +135,25 @@ export class FormComponent {
               <label>Email</label>
             </div>
             <div class="input" >
-              <input aria-describedby="EmailError" autocomplete="on" data-val="true" data-val-regex="Valid Email is required" data-val-regex-pattern="^(([^<>()\[\]\\.,;:\s@@&quot;]+(\.[^<>()\[\]\\.,;:\s@@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$" data-val-required="Email is required" id="Email" maxlength="128" name="Email" placeholder="Email" type="text" value="">
+              <input
+                autocomplete="on"
+                id="Email" 
+                maxlength="128" 
+                name="Email" 
+                placeholder="Email" 
+                type="email" value=""
+              >
             </div>
           </div>
           <div class="input-area" >
             <div class="check-box" >
-              <input checked="checked" data-val="true" data-val-required="The ContactOptionId field is required." id="ContactOptionId" name="ContactOptionId" type="checkbox" value="true">
+              <input 
+                checked="checked" 
+                id="ContactOptionId" 
+                name="ContactOptionId" 
+                type="checkbox" 
+                value="true"
+              required>
             </div>
             <div class="check-box-label" >
               <p>I would like to receive emails with special promotions from SunSetter.</p>
@@ -117,18 +164,34 @@ export class FormComponent {
           </div>
           <div class="input-area" >
             <div class="name" >
-              <label>Zip Code</label>
+              <label>Zip Code*</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" autopopulate-zipcode" id="ZipCode" maxlength="20" name="ZipCode" placeholder="Zip Code" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="ZipCode" 
+                maxlength="20" 
+                name="ZipCode" 
+                placeholder="Zip Code" 
+                type="text" 
+                value=""
+              required>
             </div>
           </div>
           <div class="input-area" >
             <div class="name" >
-              <label>Phone</label>
+              <label>Phone*</label>
             </div>
             <div class="input" >
-              <input autocomplete="on" id="Phone" maxlength="128" name="Phone" placeholder="Phone" type="text" value="">
+              <input 
+                autocomplete="on" 
+                id="Phone" 
+                maxlength="128" 
+                name="Phone" 
+                placeholder="Phone" 
+                type="text" 
+                value=""
+              required>
             </div>
           </div>
           <div class="submit-area" >
@@ -136,7 +199,7 @@ export class FormComponent {
               <p><span>*</span> Required Fields</p>
             </div>
             <div class="cta" >
-              <button id="view-price-btn" >View Prices</button>
+              <button id="view-price-btn" >Find a Dealer</button>
             </div>
           </div>
         </form>
@@ -154,8 +217,16 @@ export class FormComponent {
   getHtml = (): string => {
     const htmlString: string = `
       <div class="form-component" >
+        <div class="error-msg" >
+          <p>Something went wrong, please try again!</p>
+        </div>
         ${this.getStepOneFormHtml()}
         ${this.getStepTwoFormHtml()}
+        <div class="component-wrap success" >
+          <div class="success-wrap" >
+            <p>Form submitted successfully!<p>
+          </div>
+        </div>
       </div>
     `;
 
@@ -163,10 +234,88 @@ export class FormComponent {
   };
 
   active = () => {
-    const customerForm: null | HTMLFormElement = document.querySelector(
-      "form.customer-form.step-one"
+    this.formComponent = document.querySelector("div.form-component");
+    this.errorMsg = document.querySelector("div.error-msg");
+
+    const customerFormStepOne: null | HTMLFormElement = document.querySelector(
+      "div.form-component>div.component-wrap.step-one>form"
     );
 
+    const customerFormStepTwo: null | HTMLFormElement = document.querySelector(
+      "div.form-component>div.component-wrap.step-two>form"
+    );
+
+    const viewPriceBtn: null | HTMLInputElement = document.querySelector(
+      "button#view-price-btn"
+    );
+
+    const showPriceBtn: null | HTMLInputElement = document.querySelector(
+      "button#show-price-btn"
+    );
+
+    if (
+      !viewPriceBtn ||
+      !customerFormStepOne ||
+      !showPriceBtn ||
+      !customerFormStepTwo
+    ) {
+      return;
+    }
+
+    customerFormStepOne.addEventListener("submit", (e: SubmitEvent) => {
+      e.preventDefault();
+      console.log("step-one-form-prevent-default");
+    });
+
+    customerFormStepTwo.addEventListener("submit", (e: SubmitEvent) => {
+      e.preventDefault();
+      console.log("step-two-form-prevent-default");
+    });
+
+    viewPriceBtn.addEventListener("click", () => {
+      this.submitStepOneForm();
+    });
+
+    showPriceBtn.addEventListener("click", () => {
+      this.submitStepTwoForm();
+    });
+  };
+
+  submitStepTwoForm = () => {
+    const addressLine1: null | HTMLInputElement =
+      document.querySelector("input#AddressLine1");
+
+    const addressLine2: null | HTMLInputElement =
+      document.querySelector("input#AddressLine2");
+
+    const city: null | HTMLInputElement = document.querySelector("input#City");
+
+    const state: null | HTMLSelectElement =
+      document.querySelector("select#State");
+
+    if (
+      addressLine1 &&
+      addressLine1.value &&
+      addressLine2 &&
+      addressLine2.value &&
+      city &&
+      city.value &&
+      state &&
+      state.value
+    ) {
+      this.submitFormData(
+        {
+          addressLine1: addressLine1.value,
+          addressLine2: addressLine2.value,
+          city: city.value,
+          state: state.value,
+        },
+        2
+      );
+    }
+  };
+
+  submitStepOneForm = () => {
     const firstName: null | HTMLInputElement =
       document.querySelector("input#FirstName");
 
@@ -186,119 +335,86 @@ export class FormComponent {
     const phone: null | HTMLInputElement =
       document.querySelector("input#Phone");
 
-    const viewPriceBtn: null | HTMLInputElement = document.querySelector(
-      "button#view-price-btn"
-    );
-
-    if (!firstName) {
-      return;
+    if (
+      firstName &&
+      lastName &&
+      contactOptionId &&
+      email &&
+      zipCode &&
+      zipCode.value &&
+      phone &&
+      phone.value
+    ) {
+      this.submitFormData(
+        {
+          firstName: firstName.value,
+          lastName: lastName.value,
+          email: email.value,
+          contactOptionId: contactOptionId.value,
+          zipCode: zipCode.value,
+          phone: phone.value,
+        },
+        1
+      );
     }
-
-    if (!lastName) {
-      return;
-    }
-
-    if (!email) {
-      return;
-    }
-
-    if (!contactOptionId) {
-      return;
-    }
-
-    if (!zipCode) {
-      return;
-    }
-
-    if (!phone) {
-      return;
-    }
-
-    if (!customerForm) {
-      return;
-    }
-
-    customerForm.addEventListener("submit", (e: SubmitEvent) => {
-      e.preventDefault();
-      console.log("prevent-default");
-    });
-
-    viewPriceBtn &&
-      viewPriceBtn.addEventListener("click", () => {
-        this.submit(
-          {
-            firstName: firstName.value,
-            lastName: lastName.value,
-            email: email.value,
-            contactOptionId: contactOptionId.value,
-            zipCode: zipCode.value,
-            phone: phone.value,
-          },
-          1
-        );
-      });
   };
 
-  submit = async (data: any, step: number) => {
-    console.log("step-one-data=", data);
+  submitFormData = async (data: any, step: number) => {
+    console.log(`step-${step}-data=`, data);
 
     const formData = new FormData();
 
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("email", data.email);
-    formData.append("contactOptionId", data.contactOptionId);
-    formData.append("zipCode", data.zipCode);
-    formData.append("phone", data.phone);
+    if (step === 1) {
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
+      formData.append("contactOptionId", data.contactOptionId);
+      formData.append("zipCode", data.zipCode);
+      formData.append("phone", data.phone);
+    } else {
+      formData.append("AddressLine1", data.addressLine1);
+      formData.append("AddressLine2", data.addressLine2);
+      formData.append("City", data.city);
+      formData.append("State", data.state);
+    }
 
-    const response = await fetch(
-      "https://www.sunsetter.com/api/PostHomePageCI",
-      {
-        method: "POST",
-        body: formData,
+    try {
+      const response = await fetch(
+        "https://www.sunsetter.com/api/PostHomePageCI",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        const json = await response.json();
+        step === 1 &&
+          this.formComponent &&
+          this.formComponent.classList.add("next-step");
+
+        step === 2 &&
+          this.formComponent &&
+          this.formComponent.classList.add("submitted");
+
+        step === 1 && triggerEvent("step-one-form-submitted");
+        step === 2 && triggerEvent("step-two-form-submitted");
+
+        console.log("success=", response);
+      } else {
+        console.log("error=", response);
+        this.hideAndShowErrorMsg();
       }
-    );
+    } catch (error) {
+      console.log("error=", error);
+      this.hideAndShowErrorMsg();
+    }
+  };
 
-    console.log(await response.json());
-
-    // const form = document.createElement("form");
-    // document.body.appendChild(form);
-
-    // form.action = "https://www.sunsetter.com/api/PostHomePageCI";
-    // form.method = "post";
-
-    // const firstName = document.createElement("input");
-    // firstName.value = data.firstName;
-    // firstName.name = "FirstName";
-    // form.appendChild(firstName);
-
-    // const lastName = document.createElement("input");
-    // lastName.value = data.lastName;
-    // lastName.name = "LastName";
-    // form.appendChild(lastName);
-
-    // const zipCode = document.createElement("input");
-    // zipCode.value = data.zipCode;
-    // zipCode.name = "ZipCode";
-    // form.appendChild(zipCode);
-
-    // const phone = document.createElement("input");
-    // phone.value = data.phone;
-    // phone.name = "Phone";
-    // form.appendChild(phone);
-
-    // const contactOptionId = document.createElement("input");
-    // contactOptionId.value = data.contactOptionId;
-    // contactOptionId.name = "ContactOptionId";
-    // form.appendChild(contactOptionId);
-
-    // const email = document.createElement("input");
-    // email.value = data.email;
-    // email.name = "Email";
-    // form.appendChild(email);
-
-    // console.log("forma=", form);
-
-    // form.submit();
+  hideAndShowErrorMsg = () => {
+    this.errorMsg && this.errorMsg.classList.add("show");
+    setTimeout(() => {
+      this.errorMsg && this.errorMsg.classList.remove("show");
+    }, 5000);
   };
 }
